@@ -24,28 +24,29 @@ If no mobile designs provided, please use your best judgment for responsiveness.
 
 ```
 props: {
-        exampleObject: {
-            type: Object,
-            default: () => {}
-            // Mock: https://my-json-server.typicode.com/funkhaus/factory/posts/1
-        },
-        exampleArray: {
-            type: Array,
-            default: () => []
-            // Mock: https://my-json-server.typicode.com/funkhaus/factory/posts/1
-        },
-        exampleNumber: {
-            type: Number,
-            default: 0
-        },
-        exampleString: {
-            type: String,
-            default: ""
-        },
-        exampleBoolean: {
-            type: Boolean,
-            default: true
-        }
+    exampleObject: {
+        type: Object,
+        default: () => {}
+        // Mock: https://my-json-server.typicode.com/funkhaus/factory/posts/1
+    },
+    exampleArray: {
+        type: Array,
+        default: () => []
+        // Mock: https://my-json-server.typicode.com/funkhaus/factory/posts/1
+    },
+    exampleNumber: {
+        type: Number,
+        default: 0
+    },
+    exampleString: {
+        type: String,
+        default: ""
+    },
+    exampleBoolean: {
+        type: Boolean,
+        default: true
+    }
+}
 ```
 
 ## Events
