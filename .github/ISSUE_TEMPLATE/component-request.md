@@ -15,8 +15,8 @@ This component is used {where} to display {what}.
 
 Please also see attached screenshots for quick reference. 
 
-Desktop: https://xd.adobe.com/view/1234-5678/
-Mobile: https://xd.adobe.com/view/1234-5678/
+- Desktop: https://xd.adobe.com/view/1234-5678/
+- Mobile: https://xd.adobe.com/view/1234-5678/
 
 If no mobile designs provided, please use your best judgment for responsiveness. 
 
