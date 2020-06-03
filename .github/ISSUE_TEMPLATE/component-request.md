@@ -13,10 +13,12 @@ This component is used {where} to display {what}.
 
 ## Design
 
-Desktop: https://xd.adobe.com/view/1234-5678/
-Mobile https://xd.adobe.com/view/1234-5678/
+Please also see attached screenshots for quick reference. 
 
-If no mobile designs provided, please sue your best judgment for responsiveness. 
+Desktop: https://xd.adobe.com/view/1234-5678/
+Mobile: https://xd.adobe.com/view/1234-5678/
+
+If no mobile designs provided, please use your best judgment for responsiveness. 
 
 ## Props
 
