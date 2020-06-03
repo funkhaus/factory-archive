@@ -301,5 +301,55 @@
         }
       ]
     }
-  }
+  },
+  "logos": [
+    {
+      "id": "cG9zdDozMTU=",
+      "sourceUrl": "http://fuxt-backend.funkhaus.us/wp-content/uploads/2020/06/logo-wsj.svg"
+    },
+    {
+      "id": "cG9zdDozMTI=",
+      "sourceUrl": "http://fuxt-backend.funkhaus.us/wp-content/uploads/2020/06/logo-vayner-media.svg"
+    },
+    {
+      "id": "cG9zdDozMTM=",
+      "sourceUrl": "http://fuxt-backend.funkhaus.us/wp-content/uploads/2020/06/logo-vogue.svg"
+    },
+    {
+      "id": "cG9zdDozMTQ=",
+      "sourceUrl": "http://fuxt-backend.funkhaus.us/wp-content/uploads/2020/06/logo-vox.svg"
+    },
+    {
+      "id": "cG9zdDozMTE=",
+      "sourceUrl": "http://fuxt-backend.funkhaus.us/wp-content/uploads/2020/06/logo-vanity-fair.svg"
+    },
+    {
+      "id": "cG9zdDozMTA=",
+      "sourceUrl": "http://fuxt-backend.funkhaus.us/wp-content/uploads/2020/06/logo-twitter.svg"
+    },
+    {
+      "id": "cG9zdDozMDk=",
+      "sourceUrl": "http://fuxt-backend.funkhaus.us/wp-content/uploads/2020/06/logo-nyt-brand-studio.svg"
+    },
+    {
+      "id": "cG9zdDozMDY=",
+      "sourceUrl": "http://fuxt-backend.funkhaus.us/wp-content/uploads/2020/06/logo-elite-daily.svg"
+    },
+    {
+      "id": "cG9zdDozMDc=",
+      "sourceUrl": "http://fuxt-backend.funkhaus.us/wp-content/uploads/2020/06/logo-gq.svg"
+    },
+    {
+      "id": "cG9zdDozMDg=",
+      "sourceUrl": "http://fuxt-backend.funkhaus.us/wp-content/uploads/2020/06/logo-group-nine.svg"
+    },
+    {
+      "id": "cG9zdDozMDU=",
+      "sourceUrl": "http://fuxt-backend.funkhaus.us/wp-content/uploads/2020/06/logo-eko.svg"
+    },
+    {
+      "id": "cG9zdDozMDQ=",
+      "sourceUrl": "http://fuxt-backend.funkhaus.us/wp-content/uploads/2020/06/logo-bustle.svg"
+    }
+  ]
 }
