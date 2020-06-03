@@ -63,11 +63,11 @@ export default {
 
 Alternatively, you can access this the mock API via Typicode's JSON server like so:
 
-https://my-json-server.typicode.com/funkhaus/factory/image
-https://my-json-server.typicode.com/funkhaus/factory/images
-https://my-json-server.typicode.com/funkhaus/factory/images/cG9zdDoyODk=
-https://my-json-server.typicode.com/funkhaus/factory/page
-https://my-json-server.typicode.com/funkhaus/factory/pages
+- https://my-json-server.typicode.com/funkhaus/factory/image
+- https://my-json-server.typicode.com/funkhaus/factory/images
+- https://my-json-server.typicode.com/funkhaus/factory/images/cG9zdDoyODk=
+- https://my-json-server.typicode.com/funkhaus/factory/page
+- https://my-json-server.typicode.com/funkhaus/factory/pages
 
 These endpoints just map to the contents of `db.json`, so feel free to dig into that file to find what you need.
 
