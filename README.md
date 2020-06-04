@@ -16,19 +16,25 @@ Install instructions go here.
 
 Venmmo or PayPal
 
-## References
+## Timeline
+
+Most components should take between 2-4 hours to complete. So please don't accept a component unless you plan on finishing it within the next 48 hours. If more than 48 hours pass since starting on a component, you will be removed from the component and it's free for someone else to claim.
 
 ### Code styleguide and expectations
 
-No outside libraries
-Lodash allowed, give examples of how.
-Give a whitelist?
-What about animations?
-Explain included Linting config etc..
+- No outside libraries without asking. Here is a whitelist of approved ones:
+  - lodash: https://lodash.com/
+    - ([Be sure to only import functions you need](https://github.com/funkhaus/fuxt/blob/master/components/WpImage.vue#L41))
+  - vue-prlx: http://vue-prlx.surge.sh/
+- Sorry, no Tailwind (yet).
+- What about animations?
+  - Almost all transitions you'll be asked to do can be completed with the Vue `<transition>` component and CSS or JS hooks.
+
+Explain included Linting, Prettier config etc..
 
 ### Fonts
 
-How to give out fonts to Devs?
+How to give out fonts to Devs? Webfontloader in storybook?
 
 ### Funkhaus best practices
 
@@ -71,12 +77,12 @@ Alternatively, you can access this the mock API via Typicode's JSON server like 
 
 These endpoints just map to the contents of `db.json`, so feel free to dig into that file to find what you need.
 
-TODO:
+## References
 
-- Array of ACF logos
+Include some good things to read here.
 
 ## TODO
 
 - Finish this documentation
-- Setup GitHub issue templates for Component Request: https://help.github.com/en/github/building-a-strong-community/configuring-issue-templates-for-your-repository
 - Build out GitHub issue tags for things like difficulty level, budget, ready for code review etc.
+- Have a “project specification” issue template that defines global things like css vars or maybe design files? In component requests, like to the project spec.
