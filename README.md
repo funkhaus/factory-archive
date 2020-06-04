@@ -6,7 +6,7 @@ Explain what this repo is for. Mention James Lee.
 
 ## How to install Storybook
 
-Install instructions go here.
+TODO Install instructions go here.
 
 ## How to accept a Component Request
 
@@ -35,6 +35,8 @@ Most components should take between 2-4 hours to complete. So please don't accep
   - Almost all transitions you'll be asked to do can be completed with the Vue `<transition>` component and CSS or JS hooks.
 
 Explain included Linting, Prettier config etc..
+
+Encourage use of TODO, FIXME, NOTE, QUESTION etc. We use Atom and the [TODO-SHOW](https://atom.io/packages/todo-show) package.
 
 ### Fonts
 
