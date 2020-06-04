@@ -10,7 +10,11 @@ Install instructions go here.
 
 ## How to accept a Component Request
 
+TODO Link to an example CR.
+
 ## How to submit a finished Component for review
+
+TODO Include some examples of good components.
 
 ## How to get paid
 
@@ -77,9 +81,13 @@ Alternatively, you can access this the mock API via Typicode's JSON server like 
 
 These endpoints just map to the contents of `db.json`, so feel free to dig into that file to find what you need.
 
-## References
+## Resources
 
 Include some good things to read here.
+
+1.  Code examples?
+1.  CSS guides?
+1.  Vue/Nuxt docs?
 
 ## TODO
 
