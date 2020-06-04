@@ -2,7 +2,7 @@
 name: Component Request
 about: Describe this issue template's purpose here.
 title: Component Request - {componentName} - ${budget}
-labels: 'component request'
+labels: component request
 assignees: ''
 
 ---
