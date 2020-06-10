@@ -4,17 +4,23 @@ The Funkhaus component Factory - a proof of concept for an upcoming component ma
 
 Explain what this repo is for. Mention James Lee.
 
-## How to install Storybook
-
-TODO Install instructions go here.
-
 ## How to accept a Component Request
 
 TODO Link to an example CR.
 
 ## How to submit a finished Component for review
 
-TODO Include some examples of good components.
+We use storybook to develop and show off the components that have been created. If you are not familiar with storybook, checkout (https://storybook.js.org/)[https://storybook.js.org/]. 
+
+Once a Component Request has been accepted, 
+
+1. create a fork of this repos
+2. run `npm install`
+3. run `npm run storybook`
+4. develop your new component in the `components` directory
+- create a new directory with the Github issue # and place the component files in this directory.
+- at a minimum the `${component}.vue` file and `${component}.stories.js` file should be here.
+5. once the component and the stories have been built, create a PR from your fork back to this repository.
 
 ## How to get paid
 
