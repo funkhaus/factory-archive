@@ -1,15 +1,15 @@
 import Sample from "./Sample";
 
 export default {
-  title: "Sample"
+  title: "issue-3"
 };
 
-export const hello = () => ({
+export const SampleComponent = () => ({
   components: { Sample },
   template: "<Sample />"
 });
 
-export const helloWithMessage = () => ({
+export const SampleWithMessage = () => ({
   components: { Sample },
   template: '<Sample msg="My Message" />'
 });
