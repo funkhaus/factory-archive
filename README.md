@@ -5,11 +5,11 @@ The Funkhaus component Factory - a proof of concept for an upcoming component ma
 Explain what this repo is for. Mention James Lee.
 
 ## How to accept a Component Request
-Component requests are made through Github Issues, example (https://github.com/funkhaus/factory/issues/3)[https://github.com/funkhaus/factory/issues/3]. Review the request, ask questions and when ready make a proposal to build the component. If accepted, the Issue will be progressed to the Accepted state in the Project.
+Component requests are made through Github Issues, [example](https://github.com/funkhaus/factory/issues/3). Review the request, ask questions and when ready make a proposal to build the component. If accepted, the Issue will be progressed to the Accepted state in the Project.
 
 ## How to submit a finished Component for review
 
-We use storybook to develop and show off the components that have been created. If you are not familiar with storybook, checkout (https://storybook.js.org/)[https://storybook.js.org/]. 
+We use storybook to develop and show off the components that have been created. If you are not familiar with storybook, checkout [storybook](https://storybook.js.org/). 
 
 Once a Component Request has been accepted, 
 
