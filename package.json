@@ -5,7 +5,8 @@
   "scripts": {
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "storybook": "start-storybook"
+    "storybook": "start-storybook",
+    "storybook:build": "build-storybook  --quiet"
   },
   "dependencies": {
     "core-js": "^3.6.5",
