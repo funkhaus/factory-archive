@@ -5,8 +5,7 @@ The Funkhaus component Factory - a proof of concept for an upcoming component ma
 Explain what this repo is for. Mention James Lee.
 
 ## How to accept a Component Request
-
-TODO Link to an example CR.
+Component requests are made through Github Issues, example (https://github.com/funkhaus/factory/issues/3)[https://github.com/funkhaus/factory/issues/3]. Review the request, ask questions and when ready make a proposal to build the component. If accepted, the Issue will be progressed to the Accepted state in the Project.
 
 ## How to submit a finished Component for review
 
@@ -15,12 +14,14 @@ We use storybook to develop and show off the components that have been created. 
 Once a Component Request has been accepted, 
 
 1. create a fork of this repos
-2. run `npm install`
-3. run `npm run storybook`
-4. develop your new component in the `components` directory
+2. checkout the branch for the project. If project name is `funkhaus` a branch named `funkhaus` will be available.
+3. create a new branch named based on the Github Issue #. IE: `ISSUE-3`
+3. run `npm install`
+4. run `npm run storybook`
+5. develop your new component in the `components` directory
 - create a new directory with the Github issue # and place the component files in this directory.
 - at a minimum the `${component}.vue` file and `${component}.stories.js` file should be here.
-5. once the component and the stories have been built, create a PR from your fork back to this repository.
+5. once the component and the stories have been built, create a PR from your fork back to this repository and branch. ie: `funkhaus`
 
 ## How to get paid
 
