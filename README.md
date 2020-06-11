@@ -21,7 +21,9 @@ Once a Component Request has been accepted,
 5. develop your new component in the `components` directory
 - create a new directory with the Github issue # and place the component files in this directory.
 - at a minimum the `${component}.vue` file and `${component}.stories.js` file should be here.
-5. once the component and the stories have been built, create a PR from your fork back to this repository and branch. ie: `funkhaus`
+6. once the component and the stories have been built, create a PR from your fork to the project branch on this repository. IE: `funkhaus:funkhaus` from `uptownhr:ISSUE-3`
+
+
 
 ## How to get paid
 
