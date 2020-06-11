@@ -7,23 +7,34 @@ Explain what this repo is for. Mention James Lee.
 ## How to accept a Component Request
 Component requests are made through Github Issues, [example](https://github.com/funkhaus/factory/issues/3). Review the request, ask questions and when ready make a proposal to build the component. If accepted, the Issue will be progressed to the Accepted state in the Project.
 
-## How to submit a finished Component for review
+## How to develop once a Component Request has been accepted
+Every issue is assigned to a Github Project and every Github Project has an associated `branch`. For example, we currently have a `funkhaus` project and in return also have a branch named `funkhaus`.
 
+### Fork and Branch setup
+1. Fork this repository
+2. Checkout the Project branch
+3. Create a new branch based on the Github Issue #. IE: `ISSUE-3`
+
+### Storybook Development
 We use storybook to develop and show off the components that have been created. If you are not familiar with storybook, checkout [storybook](https://storybook.js.org/). 
 
-Once a Component Request has been accepted, 
-
-1. create a fork of this repos
-2. checkout the branch for the project. If project name is `funkhaus` a branch named `funkhaus` will be available.
-3. create a new branch named based on the Github Issue #. IE: `ISSUE-3`
-3. run `npm install`
-4. run `npm run storybook`
-5. develop your new component in the `components` directory
+To get started:
+1. `npm install`
+2. `npm run storybook`
+3. develop your new component in the `components` directory
 - create a new directory with the Github issue # and place the component files in this directory.
 - at a minimum the `${component}.vue` file and `${component}.stories.js` file should be here.
-6. once the component and the stories have been built, create a PR from your fork to the project branch on this repository. IE: `funkhaus:funkhaus` from `uptownhr:ISSUE-3`
+
+```
+- components
+- - ISSUE-3
+- - - sample.vue
+- - - sample.stories.js
+```
 
 
+## How to submit a finished Component for review
+Once a Component Request has been accepted and developed, you can open Pull Request for review. When creating the Pull Request, please make the PR against the Project's Branch. IE: `funkhaus:funkhaus` from `uptownhr:ISSUE-3`
 
 ## How to get paid
 
