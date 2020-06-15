@@ -3,7 +3,7 @@
         <!-- Component declartion is kebab cased -->
         <wp-image class="image" :image="image" />
 
-        <logo-funkhaus class="logo" />
+        <svg-logo-funkhaus class="logo" />
 
         <!-- We use v-html because most of the time the text comes out of a CMS that outputs HTML -->
         <h2 class="title" v-html="title" />
@@ -13,7 +13,7 @@
 <script>
 import NuxtLink from "@/components/global/NuxtLink"
 import WpImage from "@/components/global/WpImage"
-import LogoFunkhaus from "@/assets/svgs/logo-funkhaus.svg"
+import SvgLogoFunkhaus from "@/assets/svgs/logo-funkhaus.svg"
 
 export default {
     // Name matches filename and top-level class name
@@ -21,7 +21,7 @@ export default {
     components: {
         NuxtLink,
         WpImage,
-        LogoFunkhaus
+        SvgLogoFunkhaus
     },
     props: {
         // All props have type and default on them

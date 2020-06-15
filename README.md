@@ -97,8 +97,6 @@ TODO Include some good things to read here.
 
 -   Create sample project, issue and component.
 -   Build out GitHub issue tags for things like difficulty level, budget, ready for code review etc.
--   Make sure Storybook works like we want it to, linting, (maybe remove test for now?),
--   Add breakpoints to Storybook?
 -   How do we deal with Nuxt-Link?
 -   Get SVG's working, [I installed this, but not working yet ](https://github.com/webpack-contrib/svg-inline-loader).
 -   Figure out how to have some base.scss or vars.scss files global included, for breakpoints definitions and fonts?
