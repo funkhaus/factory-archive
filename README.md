@@ -37,7 +37,7 @@ To get started:
 2. `npm run storybook`
 3. develop your new component in the `src/components` directory
 
--   Be sure to create a new directory with the component name and GitHub issue number, like `Issue 3 - WorkBlock`. Place the component file in this directory.
+-   Be sure to create a new directory with the component name and GitHub issue number, like `Issue 3 - WorkBlock`. Place the component file in this directory. [See an example component here](https://github.com/funkhaus/factory/tree/master/src/components/Issue%201%20-%20WorkBlock).
 -   At a minimum the `${component}.vue` file and `${component}.stories.js` file should be here.
 
 For example:
@@ -67,23 +67,13 @@ Most components should take between 2-4 hours to complete. So please don't accep
 
 We will only pay for complete and approved components.
 
-### Code styleguide and expectations
+### Code style guide and expectations
 
-Each project branch includes a Project Specification and an Agency Specification in the Storybook. The Agency specification is essential the Funkhaus styleguide, and it doesn't change often. The Project Specification is unique to each project and covers things like fonts and colors used on the project, be sure to read both.
+Each project branch includes a Project Specification and an Agency Specification markdown file in the Storybook. The Agency specification is essentially the Funkhaus style guide, and it doesn't change often. The Project Specification is unique to each project and covers things like fonts and colors used on the project, be sure to read both.
 
-In general, each component should meet the following conditions.
+#### Global components
 
--   Here is a whitelist of approved outside libraries, please get approval for any others:
-    -   [lodash](https://lodash.com/):
-    -   Be sure to only import functions you need
--   [vue-prlx](http://vue-prlx.surge.sh/):
--   Sorry, no Tailwind (yet).
--   What about animations?
-    -   Almost all transitions you'll be asked to do can be completed with the Vue `<transition>` component and it's CSS or JS hooks.
-    -   Please no GASP/Pop/Anime without approval.
--   This repo has linting built in, please use it.
-
-We encourage the use of TODO, FIXME, NOTE, QUESTION etc. At Funkhaus use Atom and the [TODO-SHOW](https://atom.io/packages/todo-show) package.
+It's common that a Project will include some global components (often mentioned in the Component Request). You can put these in the `/global` folder, they will be ignored by Storybook. A common example of this is `<router-link>` or `<nuxt-link>`, or some of the related WordPress [`fuxt` components we often use](https://github.com/funkhaus/fuxt/tree/master/components).
 
 #### Funkhaus best practices
 
@@ -91,17 +81,13 @@ We encourage the use of TODO, FIXME, NOTE, QUESTION etc. At Funkhaus use Atom an
 
 ### Mock data
 
-All our data generally comes our of WordPress using the WP-GQL. But we've setup some ways to access the data easily.
+All our data generally comes our of WordPress using the WP-GQL. The file `db.json` found in `src/static` of this repo can used in your Storybook components to mock these data structures.
 
-#### Import file
-
-The file `db.json` found in `src/static` of this repo can used in your Storybook components. It includes mocks for various types of data we commonly use.
-
-It's best to look at [the sample `<work-block>` component](https://github.com/funkhaus/factory/tree/master/src/components/Issue-1 - WorkBlock) to see how to use the API to mock data.
+But we've setup some ways to access the data easily. Please see this [sample Storybook component](https://github.com/funkhaus/factory/tree/master/src/components/Issue%201%20-%20WorkBlock). to see how it's used.
 
 ## Resources
 
-Include some good things to read here.
+TODO Include some good things to read here.
 
 1.  Code examples?
 1.  CSS guides?
@@ -113,8 +99,7 @@ Include some good things to read here.
 -   Build out GitHub issue tags for things like difficulty level, budget, ready for code review etc.
 -   Make sure Storybook works like we want it to, linting, (maybe remove test for now?),
 -   Add breakpoints to Storybook?
--   Sample component for Storybook, use mock data.
-    -   Update Mock data instructions with new Storybook example.
--   Allow some global components for mock purposes? Like WpImage and NuxtLink.
+-   How do we deal with Nuxt-Link?
+-   Get SVG's working, [I installed this, but not working yet ](https://github.com/webpack-contrib/svg-inline-loader).
 -   Figure out how to have some base.scss or vars.scss files global included, for breakpoints definitions and fonts?
     -   Use webfontloader for fonts [see here](https://github.com/typekit/webfontloader).

@@ -1,17 +1,17 @@
 <template>
-  <div class="sample">
-    <p>
-      Project Specifcation goes here. Import markdown file perhaps?
-    </p>
-  </div>
+    <div class="sample">
+        <p>
+            Specifcation goes here. Import markdown file perhaps?
+        </p>
+    </div>
 </template>
 
 <script>
 export default {
-  props: {
-    msg: String
-  }
-};
+    props: {
+        msg: String
+    }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

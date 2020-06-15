@@ -1,16 +1,17 @@
-import AgencySpecifcation from "./AgencySpecifcation";
-import ProjectSpecifcation from "./ProjectSpecifcation";
+import MarkdownComponent from "./MarkdownComponent"
+//import AgencySpecifcation from "./AgencySpecifcation";
+//import ProjectSpecifcation from "./ProjectSpecifcation";
 
 export default {
-  title: "Specifcations"
-};
+    title: "Specifcations"
+}
 
 export const Agency = () => ({
-  components: { AgencySpecifcation },
-  template: "<agency-specifcation/>"
-});
+    components: { MarkdownComponent },
+    template: "<markdown-component/>"
+})
 
 export const Project = () => ({
-  components: { ProjectSpecifcation },
-  template: "<project-specifcation/>"
-});
+    components: { MarkdownComponent },
+    template: "<markdown-component/>"
+})
