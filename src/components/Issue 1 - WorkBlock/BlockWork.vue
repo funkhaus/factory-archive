@@ -3,17 +3,18 @@
         <!-- Component declartion is kebab cased -->
         <wp-image class="image" :image="image" />
 
-        <svg-logo-funkhaus class="logo" />
-
-        <!-- We use v-html because most of the time the text comes out of a CMS that outputs HTML -->
+        <!-- We use v-html because most of the time the text comes out of our CMS with HTML tags in it-->
         <h2 class="title" v-html="title" />
+
+        <!-- Nice to prepend SVG component names to not confuse them with regaulr components -->
+        <svg-logo-funkhaus class="logo" />
     </nuxt-link>
 </template>
 
 <script>
 import NuxtLink from "@/components/global/NuxtLink"
 import WpImage from "@/components/global/WpImage"
-import SvgLogoFunkhaus from "@/assets/svgs/logo-funkhaus.svg"
+import SvgLogoFunkhaus from "@/assets/svgs/logo-funkhaus.svg?inline"
 
 export default {
     // Name matches filename and top-level class name
@@ -78,16 +79,29 @@ export default {
         justify-content: center;
         align-content: center;
         align-items: center;
-
-        // Hover states
-        // @media #{$hasHover} {
-        // Hover styles would go here
-        // }
-
-        // Breakpoints
-        // @media #{$lt-tablet} {
-        // Break point would go here
-        // }
     }
+    .logo {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 100px;
+        height: auto;
+        z-index: 20;
+
+        // This is how you style an SVG
+        path {
+            fill: #ffffff;
+        }
+    }
+
+    // Hover states
+    // @media #{$hasHover} {
+    // Hover styles would go here
+    // }
+
+    // Breakpoints
+    // @media #{$lt-tablet} {
+    // Break point would go here
+    // }
 }
 </style>
