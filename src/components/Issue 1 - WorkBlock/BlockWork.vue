@@ -100,8 +100,12 @@ export default {
     // }
 
     // Breakpoints
-    // @media #{$lt-tablet} {
-    // Break point would go here
-    // }
+    @media #{$lt-tablet} {
+        max-width: 100%;
+
+        .image {
+            border: 4px solid #ff0000;
+        }
+    }
 }
 </style>

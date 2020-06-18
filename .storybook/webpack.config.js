@@ -4,6 +4,7 @@ module.exports = {
     // Add loaders for certain file types
     module: {
         rules: [
+            // Load SVGs
             {
                 test: /\.svg$/,
                 use: [
@@ -18,12 +19,26 @@ module.exports = {
                     }
                 ]
             },
+            // Allow scss styles
             {
                 test: /\.scss$/,
-                use: ["vue-style-loader", "css-loader", "sass-loader"]
+                use: [
+                    "vue-style-loader",
+                    "css-loader",
+                    {
+                        // Auto import into all components
+                        loader: "sass-loader",
+                        options: {
+                            prependData: `
+                                 @import "@/styles/variables.scss";
+                                `
+                        }
+                    }
+                ]
             }
         ]
     },
+
     // Add path alias mapped to @/src directory
     resolve: {
         extensions: [".js", ".vue", ".json"],
@@ -32,4 +47,15 @@ module.exports = {
             "@": path.join(__dirname, "..", "src")
         }
     }
+
+    // Auto import SCSS files into each component
+    // css: {
+    //     loaderOptions: {
+    //         sass: {
+    //             data: `
+    //                 @import "@/styles/variables.scss";
+    //             `
+    //         }
+    //     }
+    // }
 }
