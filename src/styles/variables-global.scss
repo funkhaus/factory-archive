@@ -1,0 +1,12 @@
+/*
+ * This file is included once, for the entire sute.
+ * It's useful for CSS varibles.
+ */
+:root {
+    --real-100vh: 100vh;
+    --font-primary: sans-serif;
+    --font-secondary: serif;
+}
+body {
+    font-family: var(--font-primary);
+}

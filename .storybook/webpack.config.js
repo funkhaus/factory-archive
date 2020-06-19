@@ -30,11 +30,16 @@ module.exports = {
                         loader: "sass-loader",
                         options: {
                             prependData: `
-                                 @import "@/styles/variables.scss";
+                                 @import "@/styles/variables-component.scss";
                                 `
                         }
                     }
                 ]
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf)$/,
+                loaders: ["file-loader"],
+                include: path.resolve(__dirname, "../")
             }
         ]
     },
@@ -47,15 +52,4 @@ module.exports = {
             "@": path.join(__dirname, "..", "src")
         }
     }
-
-    // Auto import SCSS files into each component
-    // css: {
-    //     loaderOptions: {
-    //         sass: {
-    //             data: `
-    //                 @import "@/styles/variables.scss";
-    //             `
-    //         }
-    //     }
-    // }
 }

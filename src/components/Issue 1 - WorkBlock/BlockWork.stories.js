@@ -2,7 +2,7 @@ import BlockWork from "./BlockWork"
 import API from "@/static/db.json"
 
 export default {
-    title: "Issue 1 - BlockWork"
+    title: "Examples | Issue 1 - BlockWork"
 }
 
 export const BlockWorkDefault = () => ({

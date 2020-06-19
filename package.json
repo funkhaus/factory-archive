@@ -3,10 +3,10 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "test:unit": "vue-cli-service test:unit",
         "lint": "vue-cli-service lint",
-        "storybook": "start-storybook",
-        "storybook:build": "build-storybook  --quiet"
+        "storybook": "start-storybook -s ./src/static",
+        "storybook:build": "build-storybook  --quiet",
+        "test:unit": "vue-cli-service test:unit"
     },
     "dependencies": {
         "core-js": "^3.6.5",
@@ -31,6 +31,7 @@
         "node-sass": "^4.12.0",
         "prettier": "^1.19.1",
         "sass-loader": "^8.0.2",
+        "vue-cli-plugin-webfontloader": "^0.1.1",
         "vue-loader": "^15.9.2",
         "vue-svg-loader": "^0.16.0",
         "vue-template-compiler": "^2.6.11"

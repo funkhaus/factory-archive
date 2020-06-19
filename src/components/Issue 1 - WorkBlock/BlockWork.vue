@@ -14,7 +14,7 @@
 <script>
 import NuxtLink from "@/components/global/NuxtLink"
 import WpImage from "@/components/global/WpImage"
-import SvgLogoFunkhaus from "@/assets/svgs/logo-funkhaus.svg?inline"
+import SvgLogoFunkhaus from "@/assets/svgs/logo-funkhaus.svg"
 
 export default {
     // Name matches filename and top-level class name
@@ -95,9 +95,11 @@ export default {
     }
 
     // Hover states
-    // @media #{$hasHover} {
-    // Hover styles would go here
-    // }
+    @media #{$has-hover} {
+        &:hover .image {
+            border: 4px solid #0000ff;
+        }
+    }
 
     // Breakpoints
     @media #{$lt-tablet} {
