@@ -69,7 +69,11 @@ We will only pay for complete and approved components.
 
 ### Code style guide and expectations
 
-Each project branch includes a Project Specification and an Agency Specification markdown file in the Storybook. The Agency specification is essentially the Funkhaus style guide, and it doesn't change often. The Project Specification is unique to each project and covers things like fonts and colors used on the project, be sure to read both.
+Each project branch includes a Project Specification and an Agency Specification markdown file in the Storybook.
+
+The Agency specification is essentially the Funkhaus style guide, and it doesn't change often.
+
+The Project Specification is unique to each project and covers things like fonts and colors used on the project, be sure to read both.
 
 #### Global components
 
@@ -93,10 +97,86 @@ TODO Include some good things to read here.
 1.  CSS guides?
 1.  Vue/Nuxt docs?
 
+## SVGs
+
+For all icons or logos, it's recommended that you use a SVG file. These should be placed in `/src/assets/svgs` and then imported and used as a component, but please prepended component name with SVG.
+
+For example, in a Vue Component you'd end up with:
+
+```
+import SvgLogoFunkhaus from "@/assets/svgs/logo-funkhaus.svg"
+
+components: {
+    SvgLogoFunkhaus
+},
+
+<svg-logo-funkhaus class="svg" />
+
+```
+
+## CSS & SCSS variables
+
+Each project includes a global stylesheet, and a SCSS variables stylesheet injected into each component automatically. These style sheets are used to share basic fonts and colors etc, often times as CSS or SCSS variables.
+
+Often times you'll need to use a project color or project font, you'd just do this:
+
+```
+.title {
+    font-family: var(--font-primary);
+    color: var(--color-yellow);
+}
+.sub-title {
+    font-family: var(--font-secondary);
+    color: var(--color-red);
+}
+```
+
+Everything you need is generally explained in each Project Specification included in the Storybook. But for advanced users, this explains where things are defined in code:
+
+1.  You can see what fonts weights are available by looking in the `/src/styles/fonts.css` file.
+1.  You can see what CSS vars are available by looking in the `/src/styles/global.scss` file.
+
+## Breakpoints & Hover States
+
+Similar to the way fonts and color variables are defined, we use SCSS variables to unify media queries for responsive breakpoints and hover states. This will be defined in each Project Specification.
+
+These variables are injected into each component automatically, so you'd simply be able to do this:
+
+```
+// Hover states
+@media #{$has-hover} {
+    &:hover .image {
+        border: 4px solid #0000ff;
+    }
+}
+
+// Breakpoints
+@media #{$lt-tablet} {
+    .image {
+        border: 4px solid #ff0000;
+    }
+}
+```
+
+## Fonts
+
+Each project includes the required fonts and weights. If one is missing, please comment on the component request issue.
+
+Font's should be used by CSS var, like so:
+
+```
+.title {
+    font-family: var(--font-primary);
+}
+.sub-title {
+    font-family: var(--font-secondary);
+    weight: 600;
+}
+```
+
+Available fonts and weights are explained in each Project Specification, but can also be found in `/src/styles/fonts.css` and `/src/styles/global.scss`.
+
 ## TODO
 
 -   Create sample project, issue and component.
 -   Build out GitHub issue tags for things like difficulty level, budget, ready for code review etc.
--   Document SVGs.
--   Document Breakpoints and CSS variables
--   Get Specifcations importing as Markdown files

@@ -1,13 +1,13 @@
 import ProjectSpecification from "./ProjectSpecification.md"
 import AgencySpecifcation from "./AgencySpecifcation.md"
 
+// Markdown component with github styles
 import VueMarkdown from "vue-markdown"
+import "@/styles/github-markdown.css"
 
 export default {
-    title: "Documentation | Specifcations"
+    title: "Documentation / Specifcations"
 }
-
-console.log(AgencySpecifcation)
 
 export const Agency = () => ({
     components: { VueMarkdown },
@@ -16,7 +16,7 @@ export const Agency = () => ({
             markdown: AgencySpecifcation
         }
     },
-    template: `<vue-markdown :source="markdown"/>`
+    template: `<vue-markdown class="markdown-body" :source="markdown"/>`
 })
 
 export const Project = () => ({
@@ -26,5 +26,5 @@ export const Project = () => ({
             markdown: ProjectSpecification
         }
     },
-    template: `<vue-markdown :source="markdown"/>`
+    template: `<vue-markdown class="markdown-body" :source="markdown"/>`
 })

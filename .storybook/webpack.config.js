@@ -4,7 +4,6 @@ module.exports = {
     // Add loaders for certain file types
     module: {
         rules: [
-            // Load SVGs
             {
                 test: /\.svg$/,
                 use: [
@@ -19,7 +18,10 @@ module.exports = {
                     }
                 ]
             },
-            // Allow scss styles
+            {
+                test: /\.css$/,
+                use: ["vue-style-loader", "css-loader"]
+            },
             {
                 test: /\.scss$/,
                 use: [
