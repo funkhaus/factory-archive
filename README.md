@@ -75,9 +75,11 @@ The Agency specification is essentially the Funkhaus style guide, and it doesn't
 
 The Project Specification is unique to each project and covers things like fonts and colors used on the project, be sure to read both.
 
-#### Global components
+#### Dependent components
 
-It's common that a Project will include some global components (often mentioned in the Component Request). You can put these in the `/global` folder, they will be ignored by Storybook. A common example of this is `<router-link>` or `<nuxt-link>`, or some of the related WordPress [`fuxt` components we often use](https://github.com/funkhaus/fuxt/tree/master/components).
+It's common that a Project will include some dependent or global components (often mentioned in the Component Request). You can put these in the `/global` folder, they will be ignored by Storybook.
+
+A common example of this is `<router-link>` or `<nuxt-link>`, or some of the related WordPress [`fuxt` components we often use](https://github.com/funkhaus/fuxt/tree/master/components).
 
 #### Funkhaus best practices
 
