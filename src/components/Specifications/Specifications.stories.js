@@ -3,7 +3,7 @@ import MarkdownComponent from "./MarkdownComponent"
 //import ProjectSpecifcation from "./ProjectSpecifcation";
 
 export default {
-    title: "Specifcations | Specifcations"
+    title: "Documentation | Specifcations"
 }
 
 export const Agency = () => ({
