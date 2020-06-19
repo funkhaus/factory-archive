@@ -30,7 +30,7 @@ module.exports = {
                         loader: "sass-loader",
                         options: {
                             prependData: `
-                                 @import "@/styles/variables-component.scss";
+                                 @import "@/styles/variables.scss";
                                 `
                         }
                     }
@@ -38,8 +38,7 @@ module.exports = {
             },
             {
                 test: /\.(woff|woff2|eot|ttf)$/,
-                loaders: ["file-loader"],
-                include: path.resolve(__dirname, "../")
+                loaders: ["file-loader"]
             }
         ]
     },

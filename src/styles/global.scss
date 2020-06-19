@@ -1,10 +1,10 @@
 /*
  * This file is included once, for the entire sute.
- * It's useful for CSS varibles.
+ * It's useful for global styles and CSS varibles.
  */
 :root {
     --real-100vh: 100vh;
-    --font-primary: sans-serif;
+    --font-primary: "RM Neue", sans-serif;
     --font-secondary: serif;
 }
 body {
