@@ -12,9 +12,9 @@ Any developer can request to build any component on any Project by making a PR t
 
 ## How to accept a Component Request
 
-Each Project has a bunch of `Component Requests`, which are just GitHub issues. These "issues" explain the component we need built. See this for [example](https://github.com/funkhaus/factory/issues/3).
+Each Project has a bunch of `Component Requests` or `CR` for short, which are just GitHub issues. These "issues" explain the component we need built. See this for [example](https://github.com/funkhaus/factory/issues/3).
 
-Any unassigned Component Request is up for grabs to the first developer that wants it. Review the request, ask questions and when ready, reply to the issue with a proposal to build the component. If accepted, the Issue will be tagged "accepted", and progressed to the Accepted column in the Project's board. You'll have 72 hours to complete the component before it is released and up for grabs by another developer.
+Any unassigned CR is up for grabs to the first developer that wants it. Review the request, ask questions and when ready, reply to the issue with a proposal to build the component. If accepted, the CR Issue will be tagged "accepted", and progressed to the Accepted column in the Project's board. You'll have 72 hours to complete the component before it is released and up for grabs by another developer.
 
 ## How to develop once a Component Request has been accepted
 
@@ -37,14 +37,14 @@ To get started:
 2. `npm run storybook`
 3. develop your new component in the `src/components` directory
 
--   Be sure to create a new directory with the component name and GitHub issue number, like `Issue 3 - WorkBlock`. Place the component file in this directory. [See an example component here](https://github.com/funkhaus/factory/tree/master/src/components/Issue%201%20-%20WorkBlock).
+-   Be sure to create a new directory with the component name and GitHub CR issue number, like `CR1 - WorkBlock`. Place the component file in this directory. [See an example component here](https://github.com/funkhaus/factory/tree/master/src/components/CR1%20-%20WorkBlock).
 -   At a minimum the `${component}.vue` file and `${component}.stories.js` file should be here.
 
 For example:
 
 ```
 - src/components
-- - Issue 3 - WorkBlock
+- - CR1 - WorkBlock
 - - - WorkBlock.vue
 - - - WorkBlock.stories.js
 ```
@@ -53,9 +53,9 @@ Please see this example for a better understanding of coding standards and how t
 
 ## How to submit a finished Component for review
 
-Once a Component Request has been accepted, and developed, you can open a Pull Request for review. When creating the Pull Request, please make the PR against the Project's Branch. IE: `factory:makemake` from `username:ISSUE-3`
+Once a CR has been accepted, and developed, you can open a Pull Request for review. When creating the Pull Request, please make the PR against the Project's Branch. IE: `factory:makemake`.
 
-In the GitHub Project Board, we will move your component issue to the "In Review" column and tag your issue as such. If we have notes for you, we will reply in the Issue, you'll make the changes and and open a new PR. Once the PR is merged and approved, you can send a Venmo request to `@funkhaus` or a PayPal invoice to `whatsup@funkhaus.us`. Be sure to include your issue number and component name in the payment request.
+In the GitHub Project Board, we will move your CR to the "In Review" column and tag your issue as such. If we have notes for you, we will reply in the issue, you'll make the changes and and open a new PR.
 
 ## How to get paid
 
@@ -63,7 +63,7 @@ Once your component PR has been approved and merged, you can send a Venmo reques
 
 ## Timeline
 
-Most components should take between 2-4 hours to complete. So please don't accept a component unless you plan on finishing it within the next 72 hours. If more than 472 hours pass since starting on a component, you will be removed from the component and it's free for someone else to claim.
+Most components should take between 2-4 hours to complete. So please don't accept a component unless you plan on finishing it within the next 72 hours. If more than 72 hours pass since starting on a component, you will be removed from the component and it's free for someone else to claim.
 
 We will only pay for complete and approved components.
 
@@ -83,21 +83,13 @@ A common example of this is `<router-link>` or `<nuxt-link>`, or some of the rel
 
 #### Funkhaus best practices
 
-[Here is a general overview of best practices at Funkhaus](https://docs.google.com/presentation/d/1xMqvylzoIwpEgwFEpXI8it_HGo7BUGrt8h65E0nvEQo/edit?usp=sharing), please consider these when building a component.
+[Here is a general overview of best practices at Funkhaus](https://github.com/funkhaus/best-practices), please consider these when building a component.
 
 ### Mock data
 
 All our data generally comes our of WordPress using the WP-GQL. The file `db.json` found in `src/static` of this repo can used in your Storybook components to mock these data structures.
 
-But we've setup some ways to access the data easily. Please see this [sample Storybook component](https://github.com/funkhaus/factory/tree/master/src/components/Issue%201%20-%20WorkBlock). to see how it's used.
-
-## Resources
-
-TODO Include some good things to read here.
-
-1.  Code examples?
-1.  CSS guides?
-1.  Vue/Nuxt docs?
+But we've setup some ways to access the data easily. Please see this [sample Storybook component](https://github.com/funkhaus/factory/tree/master/src/components/CR1%20-%20WorkBlock). to see how it's used.
 
 ## SVGs
 
@@ -177,6 +169,14 @@ Font's should be used by CSS var, like so:
 ```
 
 Available fonts and weights are explained in each Project Specification, but can also be found in `/src/styles/fonts.css` and `/src/styles/global.scss`.
+
+## Resources
+
+Some good things to read here.
+
+1.  [Funkhaus best practices](https://github.com/funkhaus/best-practices)
+1.  [Maintainable CSS](https://maintainablecss.com/chapters/semantics/)
+1.  [The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
 
 ## TODO
 
