@@ -99,5 +99,4 @@ TODO Include some good things to read here.
 -   Build out GitHub issue tags for things like difficulty level, budget, ready for code review etc.
 -   Document SVGs.
 -   Document Breakpoints and CSS variables
--   Test that @font-face works, document fonts.
 -   Get Specifcations importing as Markdown files
