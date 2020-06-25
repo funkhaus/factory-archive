@@ -27,12 +27,11 @@ Any unassigned CR is up for grabs to the first developer that wants it. Review t
 
 Every issue is assigned to a Github Project and every Github Project has an associated `branch`. For example, we currently have a `MakeMake` project and in return also have a branch named `makemake`.
 
-### Fork and Branch setup
+### Branch project setup
 
-1. Fork this repository
-2. Checkout the Project branch
-3. Code your component
-4. Create a new PR on the project branch, be sure to include a list of issues (Component Requests) your PR addresses.
+1. Clone the Project branch [from here](https://github.com/funkhaus/factory/branches)
+2. Code your component
+3. Create a new PR on the project branch, be sure to include a list of issues (Component Requests) your PR addresses in the PR description.
 
 ### Storybook Development
 

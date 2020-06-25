@@ -5,7 +5,7 @@ export default {
     title: "Examples / CR1 - BlockWork"
 }
 
-export const BlockWorkDefault = () => ({
+export const BlockWorkWithTitle = () => ({
     components: { BlockWork },
     data() {
         return {
@@ -13,4 +13,14 @@ export const BlockWorkDefault = () => ({
         }
     },
     template: `<block-work title="Sample title" :image="api.image"/>`
+})
+
+export const BlockWorkWithoutTitle = () => ({
+    components: { BlockWork },
+    data() {
+        return {
+            api: API
+        }
+    },
+    template: `<block-work :image="api.image"/>`
 })
