@@ -4,6 +4,13 @@ The Funkhaus component Factory. Build as many components as you want and get pai
 
 Together with [James Lee](https://github.com/uptownhr), Funkhaus has set out to make a marketplace for talented developers to build single components for our agency projects.
 
+## Quick start
+
+1.  Find a component to [build here](https://github.com/funkhaus/factory/issues?q=is%3Aopen+is%3Aissue+label%3A%22component+request%22).
+1.  Get approval to build it by commenting on the issue
+1.  Pull down the branch for that [component's project](https://github.com/funkhaus/factory/branches)
+1.  Build the component, and commit a PR to that project branch.
+
 ## How it works
 
 This repo is setup with [Project Boards](https://github.com/funkhaus/factory/projects) for each website we are working on at Funkhaus. Each Project has a `branch` of this repo that goes with it. There are also several `Issues` tagged with `component request` for each Project.
