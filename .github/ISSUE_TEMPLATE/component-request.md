@@ -1,24 +1,26 @@
 ---
 name: Component Request
-about: Describe this issue template's purpose here.
-title: Component Request - {componentName} - ${budget}
-labels: component request
+about: used to define a component that a developer can build.
+title: Component Request - {componentName} - {x}hrs
+labels: component request, available
 assignees: ''
 
 ---
 
-## Component Description 
+## Component Description
 
 This component is used {where} to display {what}.
 
 ## Design
 
-Please also see attached screenshots for quick reference. 
+Please also see attached screenshots for quick reference.
 
 - Desktop: https://xd.adobe.com/view/1234-5678/
 - Mobile: https://xd.adobe.com/view/1234-5678/
 
-If no mobile designs provided, please use your best judgment for responsiveness. 
+If no mobile designs provided, please use your best judgment for responsiveness.
+
+Email {projectOwnerEmail} for the design password.
 
 ## Props
 
@@ -27,12 +29,12 @@ props: {
     exampleObject: {
         type: Object,
         default: () => {}
-        // Mock: https://my-json-server.typicode.com/funkhaus/factory/posts/1
+        // Mock: api.page
     },
     exampleArray: {
         type: Array,
         default: () => []
-        // Mock: https://my-json-server.typicode.com/funkhaus/factory/posts/1
+        // Mock: api.pages
     },
     exampleNumber: {
         type: Number,
@@ -55,12 +57,12 @@ Describe any events that should be emitted by this component.
 
   1. `menuOpened` when {something} is clicked on
 
-## Nested components
+## Required components
 
-List out any components that are used by this new component. For example, if you are building a grid that is made up of block components. 
+List out any components that are used by this new component. For example, if you are building a grid that is made up of block components.
 
-  1. `nested-component` is used for {what}
+  1. `required-component` is used for {what}
 
-## Budget
+## Time & Budget
 
 I expect this to take {x} hours to complete, and will pay ${y} for it.
