@@ -41,10 +41,11 @@ To get started:
 
 1. `npm install`
 2. `npm run storybook`
-3. develop your new component in the `src/components` directory
+3. Develop your new component in the `src/components` directory
 
 -   Be sure to create a new directory with the component name and GitHub CR issue number, like `CR1 - WorkBlock`. Place the component file in this directory. [See an example component here](https://github.com/funkhaus/factory/tree/master/src/components/CR1%20-%20WorkBlock).
 -   At a minimum the `${component}.vue` file and `${component}.stories.js` file should be here.
+-   Name your storybook story like `@{githubusername} / CR1 - WorkBlock`. This will organzine all your components into a Storybook structure.
 
 For example:
 
@@ -55,7 +56,7 @@ For example:
 - - - WorkBlock.stories.js
 ```
 
-Please see this example for a better understanding of coding standards and how to pass in mock data.
+Please see look at the above example for a better understanding of coding standards and how to pass in mock data.
 
 ## How to submit a finished Component for review
 

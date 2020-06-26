@@ -53,6 +53,7 @@ export default {
 
     .image {
         border: 4px solid var(--color-black);
+        transition: border 0.4s ease-in-out; // Only animate properties that are needed. 1s, 0.8s, 0.4s are common durations.
     }
     .title {
         font-size: 18px;
@@ -70,7 +71,7 @@ export default {
         // It's tempting to use a brightness filter on the image, but wp-image image can also be a video,
         // which has really bad performance with CSS filters.
         background-color: rgba(#000000, 0.2); // Always use full color code, lowercase.
-        color: var(--color-black);
+        color: #ffffff; // Always use full color code, lowercase.
 
         // Nice to group related styles, no need for prefixes thanks to build process.
         display: flex;
