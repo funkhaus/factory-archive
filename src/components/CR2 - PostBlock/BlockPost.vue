@@ -1,46 +1,35 @@
 <template>
-    <!-- <nuxt-link
-        class="block-post"
-        :to="to"
-    >
-        <wp-image
-            class="block-image"
-            :image="image"
-        >
+    <nuxt-link class="block-post" :to="to">
+        <wp-image class="block-image" :image="image">
             <span class="more">More</span>
         </wp-image>
         <div class="block-text">
-            <time
-                class="date"
-                v-html="formattedDate"
-            />
-            <h3
-                class="title"
-                v-html="title"
-            />
-            <p
-                class="excerpt"
-                v-html="stripTags(excerpt)"
-            />
-            <div
-                v-if="categories"
-                class="categories"
-            >
+            <time class="date" v-html="formattedDate" />
+            <h3 class="title" v-html="title" />
+            <p class="excerpt" v-html="stripTags(excerpt)" />
+            <div v-if="categories" class="categories">
                 <span
                     v-for="(category, i) in categories"
                     v-html="category.name + comma(i)"
                 />
             </div>
         </div>
-    </nuxt-link> -->
+    </nuxt-link>
 </template>
 
 <script>
 // Helpers
-// import { formatDate } from "~/utils/tools"
-// import { stripTags } from "~/utils/tools"
+import { formatDate } from "@/utils/tools"
+import { stripTags } from "@/utils/tools"
+// Components
+import NuxtLink from "@/components/global/NuxtLink"
+import WpImage from "@/components/global/WpImage"
 
 export default {
+    components: {
+        NuxtLink,
+        WpImage
+    },
     props: {
         to: {
             type: String,
@@ -66,24 +55,24 @@ export default {
             type: Array,
             default: () => []
         }
+    },
+    computed: {
+        formattedDate() {
+            return formatDate(this.date)
+        }
+    },
+    methods: {
+        stripTags(text) {
+            return stripTags(text)
+        },
+        comma(i) {
+            let output = ", "
+            if (i == this.categories.length - 1) {
+                output = ""
+            }
+            return output
+        }
     }
-    // computed: {
-    //     formattedDate() {
-    //         return formatDate(this.date)
-    //     }
-    // },
-    // methods: {
-    //     stripTags(text) {
-    //         return stripTags(text)
-    //     },
-    //     comma(i) {
-    //         let output = ", "
-    //         if (i == this.categories.length - 1) {
-    //             output = ""
-    //         }
-    //         return output
-    //     }
-    // }
 }
 </script>
 
@@ -99,7 +88,8 @@ export default {
     align-items: center;
 
     .block-image {
-        width: calc(50% - (var(--gutter) / 2));
+        width: 50%;
+        // width: calc(50% - (var(--gutter) / 2));
 
         &.has-loaded {
             .more {
@@ -111,7 +101,8 @@ export default {
         }
     }
     .block-text {
-        width: calc(50% - (var(--gutter) / 2));
+        width: 50%;
+        // width: calc(50% - (var(--gutter) / 2));
     }
     .title {
         margin: 15px 0;
@@ -138,26 +129,26 @@ export default {
         opacity: 0;
     }
 
-    // Hovers
-    @media #{$has-hover} {
-        &:hover {
-            // TODO move this into the grid where text hover state will live
-            .media {
-                transform: translateY(-40px);
-            }
-        }
-    }
-    // Breakpoints
-    @media #{$lt-phone} {
-        flex-direction: column;
-
-        .block-image,
-        .block-text {
-            width: 100%;
-        }
-        .block-text {
-            margin-top: 15px;
-        }
-    }
+    // // Hovers
+    // @media #{$has-hover} {
+    //     &:hover {
+    //         // TODO move this into the grid where text hover state will live
+    //         .media {
+    //             transform: translateY(-40px);
+    //         }
+    //     }
+    // }
+    // // Breakpoints
+    // @media #{$lt-phone} {
+    //     flex-direction: column;
+    //
+    //     .block-image,
+    //     .block-text {
+    //         width: 100%;
+    //     }
+    //     .block-text {
+    //         margin-top: 15px;
+    //     }
+    // }
 }
 </style>
