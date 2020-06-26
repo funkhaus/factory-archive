@@ -2,13 +2,24 @@
  * This file is included once, for the entire sute.
  * It's useful for global styles and CSS varibles.
  */
+
+// Varibles
 :root {
-    --real-100vh: 100vh;
-    --font-primary: "RM Neue", sans-serif;
+    --font-primary: sans-serif;
     --font-secondary: serif;
+
+    --color-black: #222222;
+    --color-brand: #cd1a45;
+
+    --unit-100vh: 100vh;
+    --unit-gutter: 40px;
+    --unit-max-width: 1800px;
 }
+
+// Base styles
 body {
     font-family: var(--font-primary);
+    color: var(--color-black);
 }
 a {
     text-decoration: none;

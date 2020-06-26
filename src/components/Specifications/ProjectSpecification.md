@@ -7,16 +7,11 @@ This is a website for {clientName}. They are a {companyType} based in {companyLo
 -   Desktop: https://xd.adobe.com/view/1234-5678/
 -   Mobile: https://xd.adobe.com/view/1234-5678/
 
+Email {projectOwner} for the password to the design files.
+
 ## CSS vars
 
-These CSS vars should be used for styling common elements.
-
-```
-    --font-primary: sans-serif;
-    --font-secondary: serif;
-    --text-color: #000000;
-    --text-highlight-color: #cccccc;
-```
+CSS vars are defined in `@/styles/global.scss`, you should review that file before you begin. If there are any common variables you think are missing, please let us know.
 
 ## Fonts
 
@@ -32,14 +27,7 @@ serif
 - 400 (book)
 ```
 
-## SCSS vars
-
-Some common SCSS vars used on this site.
-
-```
-    $gap-horz: 20px;
-    $gap-vert: 40px;
-```
+You can also see what fonts are available in `@/styles/fonts.css`.
 
 ## Breakpoints
 
