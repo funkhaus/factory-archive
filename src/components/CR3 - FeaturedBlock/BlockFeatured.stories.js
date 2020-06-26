@@ -43,9 +43,9 @@ export const FeaturedBlockDate = () => ({
         }
     },
     template: `<block-featured
+                isPost="true"
                 :to="api.page.uri"
                 :title="api.page.title"
-                :image="api.page.featuredImage"
                 :date="api.page.date"
                 />`
 })

@@ -1,27 +1,27 @@
 <template>
-    <nuxt-link class="block-featured" :to="to">
+    <nuxt-link :class="classes" :to="to">
         <wp-image
             v-if="image"
             class="block-image"
             :image="image"
             mode="fullbleed"
         >
-            <div class="block-text">
-                <h3 class="title" v-html="title" />
-                <!-- Logos -->
-                <div v-if="logos.length" class="logos">
-                    <div v-for="i in logos" :key="i.id" class="logo-container">
-                        <div class="sizer">
-                            <img class="logo" :src="i.sourceUrl" />
-                        </div>
+        </wp-image>
+        <div class="block-text">
+            <h3 class="title" v-html="title" />
+            <!-- Logos -->
+            <div v-if="logos.length" class="logos">
+                <div v-for="i in logos" :key="i.id" class="logo-container">
+                    <div class="sizer">
+                        <img class="logo" :src="i.sourceUrl" />
                     </div>
                 </div>
-                <!-- Credit -->
-                <p v-if="credits" class="credit" v-html="credits" />
-                <!-- Date -->
-                <time v-if="date" class="date" v-html="formattedDate" />
             </div>
-        </wp-image>
+            <!-- Credit -->
+            <p v-if="credits" class="credit" v-html="credits" />
+            <!-- Date -->
+            <time v-if="date" class="date" v-html="formattedDate" />
+        </div>
     </nuxt-link>
 </template>
 
@@ -38,6 +38,10 @@ export default {
         WpImage
     },
     props: {
+        isPost: {
+            type: Boolean,
+            default: false
+        },
         to: {
             type: String,
             required: true
@@ -64,6 +68,9 @@ export default {
         }
     },
     computed: {
+        classes() {
+            return ["block-featured", { "is-post": this.isPost }]
+        },
         formattedDate() {
             return formatDate(this.date)
         }
@@ -116,6 +123,15 @@ export default {
             object-fit: contain;
             height: 100%;
             width: 100%;
+        }
+    }
+    // Post styles
+    &.is-post {
+        // TODO use some varialbe here
+        background-color: #000;
+
+        .block-text {
+            justify-content: space-between;
         }
     }
 
