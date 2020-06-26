@@ -12,5 +12,12 @@ export const PostBlock = () => ({
             api: API
         }
     },
-    template: `<block-post :to="api.page.uri" :date="api.page.date" :title="api.page.title" :excerpt="api.page.excerpt" :image="api.page.featuredImage" :categories="api.page.categories.nodes" />`
+    template: `<block-post
+                :to="api.page.uri"
+                :date="api.page.date"
+                :title="api.page.title"
+                :excerpt="api.page.excerpt"
+                :image="api.page.featuredImage"
+                :categories="api.page.categories.nodes"
+                />`
 })
