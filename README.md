@@ -189,3 +189,5 @@ Some good things to read here.
 
 -   Create sample project, issue and component.
 -   Build out GitHub issue tags for things like difficulty level, budget, ready for code review etc.
+-   Add a PR template that includes, reference the issue(s), list what was built, explains varients and hover states.
+-   Make all SVG exportable in the designs!

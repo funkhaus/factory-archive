@@ -5,7 +5,7 @@
     "scripts": {
         "lint": "vue-cli-service lint",
         "storybook": "start-storybook -s ./src/static",
-        "storybook:build": "build-storybook  --quiet",
+        "storybook:build": "build-storybook -s ./src/static --quiet",
         "test:unit": "vue-cli-service test:unit"
     },
     "dependencies": {
