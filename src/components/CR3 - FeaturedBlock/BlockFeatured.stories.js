@@ -2,7 +2,7 @@ import BlockFeatured from "./BlockFeatured"
 import API from "@/static/db.json"
 
 export default {
-    title: "CR2 - BlockFeatured"
+    title: "@austinblanchard / CR2 - BlockFeatured"
 }
 
 export const FeaturedBlockLogos = () => ({

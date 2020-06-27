@@ -2,10 +2,10 @@ import BlockPost from "./BlockPost"
 import API from "@/static/db.json"
 
 export default {
-    title: "CR2 - BlockPost"
+    title: "@austinblanchard / CR2 - BlockPost"
 }
 
-export const PostBlock = () => ({
+export const BlockPostDefault = () => ({
     components: { BlockPost },
     data() {
         return {
