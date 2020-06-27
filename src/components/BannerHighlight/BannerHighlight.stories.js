@@ -12,5 +12,5 @@ export const BlockWorkWithTitle = () => ({
             api: API
         }
     },
-    template: `<banner-highlight text="Sample title" prompt="Discover" :image="api.image" to="/" />`
+    template: `<banner-highlight text="Originals" prompt="Explore" :image="api.image" to="/" />`
 })

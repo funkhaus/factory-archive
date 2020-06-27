@@ -54,69 +54,77 @@ export default {
 
 <style lang="scss">
 .banner-highlight {
+    color: var(--color-company);
     display: block;
     position: relative;
     height: 80vh;
+}
+
+.block-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+
+    padding: 110px 50px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.text {
+    margin: 0;
+    font-size: 89px;
+    padding-bottom: 43px;
+    font-weight: 300;
+}
+
+.prompt-container {
+    position: absolute;
+
+    .prompt {
+        font-size: 28px;
+        overflow: hidden;
+        transition: opacity 200ms ease;
+        opacity: 0;
+        padding: 0 1rem 0 0;
+        margin: 0;
+        padding-left: 8px;
+    }
+
+    .arrow {
+        position: absolute;
+        left: 8px;
+        top: 50%;
+
+        transform: translateY(-50%);
+        transition: left 200ms ease;
+    }
+
+    &:hover .prompt {
+        opacity: 1;
+    }
+
+    &:hover .arrow {
+        left: 100%;
+    }
+}
+
+@media #{$lt-phone} {
+    .text {
+        font-size: 59px;
+        padding-bottom: 29px;
+    }
+
+    .prompt-container .prompt {
+        font-size: 19px;
+    }
 
     .block-text {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        z-index: 10;
-
-        padding: 50px;
-        box-sizing: border-box;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
+        padding: 2rem 1rem;
     }
-    .text {
-        margin: 0;
-        font-size: 89px;
-        padding-bottom: 50px;
-        font-weight: 300;
-    }
-    
-    .prompt-container {
-        position: absolute;
-        
-        .prompt {
-            font-size: 28px;
-            overflow: hidden;
-            transition: opacity 200ms ease;
-            opacity: 0;
-            padding: 0 1rem 0 0;
-        }
-
-        .arrow {
-            position: absolute;
-            left: 0;
-            top: 50%;
-
-            transform: translateY(-50%);
-            transition: left 200ms ease;
-        }
-
-        &:hover .prompt {
-            opacity: 1;
-        }
-
-        &:hover .arrow {
-            
-            left: 100%;
-        }
-    }
-
-    // Hovers
-    // @media #{$has-hover} {
-    //     &:hover {
-    //     }
-    // }
-    // Breakpoints
-    // @media #{$lt-phone} {
-    // }
 }
 </style>
