@@ -9,7 +9,7 @@ assignees: ''
 
 ## Component Description
 
-This component is used {where} to display {what}.
+This component is used {where} to display {what}. Be sure to explain any variants or hover states.
 
 ## Design
 
@@ -51,6 +51,12 @@ props: {
 }
 ```
 
+## Developer Tips
+
+List any developer tips here
+
+1. `--color-example` for the font color
+
 ## Events
 
 Describe any events that should be emitted by this component.
@@ -67,3 +73,7 @@ List out any components that are used by this new component. For example, if you
 
 Time estimate: {x}hrs
 Budget: ${y}
+
+## Screenshots
+
+{attach screenshots}
