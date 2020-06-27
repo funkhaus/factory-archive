@@ -80,7 +80,7 @@ export default {
 .block-post {
     width: 100%;
     margin: var(--section-gap) 0;
-    padding: 0 var(--gutter);
+    padding: 0 var(--unit-gutter);
     box-sizing: border-box;
 
     display: flex;
@@ -88,8 +88,7 @@ export default {
     align-items: center;
 
     .block-image {
-        width: 50%;
-        // width: calc(50% - (var(--gutter) / 2));
+        width: calc(50% - (var(--unit-gutter) / 2));
 
         &.has-loaded {
             .more {
@@ -101,8 +100,7 @@ export default {
         }
     }
     .block-text {
-        width: 50%;
-        // width: calc(50% - (var(--gutter) / 2));
+        width: calc(50% - (var(--unit-gutter) / 2));
     }
     .title {
         margin: 15px 0;
