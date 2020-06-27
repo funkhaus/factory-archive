@@ -27,11 +27,11 @@ Any unassigned CR is up for grabs to the first developer that wants it. Review t
 
 Every issue is assigned to a Github Project and every Github Project has an associated `branch`. For example, we currently have a `MakeMake` project and in return also have a branch named `makemake`.
 
-### Branch project setup
+### For Project Branch
 
-1. Clone the Project branch [from here](https://github.com/funkhaus/factory/branches)
+1. Fork the Project branch [from here](https://github.com/funkhaus/factory/branches)
 2. Code your component
-3. Create a new PR on the project branch, be sure to include a list of issues (Component Requests) your PR addresses in the PR description.
+3. Create a new PR from your fork to the project branch, be sure to include a list of issues (Component Requests) your PR addresses in the PR description.
 
 ### Storybook Development
 
@@ -191,3 +191,4 @@ Some good things to read here.
 -   Build out GitHub issue tags for things like difficulty level, budget, ready for code review etc.
 -   Add a PR template that includes, reference the issue(s), list what was built, explains varients and hover states.
 -   Make all SVG exportable in the designs!
+-   Slack channel!
