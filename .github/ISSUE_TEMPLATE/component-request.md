@@ -7,18 +7,18 @@ assignees: ''
 
 ---
 
-## Component Description 
+## Component Description
 
-This component is used {where} to display {what}.
+This component is used {where} to display {what}. Be sure to explain any variants or hover states.
 
 ## Design
 
-Please also see attached screenshots for quick reference. 
+Please also see attached screenshots for quick reference.
 
 - Desktop: https://xd.adobe.com/view/1234-5678/
 - Mobile: https://xd.adobe.com/view/1234-5678/
 
-If no mobile designs provided, please use your best judgment for responsiveness. 
+If no mobile designs provided, please use your best judgment for responsiveness.
 
 ## Props
 
@@ -49,18 +49,29 @@ props: {
 }
 ```
 
+## Developer Tips
+
+List any developer tips here
+
+1. `--color-example` for the font color
+
 ## Events
 
 Describe any events that should be emitted by this component.
 
-  1. `menuOpened` when {something} is clicked on
+1. `menu-opened` when {something} is clicked on
 
 ## Nested components
 
-List out any components that are used by this new component. For example, if you are building a grid that is made up of block components. 
+List out any components that are used by this new component. For example, if you are building a grid that is made up of block components.
 
-  1. `nested-component` is used for {what}
+1. `nested-component` is used for {what}
 
 ## Budget
 
-I expect this to take {x} hours to complete, and will pay ${y} for it.
+Time estimate: {x}hrs
+Budget: ${y}
+
+## Screenshots
+
+{attach screenshots}
