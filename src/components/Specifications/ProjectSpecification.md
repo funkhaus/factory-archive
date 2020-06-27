@@ -1,4 +1,4 @@
-# {projectName}
+# Make Make Entertainment
 
 This is a website for {clientName}. They are a {companyType} based in {companyLocation}.
 
