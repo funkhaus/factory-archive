@@ -382,5 +382,24 @@
             "id": "cG9zdDozMDQ=",
             "sourceUrl": "http://fuxt-backend.funkhaus.us/wp-content/uploads/2020/06/logo-bustle.svg"
         }
-    ]
+    ],
+    "categories": {
+      "nodes": [
+        {
+          "id": "dGVybTo1",
+          "uri": "/category/featured/",
+          "slug": "featured",
+          "name": "Featured",
+          "description": "In your time, yes, but nowadays shut up! Besides, these are adult stemcells, harvested from perfectly healthy adults whom I killed for their stemcells."
+        },
+        {
+          "id": "dGVybToxMA==",
+          "uri": "/category/news/",
+          "slug": "news",
+          "name": "News",
+          "description": "Bender, being God isn't easy. If you do too much, people get dependent on you, and if you do nothing, they lose hope. You have to use a light touch. Like a safecracker, or a pickpocket."
+        }
+      ]
+    }
+  }
 }
