@@ -1,6 +1,6 @@
 ---
 name: Component Request
-about: used to define a component that a developer can build.
+about: Use this to define a component that a developer can build.
 title: Component Request - {componentName} - {x}hrs
 labels: component request, available
 assignees: ''
@@ -27,14 +27,14 @@ Email {projectOwnerEmail} for the design password.
 ```
 props: {
     exampleObject: {
+        // Mock: api.page
         type: Object,
         default: () => {}
-        // Mock: api.page
     },
     exampleArray: {
+        // Mock: api.pages
         type: Array,
         default: () => []
-        // Mock: api.pages
     },
     exampleNumber: {
         type: Number,
@@ -65,4 +65,5 @@ List out any components that are used by this new component. For example, if you
 
 ## Time & Budget
 
-I expect this to take {x} hours to complete, and will pay ${y} for it.
+Time estimate: {x}hrs
+BUdget: ${y}
