@@ -75,14 +75,16 @@ export default {
     }
     .text {
         margin: 0;
-        font-size: 50px;
+        font-size: 89px;
         padding-bottom: 50px;
+        font-weight: 300;
     }
     
     .prompt-container {
         position: absolute;
         
         .prompt {
+            font-size: 28px;
             overflow: hidden;
             transition: opacity 200ms ease;
             opacity: 0;
