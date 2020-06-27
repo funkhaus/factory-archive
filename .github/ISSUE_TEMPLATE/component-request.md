@@ -55,15 +55,15 @@ props: {
 
 Describe any events that should be emitted by this component.
 
-  1. `menuOpened` when {something} is clicked on
+1. `menuOpened` when {something} is clicked on
 
 ## Required components
 
 List out any components that are used by this new component. For example, if you are building a grid that is made up of block components.
 
-  1. `required-component` is used for {what}
+1. `required-component` is used for {what}
 
 ## Time & Budget
 
 Time estimate: {x}hrs
-BUdget: ${y}
+Budget: ${y}
