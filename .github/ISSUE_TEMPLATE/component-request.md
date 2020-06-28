@@ -1,8 +1,8 @@
 ---
 name: Component Request
-about: Describe this issue template's purpose here.
-title: Component Request - {componentName} - ${budget}
-labels: component request
+about: Use this to define a component that a developer can build.
+title: Component Request - {componentName} - {x}hrs
+labels: component request, available
 assignees: ''
 
 ---
@@ -20,19 +20,21 @@ Please also see attached screenshots for quick reference.
 
 If no mobile designs provided, please use your best judgment for responsiveness.
 
+Email {projectOwnerEmail} for the design password.
+
 ## Props
 
 ```
 props: {
     exampleObject: {
+        // Mock: api.page
         type: Object,
         default: () => {}
-        // Mock: https://my-json-server.typicode.com/funkhaus/factory/posts/1
     },
     exampleArray: {
+        // Mock: api.pages
         type: Array,
         default: () => []
-        // Mock: https://my-json-server.typicode.com/funkhaus/factory/posts/1
     },
     exampleNumber: {
         type: Number,
@@ -59,15 +61,15 @@ List any developer tips here
 
 Describe any events that should be emitted by this component.
 
-1. `menu-opened` when {something} is clicked on
+1. `menuOpened` when {something} is clicked on
 
-## Nested components
+## Required components
 
 List out any components that are used by this new component. For example, if you are building a grid that is made up of block components.
 
-1. `nested-component` is used for {what}
+1. `required-component` is used for {what}
 
-## Budget
+## Time & Budget
 
 Time estimate: {x}hrs
 Budget: ${y}

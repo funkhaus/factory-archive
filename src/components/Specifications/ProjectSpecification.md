@@ -9,20 +9,11 @@ This is a website for {clientName}. They are a {companyType} based in {companyLo
 
 Email drew@funkhaus.us for the password.
 
+Email {projectOwner} for the password to the design files.
+
 ## CSS vars
 
-These CSS vars should be used for styling common elements.
-
-```
-    // Common colors
-    --color-company (changes throughout site)
-    --color-black (used as alternate to company color)
-
-    // These are common measurements used on the site
-    --unit-100vh (use instead of 100vh always)
-    --unit-gutter (40px)
-    --unit-max-width (1800px)
-```
+CSS vars are defined in `@/styles/global.scss`, you should review that file before you begin. If there are any common variables you think are missing, please let us know.
 
 ## Fonts
 
@@ -35,7 +26,7 @@ Font's families are defined as CSS vars already, but the following weights are a
     - 600 (regular)
     - 900 (regular)
 
-```
+You can also see what fonts are available in `@/styles/fonts.css`.
 
 ## Breakpoints
 

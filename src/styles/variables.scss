@@ -1,9 +1,10 @@
 /*
  * This file is auto-imported into all components.
- * It's useful for SCSS varibles.
+ * It's useful for SCSS varibles. In practive, we only use these for breakpoints
  */
 
 // Breakpoints
 $gt-wide: "only screen and (min-width: 1800px)";
+// $lt-desktop: 'only screen and (max-width: 1280px)';
 $lt-tablet: "only screen and (max-width: 1024px)";
 $has-hover: "(hover: hover)";
