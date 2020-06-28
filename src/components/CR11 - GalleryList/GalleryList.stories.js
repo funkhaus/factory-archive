@@ -24,6 +24,8 @@ export const GalleryListComma = () => ({
   },
   template: `<gallery-list
               :items="api.pages.nodes"
+              title="Our Capabilities"
               variant="comma"
+              date="01 16 2020"
             />`
 })

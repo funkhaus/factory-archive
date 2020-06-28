@@ -1,5 +1,5 @@
 <template>
-	<div class="gallery-list d-fcc">
+	<div class="gallery-list d-fcc" :style="`${backgroundColor}`">
 
 		<div v-if="variant == 'column'" class="list-columns">
 			<template v-for="(colItems, index) in listItems">
@@ -17,19 +17,23 @@
 		</div>
 
 		<div v-if="variant == 'comma'" class="list-comma">
-			<template v-for="(listItem, index) in listItems">
-				<span :key="`comma-${index}`" class="list-item">
-					<span class="comma-text hover-text">
-						{{listItem.title}}<span v-if="index != listItems.length - 1">,&nbsp;</span>
+			<p class="comma-title">{{title}}</p>
+			<div class="comma-variant-list">
+				<template v-for="(listItem, index) in listItems">
+					<span :key="`comma-${index}`" class="list-item">
+						<span class="comma-text hover-text">
+							{{listItem.title}}<span class="comma-separator" v-if="index != listItems.length - 1">,&nbsp;</span>
+						</span>
+						<span class="comma-text space-holder">
+							{{listItem.title}}<span class="comma-separator" v-if="index != listItems.length - 1">,&nbsp;</span>
+						</span>
+						<div class="hover-image-box is-variant-${variant} d-fcc">
+							<wp-image v-if="listItem.featuredImage" :class="`hover-image is-variant-${variant}`" :image="listItem.featuredImage" />
+						</div>
 					</span>
-					<span class="comma-text space-holder">
-						{{listItem.title}}<span v-if="index != listItem.length - 1">,&nbsp;</span>
-					</span>
-					<div class="hover-image-box d-fcc">
-						<wp-image :class="`hover-image is-variant-${variant}`" :image="listItem.featuredImage" />
-					</div>
-				</span>
-			</template>
+				</template>
+			</div>
+			<p class="comma-date">{{date}}</p>
 		</div>
 
 	</div>
@@ -77,6 +81,10 @@ export default {
 		},
 		listItems() {
 			return this.variant == 'column' ? this.splitItems : this.items
+		},
+		backgroundColor() {
+			console.log('background')
+			return this.variant == 'column' ? 'background-color: black;' : 'background-color: #3094b8;'
 		}
 	}
 };
@@ -92,31 +100,48 @@ export default {
 .gallery-list {
 	position: relative;
     min-height: 75vh;
-	background-color: blue;
-	padding: 5rem;
+	padding: 5rem 48px 5rem 52px;
 	box-sizing: border-box;
 	z-index: 1;
+	
+	font-family: 'RM Neue';
+
+	//variables
+	--color-comma-text: #282828;
 }
 
 // Column Variant
 .list-columns {
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
 	width: 100%;
 }
 .list-column {
-	flex: 1 1 100%;
+	flex: 0 0 200px;
+	max-width: 30%;
 	display: flex;
 	flex-direction: column;
-}
-.list-column + .list-column {
-	margin-left: 1rem;
 }
 
 // Comma Variant
 .list-comma {
-	display: flex;
-	flex-wrap: wrap;
+	display: block;
+	.comma-variant-list{
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.comma-title {
+		display: block;
+		margin-bottom: 37px;
+		padding-left: 8px;
+
+		font-size: 30px;
+		font-weight: 300;
+		color: var(--color-comma-text);
+	}
+	.comma-date {
+		display: none;
+	}
 }
 
 // List Item + Hover
@@ -124,11 +149,14 @@ export default {
 	cursor: pointer;
 	.column-text {
 		font-size: 1.5rem;
-		color: var(--color-brand);
+		color: #fdc760;
 	}
 	.comma-text {
-		font-size: 3rem;
-		color: var(--color-black);
+		font-size: 84px;
+		color: var(--color-comma-text);
+		text-transform: capitalize;
+		font-weight: 300;
+		display: inline-block;
 	}
 	.space-holder {
 		display: none;
@@ -144,7 +172,7 @@ export default {
 	}
 	.hover-image {
 		display: none;
-		width: 90%;
+		width: 80%;
 		margin: 0 auto;
 		pointer-events: none;
 	}
@@ -156,16 +184,72 @@ export default {
 	}
 
 	&:hover {
+		.column-text {
+			color: var(--color-brand);
+		}
 		.hover-text {
 			position: absolute;
 			color: var(--color-brand);
 			z-index: 3
 		}
 		.space-holder {
-			display: block;
+			display: inline-block;
 		}
 		.hover-image {
 			display: block;
+		}
+	}
+}
+
+@media #{$lt-tablet} {
+	.list-columns {
+		flex-wrap: wrap;
+	}
+	.list-column {
+		flex: 1 1 100%;
+		max-width: none;
+	}
+	.list-comma {
+		.comma-title {
+			display: none;
+		}
+		.comma-date {
+			display: block;
+			position: absolute;
+			left: 0; bottom: 1rem;
+			text-align: center;
+			width: 100%;
+		}
+	}
+	
+	.list-item {
+		position: relative;
+		display: block;
+		width: 100%;
+		text-align: center;
+		.comma-text {
+			width: 100%;
+			font-size: 70px;
+		}
+		.comma-separator {
+			display: none;
+		}
+		.hover-image-box {
+			position: fixed;
+			min-height: 75vh;
+			height: auto;
+			width: 90%;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		&:hover {
+			.hover-text {
+				width: 100%;
+			}
+			.hover-image {
+				width: 100%;
+			}	
 		}
 	}
 }
