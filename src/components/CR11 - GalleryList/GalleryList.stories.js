@@ -11,7 +11,7 @@ export const GalleryListColumns = () => ({
     return { api: API }
   },
   template: `<gallery-list
-              :items="api.images"
+              :items="api.pages.nodes"
               variant="column"
               
             />`
@@ -23,7 +23,7 @@ export const GalleryListComma = () => ({
     return { api: API }
   },
   template: `<gallery-list
-              :items="api.images"
+              :items="api.pages.nodes"
               variant="comma"
             />`
 })

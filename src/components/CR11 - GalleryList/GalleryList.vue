@@ -8,7 +8,7 @@
 						<div :key="i" class="list-item">
 							<p class="column-text">{{colItem.title}} </p>
 							<div :class="`hover-image-box d-fcc is-variant-${variant}`">
-								<img class="hover-image" :src="colItem.sourceUrl" />
+								<wp-image class="hover-image" :image="colItem.featuredImage" />
 							</div>
 						</div>
 					</template>
@@ -26,7 +26,7 @@
 						{{listItem.title}}<span v-if="index != listItem.length - 1">,&nbsp;</span>
 					</span>
 					<div class="hover-image-box d-fcc">
-						<img :class="`hover-image is-variant-${variant}`" :src="listItem.sourceUrl" />
+						<wp-image :class="`hover-image is-variant-${variant}`" :image="listItem.featuredImage" />
 					</div>
 				</span>
 			</template>
@@ -92,7 +92,7 @@ export default {
 .gallery-list {
 	position: relative;
     min-height: 75vh;
-	background-color: red;
+	background-color: blue;
 	padding: 5rem;
 	box-sizing: border-box;
 	z-index: 1;
@@ -124,10 +124,10 @@ export default {
 	cursor: pointer;
 	.column-text {
 		font-size: 1.5rem;
-		color: var(--color-company);
+		color: var(--color-brand);
 	}
 	.comma-text {
-		font-size: 5rem;
+		font-size: 3rem;
 		color: var(--color-black);
 	}
 	.space-holder {
@@ -158,7 +158,7 @@ export default {
 	&:hover {
 		.hover-text {
 			position: absolute;
-			color: var(--color-company);
+			color: var(--color-brand);
 			z-index: 3
 		}
 		.space-holder {
