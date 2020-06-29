@@ -40,7 +40,7 @@ export default {
         },
         hoverType: {
             type: String,
-            default: "default" // || solid
+            default: "default"
         }
     },
     computed: {
@@ -82,13 +82,17 @@ export default {
         left: 0;
         z-index: 10;
         color: black;
-        span {
+        /deep/ .line {
             margin: 0;
             font-weight: 300;
             display: block;
         }
-        svg path {
-            fill: black;
+        svg {
+            width: 10px;
+            height: auto;
+            path {
+                fill: black;
+            }
         }
     }
 
@@ -107,9 +111,9 @@ export default {
     @media #{$has-hover} {
         &:hover:not(.hover-solid) {
             .image {
-                transform: translateY(-33%);
+                transform: translateY(-50%);
                 .scrim {
-                    background-color: rgba(black, 0.4);
+                    background-color: rgba(white, 0.2);
                 }
             }
         }
@@ -121,7 +125,7 @@ export default {
             z-index: 30;
         }
         .image .scrim {
-            background-color: rgba(black, 0.4);
+            background-color: rgba(white, 0.2);
         }
     }
 }
