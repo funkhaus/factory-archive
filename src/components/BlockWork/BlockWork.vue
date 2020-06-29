@@ -1,6 +1,9 @@
 <template lang="html">
-    <nuxt-link v-if="image" :to="path" class="block-work">
-        <wp-image class="image" :image="image" :aspect-ratio="56.25" />
+    <nuxt-link v-if="image" :to="path" :class="classes">
+        <wp-image class="image" :image="image" :aspect-ratio="56.25">
+            <div class="scrim" />
+        </wp-image>
+
         <div class="credits">
             <svg-icon-play class="play" />
             <split-text :text="title" />
@@ -39,6 +42,11 @@ export default {
             type: String,
             default: "default" // || solid
         }
+    },
+    computed: {
+        classes() {
+            return ["block-work", `hover-${this.hoverType}`]
+        }
     }
 }
 </script>
@@ -55,6 +63,16 @@ export default {
         transition: transform 0.2s ease-in-out;
         position: relative;
         z-index: 20;
+
+        .scrim {
+            position: absolute;
+            z-index: 20;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            transition: background-color 0.2s ease-in-out;
+        }
     }
 
     .credits {
@@ -74,17 +92,37 @@ export default {
         }
     }
 
+    &.hover-solid {
+        .credits {
+            z-index: 30;
+            color: red;
+
+            svg {
+                display: none;
+            }
+        }
+    }
+
     // Hovers
     @media #{$has-hover} {
-        &:hover {
+        &:hover:not(.hover-solid) {
             .image {
                 transform: translateY(-33%);
+                .scrim {
+                    background-color: rgba(black, 0.4);
+                }
             }
         }
     }
     // Breakpoints
     @media #{$lt-phone} {
         width: 100%;
+        .credits {
+            z-index: 30;
+        }
+        .image .scrim {
+            background-color: rgba(black, 0.4);
+        }
     }
 }
 </style>

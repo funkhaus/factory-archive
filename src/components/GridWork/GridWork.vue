@@ -9,6 +9,14 @@
                 :image="item.featuredImage"
                 :path="item.uri"
             />
+            <block-work
+                v-for="(item, i) in items"
+                :key="item.id"
+                :title="item.title"
+                :image="item.featuredImage"
+                :path="item.uri"
+                hover-type="solid"
+            />
         </div>
     </div>
 </template>
