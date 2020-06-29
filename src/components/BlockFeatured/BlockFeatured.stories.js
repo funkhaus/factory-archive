@@ -2,7 +2,7 @@ import BlockFeatured from "./BlockFeatured"
 import API from "@/static/db.json"
 
 export default {
-    title: "@austinblanchard / CR2 - BlockFeatured"
+    title: "@austinblanchard / BlockFeatured"
 }
 
 export const FeaturedBlockLogos = () => ({
@@ -43,7 +43,7 @@ export const FeaturedBlockDate = () => ({
         }
     },
     template: `<block-featured
-                isPost="true"
+                isNews="true"
                 :to="api.page.uri"
                 :title="api.page.title"
                 :date="api.page.date"

@@ -38,7 +38,7 @@ export default {
         WpImage
     },
     props: {
-        isPost: {
+        isNews: {
             type: Boolean,
             default: false
         },
@@ -69,7 +69,7 @@ export default {
     },
     computed: {
         classes() {
-            return ["block-featured", { "is-post": this.isPost }]
+            return ["block-featured", { "is-news": this.isNews }]
         },
         formattedDate() {
             return formatDate(this.date)
@@ -125,10 +125,9 @@ export default {
             width: 100%;
         }
     }
-    // Post styles
-    &.is-post {
-        // TODO use some varialbe here
-        background-color: #000;
+    // News styles
+    &.is-news {
+        background-color: var(--color-company);
 
         .block-text {
             justify-content: space-between;
