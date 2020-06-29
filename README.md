@@ -11,6 +11,10 @@ Together with [James Lee](https://github.com/uptownhr), Funkhaus has set out to 
 1.  Pull down the branch for that [component's project](https://github.com/funkhaus/factory/branches)
 1.  Build the component, and commit a PR to that project branch.
 
+## Slack
+
+We have a [Slack channel here](https://component-factory.slack.com). This [invite link might work](https://join.slack.com/t/component-factory/shared_invite/zt-fafjhq5j-BdPJtDCAZn~BpEydcTubVw) for you too. Otherwise email [drew@funkhaus.us](mailto:drew@funkhaus.us) for an invite.
+
 ## How it works
 
 This repo is setup with [Project Boards](https://github.com/funkhaus/factory/projects) for each website we are working on at Funkhaus. Each Project has a `branch` of this repo that goes with it. There are also several `Issues` tagged with `component request` for each Project.
