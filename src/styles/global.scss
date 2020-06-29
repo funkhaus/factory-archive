@@ -5,23 +5,21 @@
 
 // Varibles
 :root {
-    --font-primary: sans-serif;
-    --font-secondary: serif;
-
-    --color-black: #222222;
-    --color-brand: #cd1a45;
+    --color-black: #282828;
+    --color-company: #d8d9be;
 
     --unit-100vh: 100vh;
-    --unit-gutter: 40px;
+    --unit-gutter: 50px;
     --unit-max-width: 1800px;
 }
 
 // Base styles
 body {
-    font-family: var(--font-primary);
+    font-family: "RM Neue", sans-serif;
     color: var(--color-black);
 }
 a {
     text-decoration: none;
     color: inherit;
+    transition: color 0.4s ease-in-out;
 }

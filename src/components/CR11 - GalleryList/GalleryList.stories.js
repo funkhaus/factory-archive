@@ -1,31 +1,47 @@
-import GalleryList from './GalleryList.vue'
-import API from '@/static/db.json'
+import GalleryList from "./GalleryList.vue"
+import API from "@/static/db.json"
+
+// Just mocking more items for testing
+const manyItems = API.pages.nodes
+    .concat(API.pages.nodes)
+    .concat(API.pages.nodes)
+    .concat(API.pages.nodes)
+    .concat(API.pages.nodes)
+    .concat(API.pages.nodes)
+    .concat(API.pages.nodes)
+    .concat(API.pages.nodes)
+    .concat(API.pages.nodes)
 
 export default {
-  title: "@ibanzajoe / CR11 - GalleryList"
+    title: "@ibanzajoe / CR11 - GalleryList"
 }
 
 export const GalleryListColumns = () => ({
-  components: { GalleryList },
-  data() {
-    return { api: API }
-  },
-  template: `<gallery-list
-              :items="api.pages.nodes"
+    components: { GalleryList },
+    data() {
+        return {
+            api: API,
+            items: manyItems
+        }
+    },
+    template: `<gallery-list
+              :items="items"
               variant="column"
-              
+              date="01 - 16 2020"
             />`
 })
 
 export const GalleryListComma = () => ({
-  components: { GalleryList },
-  data() {
-    return { api: API }
-  },
-  template: `<gallery-list
-              :items="api.pages.nodes"
+    components: { GalleryList },
+    data() {
+        return {
+            api: API,
+            items: API.pages.nodes.concat(API.pages.nodes)
+        }
+    },
+    template: `<gallery-list
+              :items="items"
               title="Our Capabilities"
               variant="comma"
-              date="01 16 2020"
             />`
 })

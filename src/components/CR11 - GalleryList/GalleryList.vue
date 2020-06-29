@@ -1,57 +1,45 @@
 <template>
-	<div class="gallery-list d-fcc" :style="`${backgroundColor}`">
+    <div :class="classes">
+        <h2 class="title" v-html="title" />
 
-		<div v-if="variant == 'column'" class="list-columns">
-			<template v-for="(colItems, index) in listItems">
-				<div :key="index" class="list-column">
-					<template v-for="(colItem, i) in colItems">
-						<div :key="i" class="list-item">
-							<p class="column-text">{{colItem.title}} </p>
-							<div :class="`hover-image-box d-fcc is-variant-${variant}`">
-								<wp-image class="hover-image" :image="colItem.featuredImage" />
-							</div>
-						</div>
-					</template>
-				</div>
-			</template>
-		</div>
+        <div class="items">
+            <ul v-for="column in columns" class="list">
+                <li v-for="item in column" class="list-item">
+                    <nuxt-link class="link" :to="item.uri">
+                        {{ item.title
+                        }}<span
+                            v-if="!isColumn"
+                            class="sep"
+                            v-html="',&nbsp;'"
+                        />
+                    </nuxt-link>
 
-		<div v-if="variant == 'comma'" class="list-comma">
-			<p class="comma-title">{{title}}</p>
-			<div class="comma-variant-list">
-				<template v-for="(listItem, index) in listItems">
-					<span :key="`comma-${index}`" class="list-item">
-						<span class="comma-text hover-text">
-							{{listItem.title}}<span class="comma-separator" v-if="index != listItems.length - 1">,&nbsp;</span>
-						</span>
-						<span class="comma-text space-holder">
-							{{listItem.title}}<span class="comma-separator" v-if="index != listItems.length - 1">,&nbsp;</span>
-						</span>
-						<div class="hover-image-box is-variant-${variant} d-fcc">
-							<wp-image v-if="listItem.featuredImage" :class="`hover-image is-variant-${variant}`" :image="listItem.featuredImage" />
-						</div>
-					</span>
-				</template>
-			</div>
-			<p class="comma-date">{{date}}</p>
-		</div>
+                    <wp-image
+                        class="image"
+                        :image="item.featuredImage"
+                        mode="fullbleed"
+                    />
+                </li>
+            </ul>
+        </div>
 
-	</div>
+        <span class="date" v-html="date" />
+    </div>
 </template>
 
 <script>
-import WpImage from "@/components/global/WpImage";
+import { sortColumns } from "@/utils/tools"
+import WpImage from "@/components/global/WpImage"
+import NuxtLink from "@/components/global/NuxtLink"
 
 export default {
-    components: { WpImage },
+    components: { WpImage, NuxtLink },
     props: {
         items: {
-            // Mock: api.pages (each item contains the name, and the image)
             type: Array,
             default: () => []
         },
         title: {
-            // Only used on the sentence variant
             type: String,
             default: ""
         },
@@ -63,195 +51,174 @@ export default {
             type: String,
             default: ""
         }
-	},
-	data() {
-		return {
-			itemPerRow: 7,
-		}
-	},
-	computed: {
-		splitItems() {
-			let items = JSON.parse(JSON.stringify(this.items))
-			let x = 0, arr = []
-			while(items.length) {
-				arr[x] = items.splice(0, this.itemPerRow)
-				x++
-			}
-			return arr
-		},
-		listItems() {
-			return this.variant == 'column' ? this.splitItems : this.items
-		},
-		backgroundColor() {
-			console.log('background')
-			return this.variant == 'column' ? 'background-color: black;' : 'background-color: #3094b8;'
-		}
-	}
-};
+    },
+    computed: {
+        isColumn() {
+            return this.variant == "column"
+        },
+        columns() {
+            // If not column varient, return all items as one column
+            if (!this.isColumn) {
+                return [this.items]
+            }
+
+            // Split items into arrays of columns
+            const itemsLength = this.items.length
+            let columnCount = 1
+            switch (true) {
+                case itemsLength > 7:
+                    columnCount = 2
+                case itemsLength > 14:
+                    columnCount = 3
+            }
+
+            return sortColumns(this.items, columnCount)
+        },
+        classes() {
+            return [
+                "gallery-list",
+                { "is-variant-column": this.isColumn },
+                { "is-variant-comma": !this.isColumn },
+                { "has-many-items": this.items.length > 7 }
+            ]
+        }
+    }
+}
 </script>
 
 <style lang="scss" scoped>
-.d-fcc {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
 .gallery-list {
-	position: relative;
+    position: relative;
+    z-index: 0;
     min-height: 75vh;
-	padding: 5rem 48px 5rem 52px;
-	box-sizing: border-box;
-	z-index: 1;
-	
-	font-family: 'RM Neue';
+    padding: var(--unit-gutter);
+    box-sizing: border-box;
 
-	//variables
-	--color-comma-text: #282828;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    .title {
+        font-size: 25px;
+        font-weight: 300;
+        margin-bottom: 35px;
+    }
+
+    // Name list
+    .items {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+
+        width: 100%;
+    }
+    .list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 70px;
+    }
+    .list-item {
+        white-space: nowrap;
+    }
+    .link {
+        position: relative;
+        z-index: 20;
+        cursor: pointer;
+        display: block; // This makes the link fill the list-item perfectly
+    }
+
+    // Images
+    .image {
+        position: absolute;
+        top: 15%;
+        left: 15%;
+        right: 15%;
+        bottom: 15%;
+        margin: auto;
+        z-index: 10;
+        opacity: 0;
+        transition: opacity 0.4s ease-in-out;
+        pointer-events: none;
+    }
+
+    .date {
+        position: absolute;
+        bottom: var(--unit-gutter);
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 14px;
+    }
+
+    // Vairents
+    &.is-variant-column {
+        .items {
+            max-width: var(--unit-max-width);
+            margin: calc(var(--unit-gutter) * 2) 0;
+        }
+
+        &.has-many-items {
+            .list {
+                font-size: 24px;
+            }
+            .items {
+                justify-content: space-between;
+                align-content: space-between;
+            }
+        }
+    }
+    &.is-variant-comma {
+        align-content: flex-start;
+        align-items: flex-start;
+
+        background-color: var(--color-company);
+
+        .items {
+            margin-left: -4px; // NOTE accounting for bad font letter spacing
+        }
+        .list {
+            font-weight: 300;
+        }
+        .list-item {
+            display: inline-block;
+        }
+        .list-item:last-child .sep {
+            display: none;
+        }
+        .image {
+            z-index: 30;
+        }
+    }
+
+    // Hover states
+    @media #{$has-hover} {
+        .list-item:hover .image {
+            opacity: 1;
+        }
+
+        // Variants
+        &.is-variant-column {
+            .link:hover {
+                color: var(--color-company);
+            }
+        }
+        &.is-variant-comma {
+            .link:hover {
+                z-index: 40;
+                color: #ffffff;
+            }
+        }
+    }
+
+    // Breakpoints
+    @media #{$lt-tablet} {
+        // NOTE might want to change font sizes on mobile, no designs provided
+    }
 }
-
-// Column Variant
-.list-columns {
-	display: flex;
-	justify-content: space-around;
-	width: 100%;
-}
-.list-column {
-	flex: 0 0 200px;
-	max-width: 30%;
-	display: flex;
-	flex-direction: column;
-}
-
-// Comma Variant
-.list-comma {
-	display: block;
-	.comma-variant-list{
-		display: flex;
-		flex-wrap: wrap;
-	}
-	.comma-title {
-		display: block;
-		margin-bottom: 37px;
-		padding-left: 8px;
-
-		font-size: 30px;
-		font-weight: 300;
-		color: var(--color-comma-text);
-	}
-	.comma-date {
-		display: none;
-	}
-}
-
-// List Item + Hover
-.list-item {
-	cursor: pointer;
-	.column-text {
-		font-size: 1.5rem;
-		color: #fdc760;
-	}
-	.comma-text {
-		font-size: 84px;
-		color: var(--color-comma-text);
-		text-transform: capitalize;
-		font-weight: 300;
-		display: inline-block;
-	}
-	.space-holder {
-		display: none;
-		color: transparent;
-	}
-	.hover-image-box {
-		position: absolute;
-		top: 0; left: 0;
-		width: 100%;
-		height: 100%;
-		pointer-events: none;
-		z-index: 2
-	}
-	.hover-image {
-		display: none;
-		width: 80%;
-		margin: 0 auto;
-		pointer-events: none;
-	}
-	.hover-image-box.is-variant-column {
-		z-index: -1;
-	}
-	.hover-image.is-variant-comma {
-		width: 65%;
-	}
-
-	&:hover {
-		.column-text {
-			color: var(--color-brand);
-		}
-		.hover-text {
-			position: absolute;
-			color: var(--color-brand);
-			z-index: 3
-		}
-		.space-holder {
-			display: inline-block;
-		}
-		.hover-image {
-			display: block;
-		}
-	}
-}
-
-@media #{$lt-tablet} {
-	.list-columns {
-		flex-wrap: wrap;
-	}
-	.list-column {
-		flex: 1 1 100%;
-		max-width: none;
-	}
-	.list-comma {
-		.comma-title {
-			display: none;
-		}
-		.comma-date {
-			display: block;
-			position: absolute;
-			left: 0; bottom: 1rem;
-			text-align: center;
-			width: 100%;
-		}
-	}
-	
-	.list-item {
-		position: relative;
-		display: block;
-		width: 100%;
-		text-align: center;
-		.comma-text {
-			width: 100%;
-			font-size: 70px;
-		}
-		.comma-separator {
-			display: none;
-		}
-		.hover-image-box {
-			position: fixed;
-			min-height: 75vh;
-			height: auto;
-			width: 90%;
-			left: 50%;
-			transform: translateX(-50%);
-		}
-
-		&:hover {
-			.hover-text {
-				width: 100%;
-			}
-			.hover-image {
-				width: 100%;
-			}	
-		}
-	}
-}
-
 </style>
