@@ -5,6 +5,7 @@
             v-for="(item, i) in items"
             :key="item.id"
             v-if="item.featuredImage.sourceUrl"
+            @click.native="handleClick"
         >
             <wp-image
                 :image="item.featuredImage"
@@ -37,6 +38,11 @@ export default {
         activeIndex: {
             type: Number,
             default: -1
+        }
+    },
+    methods: {
+        handleClick() {
+            this.$emit("panel-interacted", event);
         }
     }
 };
