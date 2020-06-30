@@ -1,6 +1,6 @@
 <template>
     <div :class="classes">
-        <h2 class="title" v-html="title" />
+        <h2 v-if="title" class="title" v-html="title" />
 
         <div class="items">
             <ul v-for="column in columns" class="list">
@@ -23,7 +23,7 @@
             </ul>
         </div>
 
-        <span class="date" v-html="date" />
+        <span v-if="date" class="date" v-html="date" />
     </div>
 </template>
 
