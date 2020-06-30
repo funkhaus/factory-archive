@@ -9,18 +9,32 @@ export const GalleryLogosTwoCols = () => ({
     components: { GalleryLogos },
     data() {
         return {
-            api: API
+            api: API,
+            logoNames: [
+                "nyt-brand-studio",
+                "vanity-fair",
+                "vayner-media",
+                "vogue"
+            ]
         };
     },
-    template: `<gallery-logos title="Sample title" :logos="api.logos.slice(0, 4)"/>`
+    template: `<gallery-logos title="Sample title" :logo-names="logoNames"/>`
 });
 
 export const GalleryLogosThreeCols = () => ({
     components: { GalleryLogos },
     data() {
         return {
-            api: API
+            api: API,
+            logoNames: [
+                "nyt-brand-studio",
+                "vanity-fair",
+                "vayner-media",
+                "vogue",
+                "vox",
+                "wsj"
+            ]
         };
     },
-    template: `<gallery-logos title="Sample title" :logos="api.logos.slice(0, 6)"/>`
+    template: `<gallery-logos title="Sample title" :logo-names="logoNames"/>`
 });

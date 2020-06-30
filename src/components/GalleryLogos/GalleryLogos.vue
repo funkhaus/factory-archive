@@ -1,20 +1,39 @@
 <template lang="html">
     <div class="gallery-logos">
         <h3 v-if="title" class="title" v-html="title" />
-        <svg-icon-play />
 
-        <img v-for="(logo, i) in logos" :src="logo.sourceUrl" class="logo" />
+        <!-- <img v-for="(logo, i) in logos" :src="logo.sourceUrl" class="logo" /> -->
+        <component
+            v-for="(name, i) in logoNames"
+            :is="`svg-logo-${name}`"
+            class="logo"
+        />
     </div>
 </template>
 
 <script>
+import SvgLogoNytBrandStudio from "@/assets/svgs/logos/logo-nyt-brand-studio.svg";
+import SvgLogoVanityFair from "@/assets/svgs/logos/logo-vanity-fair.svg";
+import SvgLogoVaynerMedia from "@/assets/svgs/logos/logo-vayner-media.svg";
+import SvgLogoVogue from "@/assets/svgs/logos/logo-vogue.svg";
+import SvgLogoVox from "@/assets/svgs/logos/logo-vox.svg";
+import SvgLogoWsj from "@/assets/svgs/logos/logo-wsj.svg";
+
 export default {
+    components: {
+        SvgLogoNytBrandStudio,
+        SvgLogoVanityFair,
+        SvgLogoVaynerMedia,
+        SvgLogoVogue,
+        SvgLogoVox,
+        SvgLogoWsj
+    },
     props: {
         title: {
             type: String,
             default: ""
         },
-        logos: {
+        logoNames: {
             type: Array,
             default: () => []
         }
@@ -40,6 +59,9 @@ export default {
         display: inline-block;
         padding: 10px;
         box-sizing: border-box;
+        * {
+            fill: var(--color-company);
+        }
     }
 }
 </style>
