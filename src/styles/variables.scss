@@ -3,8 +3,12 @@
  * It's useful for SCSS varibles. In practive, we only use these for breakpoints
  */
 
+// Some custom easings
+$authenticMotion: cubic-bezier(0.4, 0, 0.2, 1);
+
 // Breakpoints
 $gt-wide: "only screen and (min-width: 1800px)";
 // $lt-desktop: 'only screen and (max-width: 1280px)';
 $lt-tablet: "only screen and (max-width: 1024px)";
+$lt-phone: "only screen and (max-width: 750px)";
 $has-hover: "(hover: hover)";

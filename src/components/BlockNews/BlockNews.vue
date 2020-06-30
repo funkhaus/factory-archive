@@ -1,5 +1,5 @@
 <template>
-    <nuxt-link class="block-post" :to="to">
+    <nuxt-link class="block-news" :to="to">
         <wp-image class="block-image" :image="image">
             <span class="more">More</span>
         </wp-image>
@@ -77,10 +77,8 @@ export default {
 </script>
 
 <style lang="scss">
-.block-post {
+.block-news {
     width: 100%;
-    margin: var(--section-gap) 0;
-    padding: 0 var(--unit-gutter);
     box-sizing: border-box;
 
     display: flex;
@@ -122,31 +120,32 @@ export default {
         display: flex;
         align-items: center;
 
-        // background-color: $clay;
-        // color: $black;
+        // TODO set this with theme
+        background-color: var(--color-company);
+        color: var(--color-black);
         opacity: 0;
     }
 
     // // Hovers
-    // @media #{$has-hover} {
-    //     &:hover {
-    //         // TODO move this into the grid where text hover state will live
-    //         .media {
-    //             transform: translateY(-40px);
-    //         }
-    //     }
-    // }
+    @media #{$has-hover} {
+        &:hover {
+            // TODO move this into the grid where text hover state will live
+            .media {
+                transform: translateY(-40px);
+            }
+        }
+    }
     // // Breakpoints
-    // @media #{$lt-phone} {
-    //     flex-direction: column;
-    //
-    //     .block-image,
-    //     .block-text {
-    //         width: 100%;
-    //     }
-    //     .block-text {
-    //         margin-top: 15px;
-    //     }
-    // }
+    @media #{$lt-phone} {
+        flex-direction: column;
+
+        .block-image,
+        .block-text {
+            width: 100%;
+        }
+        .block-text {
+            margin-top: 15px;
+        }
+    }
 }
 </style>

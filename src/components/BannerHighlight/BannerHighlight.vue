@@ -5,8 +5,8 @@
             class="block-image"
             :image="image"
             mode="fullbleed"
-        >
-        </wp-image>
+        />
+
         <div class="block-text">
             <h3 class="text" v-html="text" />
             <!-- prompt -->
@@ -52,8 +52,9 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .banner-highlight {
+    color: var(--color-company);
     display: block;
     position: relative;
     height: 80vh;
@@ -66,7 +67,7 @@ export default {
         width: 100%;
         z-index: 10;
 
-        padding: 50px;
+        padding: 110px 50px;
         box-sizing: border-box;
 
         display: flex;
@@ -76,24 +77,26 @@ export default {
     .text {
         margin: 0;
         font-size: 89px;
-        padding-bottom: 50px;
+        padding-bottom: 43px;
         font-weight: 300;
     }
-    
+
     .prompt-container {
         position: absolute;
-        
+
         .prompt {
             font-size: 28px;
             overflow: hidden;
             transition: opacity 200ms ease;
             opacity: 0;
-            padding: 0 1rem 0 0;
+            padding: 0 15px 0 0;
+            margin: 0;
+            padding-left: 8px;
         }
 
         .arrow {
             position: absolute;
-            left: 0;
+            left: 8px;
             top: 50%;
 
             transform: translateY(-50%);
@@ -105,18 +108,23 @@ export default {
         }
 
         &:hover .arrow {
-            
             left: 100%;
         }
     }
 
-    // Hovers
-    // @media #{$has-hover} {
-    //     &:hover {
-    //     }
-    // }
-    // Breakpoints
-    // @media #{$lt-phone} {
-    // }
+    @media #{$lt-tablet} {
+        .text {
+            font-size: 59px;
+            padding-bottom: 29px;
+        }
+
+        .prompt-container .prompt {
+            font-size: 19px;
+        }
+
+        .block-text {
+            padding: 30px 15px;
+        }
+    }
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
     <nuxt-link :class="classes" :to="to">
+        <!-- Image -->
         <wp-image
             v-if="image"
             class="block-image"
@@ -7,7 +8,9 @@
             mode="fullbleed"
         >
         </wp-image>
+        <!-- Text -->
         <div class="block-text">
+            <svg-button-play class="svg" />
             <h3 class="title" v-html="title" />
             <!-- Logos -->
             <div v-if="logos.length" class="logos">
@@ -17,8 +20,21 @@
                     </div>
                 </div>
             </div>
-            <!-- Credit -->
-            <p v-if="credits" class="credit" v-html="credits" />
+            <!-- Credits -->
+            <p
+                v-if="credits.length"
+                class="first-credit"
+                v-html="credits[0].credit"
+            />
+            <div class="additional-credits">
+                <p
+                    v-for="credit in credits.slice(1)"
+                    v-if="credits.length"
+                    :key="credit.credit"
+                    class="credit"
+                    v-html="credit.credit"
+                />
+            </div>
             <!-- Date -->
             <time v-if="date" class="date" v-html="formattedDate" />
         </div>
@@ -31,14 +47,21 @@ import { formatDate } from "@/utils/tools"
 // Components
 import NuxtLink from "@/components/global/NuxtLink"
 import WpImage from "@/components/global/WpImage"
+// Assets
+import SvgButtonPlay from "@/assets/svgs/button-play.svg"
 
 export default {
     components: {
         NuxtLink,
-        WpImage
+        WpImage,
+        SvgButtonPlay
     },
     props: {
-        isPost: {
+        isNews: {
+            type: Boolean,
+            default: false
+        },
+        hasHover: {
             type: Boolean,
             default: false
         },
@@ -55,8 +78,8 @@ export default {
             default: ""
         },
         credits: {
-            type: String,
-            default: ""
+            type: Array,
+            default: () => []
         },
         logos: {
             type: Array,
@@ -69,7 +92,11 @@ export default {
     },
     computed: {
         classes() {
-            return ["block-featured", { "is-post": this.isPost }]
+            return [
+                "block-featured",
+                { "is-news": this.isNews },
+                { "has-hover": this.hasHover }
+            ]
         },
         formattedDate() {
             return formatDate(this.date)
@@ -83,7 +110,13 @@ export default {
     display: block;
     position: relative;
     height: 720px;
+    background-color: var(--color-company);
 
+    .block-image {
+        .media {
+            transition: top 0.5s $authenticMotion;
+        }
+    }
     .block-text {
         position: absolute;
         top: 0;
@@ -94,14 +127,30 @@ export default {
 
         padding: 50px;
         box-sizing: border-box;
+        overflow: hidden;
 
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
     }
     .title {
-        margin: 0;
+        position: relative;
+        z-index: 30;
+
+        margin: 0 0 10px;
         font-size: 50px;
+        font-weight: 300;
+        color: var(--color-company);
+
+        transition: color 0.5s $authenticMotion;
+    }
+    // Play Button
+    .svg {
+        margin-bottom: 10px;
+        pointer-events: none;
+        opacity: 0;
+
+        transition: opacity 0.5s $authenticMotion;
     }
     // Logos
     .logos {
@@ -125,21 +174,58 @@ export default {
             width: 100%;
         }
     }
-    // Post styles
-    &.is-post {
-        // TODO use some varialbe here
-        background-color: #000;
+    // Credits
+    .first-credit {
+        margin: 3px 0;
+        color: var(--color-company);
+
+        transition: color 0.5s $authenticMotion;
+    }
+    .additional-credits {
+        max-height: 0;
+        opacity: 0;
+
+        transition: max-height 0.5s $authenticMotion,
+            opacity 0.5s $authenticMotion;
+    }
+    .credit {
+        font-weight: 300;
+        margin: 3px 0;
+    }
+    // News styles
+    &.is-news {
+        background-color: var(--color-black);
 
         .block-text {
             justify-content: space-between;
         }
+        .svg {
+            display: none;
+        }
+    }
+    .date {
+        color: var(--color-company);
     }
 
     // Hovers
-    // @media #{$has-hover} {
-    //     &:hover {
-    //     }
-    // }
+    @media #{$has-hover} {
+        &.has-hover:hover {
+            .media {
+                top: -50%;
+            }
+            .title,
+            .first-credit {
+                color: var(--color-black);
+            }
+            .additional-credits {
+                max-height: 200px;
+                opacity: 1;
+            }
+            .svg {
+                opacity: 1;
+            }
+        }
+    }
     // Breakpoints
     // @media #{$lt-phone} {
     // }
