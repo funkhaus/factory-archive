@@ -40,7 +40,7 @@ module.exports = {
             },
             {
                 test: /\.(woff|woff2|eot|ttf)$/,
-                loaders: ["file-loader"]
+                use: ["file-loader"]
             }
         ]
     },
