@@ -1,23 +1,15 @@
 <template lang="html">
     <div class="grid-work">
-        <h3 v-if="title" class="title" v-text="title" />
-        <div class="blocks">
-            <block-work
-                v-for="(item, i) in items"
-                :key="item.id"
-                :title="item.title"
-                :image="item.featuredImage"
-                :path="item.uri"
-            />
-            <block-work
-                v-for="(item, i) in items"
-                :key="item.id"
-                :title="item.title"
-                :image="item.featuredImage"
-                :path="item.uri"
-                hover-type="solid"
-            />
-        </div>
+        <h3 v-if="title" class="title" v-html="title" />
+
+        <block-work
+            v-for="(item, i) in items"
+            :key="item.id"
+            :title="item.title"
+            :image="item.featuredImage"
+            :path="item.uri"
+            :hover-type="blockType"
+        />
     </div>
 </template>
 
@@ -36,6 +28,10 @@ export default {
         items: {
             type: Array,
             default: () => []
+        },
+        blockType: {
+            type: String,
+            default: ""
         }
     }
 }
@@ -43,25 +39,20 @@ export default {
 
 <style lang="scss" scoped>
 .grid-work {
-    background: black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 200px; // placeholder
 
     .title {
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
         font-size: 120px;
-        color: #fdc760;
-        margin: 0 0 50px 0;
+        color: var(--color-company);
     }
 
-    .blocks {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    // Hovers
-    // @media #{$has-hover} {
-    //     &:hover {
-    //     }
-    // }
     // Breakpoints
     @media #{$lt-phone} {
         .title {

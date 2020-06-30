@@ -5,7 +5,7 @@
         </wp-image>
 
         <div class="credits">
-            <svg-icon-play class="play" />
+            <svg-icon-play v-if="hoverType !== 'default'" class="play" />
             <split-text :text="title" />
         </div>
     </nuxt-link>
@@ -53,11 +53,11 @@ export default {
 
 <style lang="scss" scoped>
 .block-work {
-    background-color: #fdc760;
-
+    background-color: var(--color-company);
     width: 50%;
     position: relative;
     overflow: hidden;
+    display: block;
 
     .image {
         transition: transform 0.2s ease-in-out;
@@ -81,7 +81,7 @@ export default {
         bottom: 0;
         left: 0;
         z-index: 10;
-        color: black;
+        color: var(--color-black);
         /deep/ .line {
             margin: 0;
             font-weight: 300;
@@ -91,7 +91,7 @@ export default {
             width: 10px;
             height: auto;
             path {
-                fill: black;
+                fill: var(--color-black);
             }
         }
     }
@@ -99,11 +99,7 @@ export default {
     &.hover-solid {
         .credits {
             z-index: 30;
-            color: red;
-
-            svg {
-                display: none;
-            }
+            color: var(--color-company);
         }
     }
 
@@ -111,10 +107,15 @@ export default {
     @media #{$has-hover} {
         &:hover:not(.hover-solid) {
             .image {
-                transform: translateY(-50%);
+                transform: translateY(-40%);
                 .scrim {
-                    background-color: rgba(white, 0.2);
+                    background-color: rgba(black, 0.2);
                 }
+            }
+        }
+        &.hover-solid:hover {
+            .image .scrim {
+                background-color: rgba(black, 0.2);
             }
         }
     }
@@ -125,7 +126,7 @@ export default {
             z-index: 30;
         }
         .image .scrim {
-            background-color: rgba(white, 0.2);
+            background-color: rgba(black, 0.2);
         }
     }
 }

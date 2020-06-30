@@ -12,5 +12,15 @@ export const GridWorkWithTitle = () => ({
             api: API
         }
     },
-    template: `<grid-work title="Sample title" :items="api.pages[1].childPages"/>`
+    template: `<grid-work title="Grid title" :items="api.pages[1].childPages"/>`
+})
+
+export const GridWorkWithSolidHover = () => ({
+    components: { GridWork },
+    data() {
+        return {
+            api: API
+        }
+    },
+    template: `<grid-work title="Grid title" :items="api.pages[1].childPages" block-type="solid" />`
 })
