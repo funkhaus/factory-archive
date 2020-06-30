@@ -37,6 +37,8 @@ Every issue is assigned to a Github Project and every Github Project has an asso
 2. Code your component
 3. Create a new PR from your fork to the project branch, be sure to include a list of issues (Component Requests) your PR addresses in the PR description.
 
+TIP If you use git CLI, then [syncing your fork to the project branch](https://digitaldrummerj.me/git-syncing-fork-with-original-repo/) is a good idea.
+
 ### Storybook Development
 
 We use storybook to develop and show off the components that have been created. If you are not familiar with storybook, checkout [storybook](https://storybook.js.org/).
