@@ -28,10 +28,11 @@ export const FeaturedBlockCredits = () => ({
         }
     },
     template: `<block-featured
+                hasHover="true"
                 :to="api.page.uri"
                 :title="api.page.title"
                 :image="api.page.featuredImage"
-                credits="Artists – Angus Wall & Hazel Baird"
+                :credits="api.credits"
                 />`
 })
 

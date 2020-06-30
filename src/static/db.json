@@ -420,5 +420,19 @@
             "name": "News",
             "description": "Bender, being God isn't easy. If you do too much, people get dependent on you, and if you do nothing, they lose hope. You have to use a light touch. Like a safecracker, or a pickpocket."
         }
+    ],
+    "credits": [
+        {
+            "credit": "Artists – Angus Wall & Hazel Baird"
+        },
+        {
+            "credit": "Editor – Jamie Foord"
+        },
+        {
+            "credit": "Production Co. – Placeholder"
+        },
+        {
+            "credit": "Agency – Placeholder"
+        }
     ]
 }

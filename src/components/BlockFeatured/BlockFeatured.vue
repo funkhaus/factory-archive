@@ -1,5 +1,6 @@
 <template>
     <nuxt-link :class="classes" :to="to">
+        <!-- Image -->
         <wp-image
             v-if="image"
             class="block-image"
@@ -7,7 +8,9 @@
             mode="fullbleed"
         >
         </wp-image>
+        <!-- Text -->
         <div class="block-text">
+            <svg-button-play class="svg" />
             <h3 class="title" v-html="title" />
             <!-- Logos -->
             <div v-if="logos.length" class="logos">
@@ -18,7 +21,13 @@
                 </div>
             </div>
             <!-- Credit -->
-            <p v-if="credits" class="credit" v-html="credits" />
+            <p
+                v-for="credit in credits"
+                v-if="credits.length"
+                :key="credit.credit"
+                class="credit"
+                v-html="credit.credit"
+            />
             <!-- Date -->
             <time v-if="date" class="date" v-html="formattedDate" />
         </div>
@@ -42,6 +51,10 @@ export default {
             type: Boolean,
             default: false
         },
+        hasHover: {
+            type: Boolean,
+            default: false
+        },
         to: {
             type: String,
             required: true
@@ -55,8 +68,8 @@ export default {
             default: ""
         },
         credits: {
-            type: String,
-            default: ""
+            type: Array,
+            default: () => []
         },
         logos: {
             type: Array,
@@ -69,7 +82,11 @@ export default {
     },
     computed: {
         classes() {
-            return ["block-featured", { "is-news": this.isNews }]
+            return [
+                "block-featured",
+                { "is-news": this.isNews },
+                { "has-hover": this.hasHover }
+            ]
         },
         formattedDate() {
             return formatDate(this.date)
@@ -83,7 +100,13 @@ export default {
     display: block;
     position: relative;
     height: 720px;
+    background-color: var(--color-company);
 
+    .block-image {
+        .media {
+            transition: top 0.3s;
+        }
+    }
     .block-text {
         position: absolute;
         top: 0;
@@ -125,6 +148,10 @@ export default {
             width: 100%;
         }
     }
+    // Credits
+    .credit {
+        margin: 3px 0;
+    }
     // News styles
     &.is-news {
         background-color: var(--color-company);
@@ -135,10 +162,13 @@ export default {
     }
 
     // Hovers
-    // @media #{$has-hover} {
-    //     &:hover {
-    //     }
-    // }
+    @media #{$has-hover} {
+        &.has-hover:hover {
+            .media {
+                top: -50%;
+            }
+        }
+    }
     // Breakpoints
     // @media #{$lt-phone} {
     // }
