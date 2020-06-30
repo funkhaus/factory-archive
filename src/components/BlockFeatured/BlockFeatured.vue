@@ -10,7 +10,6 @@
         </wp-image>
         <!-- Text -->
         <div class="block-text">
-            <svg-button-play class="svg" />
             <h3 class="title" v-html="title" />
             <!-- Logos -->
             <div v-if="logos.length" class="logos">
@@ -26,7 +25,7 @@
                 class="first-credit"
                 v-html="formattedCredits[0]"
             />
-            <div class="additional-credits">
+            <div class="additional-credits spacer">
                 <p
                     v-for="credit in formattedCredits.slice(1)"
                     v-if="credits"
@@ -37,6 +36,25 @@
             </div>
             <!-- Date -->
             <time v-if="date" class="date" v-html="formattedDate" />
+        </div>
+        <!-- Background Credits hover state -->
+        <div class="credits-play">
+            <svg-button-play class="svg" />
+            <h3 class="title spacer" v-html="title" />
+            <p
+                v-if="credits"
+                class="first-credit spacer"
+                v-html="formattedCredits[0]"
+            />
+            <div class="additional-credits">
+                <p
+                    v-for="credit in formattedCredits.slice(1)"
+                    v-if="credits"
+                    :key="credit"
+                    class="credit"
+                    v-html="credit"
+                />
+            </div>
         </div>
     </nuxt-link>
 </template>
@@ -152,8 +170,6 @@ export default {
     .svg {
         margin-bottom: 10px;
         pointer-events: none;
-        opacity: 0;
-
         transition: opacity 0.5s $authenticMotion;
     }
     // Logos
@@ -182,19 +198,36 @@ export default {
     .first-credit {
         margin: 3px 0;
         color: var(--color-company);
-
         transition: color 0.5s $authenticMotion;
     }
     .additional-credits {
         max-height: 0;
-        opacity: 0;
-
         transition: max-height 0.5s $authenticMotion,
             opacity 0.5s $authenticMotion;
     }
     .credit {
         font-weight: 300;
         margin: 3px 0;
+    }
+    .spacer {
+        opacity: 0;
+        pointer-events: none;
+    }
+    .credits-play {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 5;
+
+        padding: 50px;
+        box-sizing: border-box;
+        overflow: hidden;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
     }
     // News styles
     &.is-news {
@@ -223,10 +256,6 @@ export default {
             }
             .additional-credits {
                 max-height: 200px;
-                opacity: 1;
-            }
-            .svg {
-                opacity: 1;
             }
         }
     }
