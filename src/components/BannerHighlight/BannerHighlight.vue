@@ -102,13 +102,15 @@ export default {
             transform: translateY(-50%);
             transition: left 200ms ease;
         }
+        
+        @media #{$has-hover} {
+            &:hover .prompt {
+                opacity: 1;
+            }
 
-        &:hover .prompt {
-            opacity: 1;
-        }
-
-        &:hover .arrow {
-            left: 100%;
+            &:hover .arrow {
+                left: 100%;
+            }
         }
     }
 
