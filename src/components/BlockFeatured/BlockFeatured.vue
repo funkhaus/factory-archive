@@ -194,7 +194,7 @@ export default {
     }
     // News styles
     &.is-news {
-        background-color: var(--color-company);
+        background-color: var(--color-black);
 
         .block-text {
             justify-content: space-between;
@@ -202,6 +202,9 @@ export default {
         .svg {
             display: none;
         }
+    }
+    .date {
+        color: var(--color-company);
     }
 
     // Hovers

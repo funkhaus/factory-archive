@@ -18,6 +18,6 @@ export const BlockNewsDefault = () => ({
                 :title="api.page.title"
                 :excerpt="api.page.excerpt"
                 :image="api.page.featuredImage"
-                :categories="api.page.categories.nodes"
+                :categories="api.categories"
                 />`
 })
