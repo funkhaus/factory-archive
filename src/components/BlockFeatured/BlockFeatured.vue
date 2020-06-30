@@ -22,17 +22,17 @@
             </div>
             <!-- Credits -->
             <p
-                v-if="credits.length"
+                v-if="credits"
                 class="first-credit"
-                v-html="credits[0].credit"
+                v-html="formattedCredits[0]"
             />
             <div class="additional-credits">
                 <p
-                    v-for="credit in credits.slice(1)"
-                    v-if="credits.length"
-                    :key="credit.credit"
+                    v-for="credit in formattedCredits.slice(1)"
+                    v-if="credits"
+                    :key="credit"
                     class="credit"
-                    v-html="credit.credit"
+                    v-html="credit"
                 />
             </div>
             <!-- Date -->
@@ -44,6 +44,7 @@
 <script>
 // Helpers
 import { formatDate } from "@/utils/tools"
+import { nl2br } from "@/utils/tools"
 // Components
 import NuxtLink from "@/components/global/NuxtLink"
 import WpImage from "@/components/global/WpImage"
@@ -78,8 +79,8 @@ export default {
             default: ""
         },
         credits: {
-            type: Array,
-            default: () => []
+            type: String,
+            default: ""
         },
         logos: {
             type: Array,
@@ -100,6 +101,9 @@ export default {
         },
         formattedDate() {
             return formatDate(this.date)
+        },
+        formattedCredits() {
+            return nl2br(this.credits).split("<br>")
         }
     }
 }
@@ -226,8 +230,5 @@ export default {
             }
         }
     }
-    // Breakpoints
-    // @media #{$lt-phone} {
-    // }
 }
 </style>
