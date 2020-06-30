@@ -28,7 +28,7 @@ export const FeaturedBlockCredits = () => ({
         }
     },
     template: `<block-featured
-                hasHover="true"
+                :hasHover="true"
                 :to="api.page.uri"
                 :title="api.page.title"
                 :image="api.page.featuredImage"
@@ -44,7 +44,7 @@ export const FeaturedBlockDate = () => ({
         }
     },
     template: `<block-featured
-                isNews="true"
+                :isNews="true"
                 :to="api.page.uri"
                 :title="api.page.title"
                 :date="api.page.date"

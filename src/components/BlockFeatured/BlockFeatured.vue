@@ -20,14 +20,21 @@
                     </div>
                 </div>
             </div>
-            <!-- Credit -->
+            <!-- Credits -->
             <p
-                v-for="credit in credits"
                 v-if="credits.length"
-                :key="credit.credit"
-                class="credit"
-                v-html="credit.credit"
+                class="first-credit"
+                v-html="credits[0].credit"
             />
+            <div class="additional-credits">
+                <p
+                    v-for="credit in credits.slice(1)"
+                    v-if="credits.length"
+                    :key="credit.credit"
+                    class="credit"
+                    v-html="credit.credit"
+                />
+            </div>
             <!-- Date -->
             <time v-if="date" class="date" v-html="formattedDate" />
         </div>
@@ -40,11 +47,14 @@ import { formatDate } from "@/utils/tools"
 // Components
 import NuxtLink from "@/components/global/NuxtLink"
 import WpImage from "@/components/global/WpImage"
+// Assets
+import SvgButtonPlay from "@/assets/svgs/button-play.svg"
 
 export default {
     components: {
         NuxtLink,
-        WpImage
+        WpImage,
+        SvgButtonPlay
     },
     props: {
         isNews: {
@@ -104,7 +114,7 @@ export default {
 
     .block-image {
         .media {
-            transition: top 0.3s;
+            transition: top 0.5s $authenticMotion;
         }
     }
     .block-text {
@@ -117,14 +127,30 @@ export default {
 
         padding: 50px;
         box-sizing: border-box;
+        overflow: hidden;
 
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
     }
     .title {
-        margin: 0;
+        position: relative;
+        z-index: 30;
+
+        margin: 0 0 10px;
         font-size: 50px;
+        font-weight: 300;
+        color: var(--color-company);
+
+        transition: color 0.5s $authenticMotion;
+    }
+    // Play Button
+    .svg {
+        margin-bottom: 10px;
+        pointer-events: none;
+        opacity: 0;
+
+        transition: opacity 0.5s $authenticMotion;
     }
     // Logos
     .logos {
@@ -149,7 +175,21 @@ export default {
         }
     }
     // Credits
+    .first-credit {
+        margin: 3px 0;
+        color: var(--color-company);
+
+        transition: color 0.5s $authenticMotion;
+    }
+    .additional-credits {
+        max-height: 0;
+        opacity: 0;
+
+        transition: max-height 0.5s $authenticMotion,
+            opacity 0.5s $authenticMotion;
+    }
     .credit {
+        font-weight: 300;
         margin: 3px 0;
     }
     // News styles
@@ -159,6 +199,9 @@ export default {
         .block-text {
             justify-content: space-between;
         }
+        .svg {
+            display: none;
+        }
     }
 
     // Hovers
@@ -166,6 +209,17 @@ export default {
         &.has-hover:hover {
             .media {
                 top: -50%;
+            }
+            .title,
+            .first-credit {
+                color: var(--color-black);
+            }
+            .additional-credits {
+                max-height: 200px;
+                opacity: 1;
+            }
+            .svg {
+                opacity: 1;
             }
         }
     }
