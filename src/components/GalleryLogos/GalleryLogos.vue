@@ -7,6 +7,7 @@
             v-for="(name, i) in logoNames"
             :is="`svg-logo-${name}`"
             class="logo"
+            :key="name"
         />
     </div>
 </template>
