@@ -12,7 +12,7 @@ export const Panel = () => ({
             api: API
         };
     },
-    template: `<panel-sidetray  :items="api.images"/>`
+    template: `<panel-sidetray  :items="api.pages"/>`
 });
 
 export const PanelActiveItem = () => ({
@@ -22,5 +22,5 @@ export const PanelActiveItem = () => ({
             api: API
         };
     },
-    template: `<panel-sidetray  :items="api.images" active-index="1"/>`
+    template: `<panel-sidetray  :items="api.pages" :active-index="1"/>`
 });

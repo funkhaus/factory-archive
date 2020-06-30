@@ -1,26 +1,33 @@
 <template lang="html">
     <div class="panel-sidetray">
-        <wp-image
+        <nuxt-link
+            :to="item.uri"
             v-for="(item, i) in items"
             :key="item.id"
-            :image="item"
-            :aspect-ratio="56.25"
-            :class="{ active: i == activeIndex }"
-            v-if="item.sourceUrl"
+            v-if="item.featuredImage.sourceUrl"
         >
-            <div class="scrim">
-                <span v-if="i == activeIndex">Currently Viewing</span>
-            </div>
-        </wp-image>
+            <wp-image
+                :image="item.featuredImage"
+                :aspect-ratio="56.25"
+                :class="{ active: i == activeIndex }"
+            >
+                <div class="scrim">
+                    <h4 v-if="i == activeIndex">Currently Viewing</h4>
+                    <h4 v-else v-html="item.title" />
+                </div>
+            </wp-image>
+        </nuxt-link>
     </div>
 </template>
 
 <script>
 import WpImage from "@/components/global/WpImage";
+import NuxtLink from "@/components/global/NuxtLink";
 
 export default {
     components: {
-        WpImage
+        WpImage,
+        NuxtLink
     },
     props: {
         items: {
@@ -37,14 +44,13 @@ export default {
 
 <style lang="scss" scoped>
 .panel-sidetray {
+    background-color: var(--color-black); //placeholder
     padding: 20px;
     box-sizing: border-box;
     width: 420px;
-    background-color: var(--color-black); //placeholder
 
     .wp-image {
         display: block;
-
         transition: transform 0.2s ease-in-out;
         position: relative;
         z-index: 20;
@@ -65,10 +71,20 @@ export default {
             flex-direction: row;
             justify-content: center;
             align-items: center;
+
+            h4 {
+                font-size: 16px;
+                font-weight: 300;
+                opacity: 0;
+                transition: opacity 0.2s ease-in-out;
+            }
         }
 
         &.active .scrim {
             background-color: rgba(black, 0.6);
+            h4 {
+                opacity: 1;
+            }
         }
     }
 
@@ -77,6 +93,9 @@ export default {
         .wp-image:hover:not(.active) {
             .scrim {
                 background-color: rgba(black, 0.6);
+                h4 {
+                    opacity: 1;
+                }
             }
         }
     }
