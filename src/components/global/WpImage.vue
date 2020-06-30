@@ -117,6 +117,7 @@ export default {
     computed: {
         classes() {
             return [
+                "wp-image",
                 "responsive-image",
                 `mode-${this.mode}`,
                 { "has-loaded": this.hasLoaded },
