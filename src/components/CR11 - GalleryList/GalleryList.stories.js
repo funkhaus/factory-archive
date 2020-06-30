@@ -36,7 +36,7 @@ export const GalleryListComma = () => ({
     data() {
         return {
             api: API,
-            items: API.pages.nodes.concat(API.pages.nodes)
+            items: API.pages.concat(API.pages)
         }
     },
     template: `<gallery-list
