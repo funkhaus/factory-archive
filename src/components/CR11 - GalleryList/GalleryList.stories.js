@@ -2,15 +2,15 @@ import GalleryList from "./GalleryList.vue"
 import API from "@/static/db.json"
 
 // Just mocking more items for testing
-const manyItems = API.pages.nodes
-    .concat(API.pages.nodes)
-    .concat(API.pages.nodes)
-    .concat(API.pages.nodes)
-    .concat(API.pages.nodes)
-    .concat(API.pages.nodes)
-    .concat(API.pages.nodes)
-    .concat(API.pages.nodes)
-    .concat(API.pages.nodes)
+const manyItems = API.pages
+    .concat(API.pages)
+    .concat(API.pages)
+    .concat(API.pages)
+    .concat(API.pages)
+    .concat(API.pages)
+    .concat(API.pages)
+    .concat(API.pages)
+    .concat(API.pages)
 
 export default {
     title: "@ibanzajoe / CR11 - GalleryList"
