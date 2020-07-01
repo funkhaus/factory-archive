@@ -82,12 +82,14 @@ export default {
     box-sizing: border-box;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
 
     .block-image {
-        width: calc(50% - (var(--unit-gutter) / 2));
+        width: 50%;
 
+        &.is-orientation-landscape {
+            max-width: 640px;
+        }
         &.has-loaded {
             .more {
                 opacity: 1;
@@ -98,11 +100,14 @@ export default {
         }
     }
     .block-text {
-        width: calc(50% - (var(--unit-gutter) / 2));
+        width: 50%;
+        max-width: 500px;
+        transition: transform 0.2s;
     }
     .title {
         margin: 15px 0;
         font-size: 30px;
+        font-weight: 300;
     }
     .excerpt {
         margin: 15px 0;
@@ -126,16 +131,7 @@ export default {
         opacity: 0;
     }
 
-    // // Hovers
-    @media #{$has-hover} {
-        &:hover {
-            // TODO move this into the grid where text hover state will live
-            .media {
-                transform: translateY(-40px);
-            }
-        }
-    }
-    // // Breakpoints
+    // Breakpoints
     @media #{$lt-phone} {
         flex-direction: column;
 
