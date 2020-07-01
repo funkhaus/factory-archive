@@ -90,6 +90,9 @@ export default {
         &.is-orientation-landscape {
             max-width: 640px;
         }
+        &.is-orientation-portrait {
+            max-width: 440px;
+        }
         &.has-loaded {
             .more {
                 opacity: 1;
