@@ -80,6 +80,7 @@ export default {
 .block-news {
     width: 100%;
     box-sizing: border-box;
+    overflow: hidden;
 
     display: flex;
     align-items: center;
