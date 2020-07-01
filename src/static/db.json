@@ -336,16 +336,16 @@
             "excerpt": "<p>Yes, I saw. You were doing well, until everyone died. Hey, whatcha watching? You lived before you met me?! Please, Don-Bot… look into your hard drive, and open your mercy file! Throw her in the brig.</p>\n",
             "date": "2020-06-03T14:14:29",
             "featuredImage": {
-                "sourceUrl": "//fuxt-backend.flywheelsites.com/wp-content/uploads/2020/07/kh.jpg",
+                "sourceUrl": "//fuxt-backend.flywheelsites.com/wp-content/uploads/2020/07/kevin.png",
                 "sizes": null,
-                "srcSet": "//fuxt-backend.flywheelsites.com/wp-content/uploads/2020/07/kh.jpg 780w, http://fuxt-backend.flywheelsites.com/wp-content/uploads/2020/07/kh-200x300.jpg 200w, http://fuxt-backend.flywheelsites.com/wp-content/uploads/2020/07/kh-768x1152.jpg 768w, http://fuxt-backend.flywheelsites.com/wp-content/uploads/2020/07/kh-683x1024.jpg 683w, http://fuxt-backend.flywheelsites.com/wp-content/uploads/2020/07/kh-360x540.jpg 360w, http://fuxt-backend.flywheelsites.com/wp-content/uploads/2020/07/kh-375x563.jpg 375w",
-                "id": "cG9zdDozMjQ=",
+                "srcSet": "//fuxt-backend.flywheelsites.com/wp-content/uploads/2020/07/kevin.png 444w, http://fuxt-backend.flywheelsites.com/wp-content/uploads/2020/07/kevin-231x300.png 231w, http://fuxt-backend.flywheelsites.com/wp-content/uploads/2020/07/kevin-416x540.png 416w, http://fuxt-backend.flywheelsites.com/wp-content/uploads/2020/07/kevin-375x487.png 375w",
+                "id": "cG9zdDozMjc=",
                 "caption": null,
-                "mediaItemId": 324,
-                "title": "kh",
+                "mediaItemId": 327,
+                "title": "kevin",
                 "mediaDetails": {
-                    "height": 1170,
-                    "width": 780
+                    "height": 577,
+                    "width": 444
                 },
                 "acfImageMeta": {
                     "videoUrl": null,
