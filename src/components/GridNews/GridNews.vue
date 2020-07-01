@@ -38,10 +38,6 @@ export default {
     .block-news {
         margin: var(--unit-vertical-gap) 0 calc(var(--unit-vertical-gap) * 2);
 
-        .block-text {
-            padding: 0 0 0 var(--unit-gutter);
-            box-sizing: border-box;
-        }
         // Flip every other block
         &:nth-child(2n + 2) {
             flex-direction: row-reverse;
@@ -74,14 +70,6 @@ export default {
                 transform: translateX(calc(var(--unit-gutter) * -1));
             }
         }
-        @media #{$lt-tablet} {
-            .block-news:hover,
-            .block-news:nth-child(2n + 2):hover {
-                .block-text {
-                    transform: none;
-                }
-            }
-        }
     }
     // Breakpoints
     @media #{$lt-tablet} {
@@ -96,9 +84,6 @@ export default {
         .block-news {
             margin-bottom: var(--unit-vertical-gap);
 
-            .block-text {
-                padding: 0;
-            }
             &:nth-child(2n + 2) {
                 flex-direction: column;
 

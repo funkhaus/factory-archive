@@ -105,6 +105,8 @@ export default {
     .block-text {
         width: 50%;
         max-width: 500px;
+        padding: 0 0 0 var(--unit-gutter);
+        box-sizing: border-box;
         transition: transform 0.2s;
     }
     .title {
@@ -128,12 +130,22 @@ export default {
         display: flex;
         align-items: center;
 
-        // TODO set this with theme
         background-color: var(--color-company);
         color: var(--color-black);
         opacity: 0;
     }
 
+    // Hovers
+    @media #{$has-hover} {
+        &:hover {
+            .media {
+                transform: translateY(-40px);
+            }
+            .block-text {
+                transform: translateX(var(--unit-gutter));
+            }
+        }
+    }
     // Breakpoints
     @media #{$lt-phone} {
         flex-direction: column;
@@ -144,6 +156,7 @@ export default {
         }
         .block-text {
             margin-top: 15px;
+            padding: 0;
         }
     }
 }
