@@ -39,7 +39,7 @@ export default {
         margin: var(--unit-vertical-gap) 0 calc(var(--unit-vertical-gap) * 2);
 
         .block-text {
-            padding-left: var(--unit-gutter);
+            padding: 0 0 0 var(--unit-gutter);
             box-sizing: border-box;
         }
         // Flip every other block
@@ -47,7 +47,7 @@ export default {
             flex-direction: row-reverse;
 
             .block-text {
-                padding-right: var(--unit-gutter);
+                padding: 0 var(--unit-gutter) 0 0;
                 box-sizing: border-box;
             }
         }
