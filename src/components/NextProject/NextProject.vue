@@ -1,20 +1,27 @@
 <template lang="html">
     <nuxt-link :to="path" class="next-project">
-        <wp-image :image="image" />
+        <wp-image :image="image" mode="fullbleed" />
         <div class="meta">
             <h4>Next Project</h4>
             <div class="credits">
-                <!-- <h3 class="title" v-html="title" /> -->
                 <split-text class="title" :text="title" />
-                <h6>Credit - subtitle</h6>
-                <h6>Credit - subtitle</h6>
-                <h6>Credit - subtitle</h6>
+                <p
+                    v-for="credit in formattedCredits.slice(1)"
+                    v-if="credits"
+                    :key="credit"
+                    class="credit"
+                    v-html="credit"
+                />
             </div>
         </div>
     </nuxt-link>
 </template>
 
 <script>
+// Helpers
+import { nl2br } from "@/utils/tools";
+
+// Components
 import WpImage from "@/components/global/WpImage";
 import NuxtLink from "@/components/global/NuxtLink";
 import SplitText from "@/components/global/SplitText";
@@ -30,12 +37,10 @@ export default {
             type: Object,
             default: () => {}
         },
-        // = "" (use split title to get to two lines)
         title: {
             type: String,
             default: ""
         },
-        // = "" (use nl2btr and string replacement)
         credits: {
             type: String,
             default: ""
@@ -43,6 +48,11 @@ export default {
         path: {
             type: String,
             default: ""
+        }
+    },
+    computed: {
+        formattedCredits() {
+            return nl2br(this.credits).split("<br>");
         }
     }
 };
@@ -56,7 +66,7 @@ export default {
 
     .wp-image {
         width: 50%;
-        display: inline-block;
+        position: relative;
     }
 
     .meta {
@@ -74,7 +84,7 @@ export default {
 
         h3,
         h4,
-        h6 {
+        p {
             margin: 0;
             font-weight: 300;
         }
@@ -90,6 +100,7 @@ export default {
 
             /deep/ .line {
                 display: block;
+                font-weight: 300;
             }
         }
 
@@ -97,15 +108,11 @@ export default {
             margin: 10px 0;
         }
 
-        h6 {
+        p {
             margin: 2.5px 0;
             font-size: 12px;
         }
     }
-
-    // Hovers
-    // @media #{$has-hover} {
-    // }
 
     // Breakpoints
     @media #{$lt-phone} {
@@ -113,6 +120,10 @@ export default {
         .wp-image,
         .meta {
             width: 100%;
+        }
+
+        .wp-image {
+            min-height: 250px;
         }
     }
 }

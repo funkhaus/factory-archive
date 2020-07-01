@@ -9,8 +9,12 @@ export const Next = () => ({
     components: { NextProject },
     data() {
         return {
-            api: API
+            api: API,
+            credits: `Artists – Angus Wall & Hazel Baird
+Editor – Jamie Foord
+Production Co. – Placeholder
+Agency – Placeholder`
         };
     },
-    template: `<next-project :image="api.page.featuredImage" title="Placeholder &#8211; Subtitle" credits="" :path="api.page.uri" />`
+    template: `<next-project :image="api.page.featuredImage" title="Placeholder &#8211; Subtitle" :credits="credits" :path="api.page.uri" />`
 });
