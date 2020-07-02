@@ -87,10 +87,8 @@ export default {
     .block-image {
         width: 50%;
         overflow: hidden;
+        max-width: 640px;
 
-        &.is-orientation-landscape {
-            max-width: 640px;
-        }
         &.is-orientation-portrait {
             max-width: 440px;
         }
@@ -100,7 +98,7 @@ export default {
             }
         }
         .media {
-            transition: transform 0.2s;
+            transition: transform 0.2s $authenticMotion;
         }
     }
     .block-text {
@@ -108,7 +106,7 @@ export default {
         max-width: 500px;
         padding: 0 0 0 var(--unit-gutter);
         box-sizing: border-box;
-        transition: transform 0.2s;
+        transition: transform 0.2s $authenticMotion;
     }
     .title {
         margin: 15px 0;

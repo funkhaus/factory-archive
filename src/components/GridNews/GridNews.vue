@@ -57,14 +57,6 @@ export default {
 
     // Hovers
     @media #{$has-hover} {
-        .block-news:hover {
-            .media {
-                transform: translateY(-40px);
-            }
-            .block-text {
-                transform: translateX(var(--unit-gutter));
-            }
-        }
         .block-news:nth-child(2n + 2):hover {
             .block-text {
                 transform: translateX(calc(var(--unit-gutter) * -1));
