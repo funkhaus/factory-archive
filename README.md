@@ -6,7 +6,7 @@ Together with [James Lee](https://github.com/uptownhr), Funkhaus has set out to 
 
 ## Quick start
 
-1.  Find a component to [build here](https://github.com/funkhaus/factory/issues?q=is%3Aopen+is%3Aissue+label%3A%22component+request%22)
+1.  Find an available component to [build here](https://github.com/funkhaus/factory/issues?q=is%3Aopen+is%3Aissue+label%3Aavailable+label%3A%22component+request%22)
 1.  Get approval to build it by commenting on the issue
 1.  Pull down the branch for that [component's project](https://github.com/funkhaus/factory/branches)
 1.  Build the component, and commit a PR to that project branch.
@@ -27,11 +27,11 @@ Any unassigned CR is up for grabs to the first developer that wants it. Review t
 
 Every issue is assigned to a Github Project and every Github Project has an associated `branch`. For example, we currently have a `MakeMake` project and in return also have a branch named `makemake`.
 
-### Branch project setup
+### For Project Branch
 
-1. Clone the Project branch [from here](https://github.com/funkhaus/factory/branches)
+1. Fork the Project branch [from here](https://github.com/funkhaus/factory/branches)
 2. Code your component
-3. Create a new PR on the project branch, be sure to include a list of issues (Component Requests) your PR addresses in the PR description.
+3. Create a new PR from your fork to the project branch, be sure to include a list of issues (Component Requests) your PR addresses in the PR description.
 
 ### Storybook Development
 
@@ -41,10 +41,11 @@ To get started:
 
 1. `npm install`
 2. `npm run storybook`
-3. develop your new component in the `src/components` directory
+3. Develop your new component in the `src/components` directory
 
 -   Be sure to create a new directory with the component name and GitHub CR issue number, like `CR1 - WorkBlock`. Place the component file in this directory. [See an example component here](https://github.com/funkhaus/factory/tree/master/src/components/CR1%20-%20WorkBlock).
 -   At a minimum the `${component}.vue` file and `${component}.stories.js` file should be here.
+-   Name your storybook story like `@{githubusername} / CR1 - WorkBlock`. This will organzine all your components into a Storybook structure.
 
 For example:
 
@@ -55,7 +56,7 @@ For example:
 - - - WorkBlock.stories.js
 ```
 
-Please see this example for a better understanding of coding standards and how to pass in mock data.
+Please see look at the above example for a better understanding of coding standards and how to pass in mock data.
 
 ## How to submit a finished Component for review
 
@@ -188,3 +189,6 @@ Some good things to read here.
 
 -   Create sample project, issue and component.
 -   Build out GitHub issue tags for things like difficulty level, budget, ready for code review etc.
+-   Add a PR template that includes, reference the issue(s), list what was built, explains varients and hover states.
+-   Make all SVG exportable in the designs!
+-   Slack channel!

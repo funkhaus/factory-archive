@@ -82,27 +82,36 @@ export default {
     box-sizing: border-box;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
 
     .block-image {
-        width: calc(50% - (var(--unit-gutter) / 2));
+        width: 50%;
+        overflow: hidden;
+        max-width: 640px;
 
+        &.is-orientation-portrait {
+            max-width: 440px;
+        }
         &.has-loaded {
             .more {
                 opacity: 1;
             }
         }
         .media {
-            transition: transform 0.2s;
+            transition: transform 0.2s $authenticMotion;
         }
     }
     .block-text {
-        width: calc(50% - (var(--unit-gutter) / 2));
+        width: 50%;
+        max-width: 500px;
+        padding: 0 0 0 var(--unit-gutter);
+        box-sizing: border-box;
+        transition: transform 0.2s $authenticMotion;
     }
     .title {
         margin: 15px 0;
         font-size: 30px;
+        font-weight: 300;
     }
     .excerpt {
         margin: 15px 0;
@@ -120,22 +129,23 @@ export default {
         display: flex;
         align-items: center;
 
-        // TODO set this with theme
         background-color: var(--color-company);
         color: var(--color-black);
         opacity: 0;
     }
 
-    // // Hovers
+    // Hovers
     @media #{$has-hover} {
         &:hover {
-            // TODO move this into the grid where text hover state will live
             .media {
                 transform: translateY(-40px);
             }
+            .block-text {
+                transform: translateX(var(--unit-gutter));
+            }
         }
     }
-    // // Breakpoints
+    // Breakpoints
     @media #{$lt-phone} {
         flex-direction: column;
 
@@ -145,6 +155,7 @@ export default {
         }
         .block-text {
             margin-top: 15px;
+            padding: 0;
         }
     }
 }
