@@ -1,11 +1,8 @@
-import { storiesOf } from '@storybook/vue';
-import { withKnobs, text } from '@storybook/addon-knobs';
 import BannerHighlight from "./BannerHighlight"
 import API from "@/static/db.json"
 
 export default {
-    title: "@uptownhr / BannerHighlight",
-    decorators: [withKnobs]
+    title: "@uptownhr / BannerHighlight"
 }
 
 export const Default = () => ({
