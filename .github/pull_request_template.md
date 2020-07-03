@@ -1,8 +1,4 @@
----
-name: Component Submission
-title: {projectName} - {componentName}
-
----
+**NOTE: Please title PR: {projectName} - {componentName}**
 
 Components included in this PR are:
 
