@@ -121,6 +121,8 @@ components: {
 
 ```
 
+Most XD design files allow you to select the SVG and in the lower right of the screen you will see a download button. Sometimes the designers will forget to enable the SVG for export, so please reply to the component request issue asking for the SVG and it will be supplied.
+
 ## CSS & SCSS variables
 
 Each project includes a global stylesheet, and a SCSS variables stylesheet injected into each component automatically. These style sheets are used to share basic fonts and colors etc, often times as CSS or SCSS variables.
@@ -193,8 +195,4 @@ Some good things to read here.
 
 ## TODO
 
--   Create sample project, issue and component.
--   Build out GitHub issue tags for things like difficulty level, budget, ready for code review etc.
--   Add a PR template that includes, reference the issue(s), list what was built, explains varients and hover states.
--   Note about SVG exporting from the designs
 -   Add some portrait images to mock data
