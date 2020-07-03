@@ -9,11 +9,10 @@
 
         <div class="block-text">
             <h3 class="text" v-html="text" />
-            <!-- prompt -->
 
             <div class="prompt-container">
                 <span class="prompt" v-html="prompt" />
-                <arrow class="arrow" />
+                <svg-arrow class="arrow" />
             </div>
         </div>
     </nuxt-link>
@@ -25,13 +24,13 @@ import { formatDate } from "@/utils/tools";
 // Components
 import NuxtLink from "@/components/global/NuxtLink";
 import WpImage from "@/components/global/WpImage";
-import Arrow from "./arrow.svg";
+import SvgArrow from "./arrow.svg";
 
 export default {
     components: {
         NuxtLink,
         WpImage,
-        Arrow
+        SvgArrow
     },
     props: {
         to: {
@@ -96,13 +95,6 @@ export default {
         .arrow {
             transition: transform 200ms ease;
         }
-
-        @media #{$has-hover} {
-            &:hover .arrow {
-                left: 100%;
-                transform: translateX(30%)
-            }
-        }
     }
 
     @media #{$lt-tablet} {
@@ -116,6 +108,13 @@ export default {
 
         .block-text {
             padding: 30px 15px;
+        }
+    }
+
+    @media #{$has-hover} {
+        &:hover .arrow {
+            left: 100%;
+            transform: translateX(30%);
         }
     }
 }
