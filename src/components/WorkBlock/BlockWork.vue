@@ -1,3 +1,4 @@
+<!-- Author: @drewbaker -->
 <template>
     <nuxt-link class="block-work" :to="to">
         <!-- Component declartion is kebab cased -->
