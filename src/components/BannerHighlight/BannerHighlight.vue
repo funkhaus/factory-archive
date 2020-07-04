@@ -19,8 +19,6 @@
 </template>
 
 <script>
-// Helpers
-import { formatDate } from "@/utils/tools";
 // Components
 import NuxtLink from "@/components/global/NuxtLink";
 import WpImage from "@/components/global/WpImage";
@@ -97,6 +95,13 @@ export default {
         }
     }
 
+    @media #{$has-hover} {
+        &:hover .arrow {
+            left: 100%;
+            transform: translateX(30%);
+        }
+    }
+
     @media #{$lt-tablet} {
         .text {
             font-size: 59px;
@@ -108,13 +113,6 @@ export default {
 
         .block-text {
             padding: 30px 15px;
-        }
-    }
-
-    @media #{$has-hover} {
-        &:hover .arrow {
-            left: 100%;
-            transform: translateX(30%);
         }
     }
 }
