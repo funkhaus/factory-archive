@@ -22,7 +22,7 @@
 // Components
 import NuxtLink from "@/components/global/NuxtLink";
 import WpImage from "@/components/global/WpImage";
-import SvgArrow from "./arrow.svg";
+import SvgArrow from "@/assets/svgs/arrow.svg";
 
 export default {
     components: {
