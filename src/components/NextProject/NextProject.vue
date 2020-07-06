@@ -1,13 +1,13 @@
 <template lang="html">
-    <nuxt-link :to="path" class="next-project">
+    <nuxt-link :to="to" class="next-project">
         <wp-image :image="image" mode="fullbleed" />
         <div class="meta">
             <h4>Next Project</h4>
             <div class="credits">
-                <split-text class="title" :text="title" />
+                <split-text class="title" :text="title" element="h2" />
                 <p
-                    v-for="credit in formattedCredits.slice(1)"
-                    v-if="credits"
+                    v-for="credit in formattedCredits"
+                    v-if="credits.length"
                     :key="credit"
                     class="credit"
                     v-html="credit"
@@ -19,12 +19,12 @@
 
 <script>
 // Helpers
-import { nl2br } from "@/utils/tools";
+import { nl2br } from "@/utils/tools"
 
 // Components
-import WpImage from "@/components/global/WpImage";
-import NuxtLink from "@/components/global/NuxtLink";
-import SplitText from "@/components/global/SplitText";
+import WpImage from "@/components/global/WpImage"
+import NuxtLink from "@/components/global/NuxtLink"
+import SplitText from "@/components/global/SplitText"
 
 export default {
     components: {
@@ -45,22 +45,25 @@ export default {
             type: String,
             default: ""
         },
-        path: {
+        to: {
             type: String,
             default: ""
         }
     },
     computed: {
         formattedCredits() {
-            return nl2br(this.credits).split("<br>");
+            // replaces all instances of '-' with '—' and new lines with <br>s
+            return nl2br(this.credits.replace(new RegExp("-", "g"), "—")).split(
+                "<br>"
+            )
         }
     }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .next-project {
-    background-color: var(--color-black); //placeholder
+    background-color: var(--color-black);
     display: flex;
     flex-direction: row;
 
@@ -93,7 +96,7 @@ export default {
             font-size: 24px;
         }
 
-        /deep/ .title {
+        .title {
             font-size: 32px;
             margin: 20px 0;
             display: block;
