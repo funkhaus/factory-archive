@@ -2,23 +2,19 @@
     <div class="gallery-logos">
         <h3 v-if="title" class="title" v-html="title" />
 
-        <!-- <img v-for="(logo, i) in logos" :src="logo.sourceUrl" class="logo" /> -->
-        <component
-            v-for="(name, i) in logoNames"
-            :is="`svg-logo-${name}`"
-            class="logo"
-            :key="name"
-        />
+        <div v-for="(name, i) in logoNames" class="container">
+            <component :is="`svg-logo-${name}`" :key="name" class="logo" />
+        </div>
     </div>
 </template>
 
 <script>
-import SvgLogoNytBrandStudio from "@/assets/svgs/logos/logo-nyt-brand-studio.svg";
-import SvgLogoVanityFair from "@/assets/svgs/logos/logo-vanity-fair.svg";
-import SvgLogoVaynerMedia from "@/assets/svgs/logos/logo-vayner-media.svg";
-import SvgLogoVogue from "@/assets/svgs/logos/logo-vogue.svg";
-import SvgLogoVox from "@/assets/svgs/logos/logo-vox.svg";
-import SvgLogoWsj from "@/assets/svgs/logos/logo-wsj.svg";
+import SvgLogoNytBrandStudio from "@/assets/svgs/logos/logo-nyt-brand-studio.svg"
+import SvgLogoVanityFair from "@/assets/svgs/logos/logo-vanity-fair.svg"
+import SvgLogoVaynerMedia from "@/assets/svgs/logos/logo-vayner-media.svg"
+import SvgLogoVogue from "@/assets/svgs/logos/logo-vogue.svg"
+import SvgLogoVox from "@/assets/svgs/logos/logo-vox.svg"
+import SvgLogoWsj from "@/assets/svgs/logos/logo-wsj.svg"
 
 export default {
     components: {
@@ -39,13 +35,13 @@ export default {
             default: () => []
         }
     }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .gallery-logos {
-    background-color: var(--color-black); //placeholder
-    padding: 10px; //placeholder
+    margin: var(--unit-gutter) auto;
+    max-width: 1024px;
     text-align: center;
 
     .title {
@@ -53,13 +49,23 @@ export default {
         font-weight: 300;
     }
 
-    .logo {
-        height: 100px;
-        width: auto;
-        max-width: 200px;
+    .container {
+        position: relative;
         display: inline-block;
+        height: 100px;
+        width: 200px;
+    }
+
+    .logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
         padding: 10px;
         box-sizing: border-box;
+
         * {
             fill: var(--color-company);
         }

@@ -5,7 +5,7 @@ export default {
     title: "@dchiamp / NextProject"
 }
 
-export const Defualt = () => ({
+export const Default = () => ({
     components: { NextProject },
     data() {
         return {
