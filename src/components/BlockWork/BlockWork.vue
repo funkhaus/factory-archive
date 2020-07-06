@@ -5,7 +5,7 @@
         </wp-image>
 
         <div class="credits">
-            <svg-icon-play v-if="hoverType !== 'default'" class="play" />
+            <svg-icon-play v-if="hoverType == 'default'" class="play" />
             <split-text :text="title" />
         </div>
     </nuxt-link>
@@ -100,6 +100,8 @@ export default {
         .credits {
             z-index: 30;
             color: var(--color-company);
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
         }
     }
 
@@ -116,6 +118,9 @@ export default {
         &.hover-solid:hover {
             .image .scrim {
                 background-color: rgba(black, 0.2);
+            }
+            .credits {
+                opacity: 1;
             }
         }
     }

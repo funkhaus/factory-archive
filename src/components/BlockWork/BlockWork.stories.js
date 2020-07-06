@@ -17,6 +17,7 @@ export const BlockWorkDefaultHover = () => ({
         :title="api.pages[1].childPages[0].title"
         :image="api.pages[1].childPages[0].featuredImage"
         :path="api.pages[1].childPages[0].uri"
+
     />`
 })
 
