@@ -1,126 +1,105 @@
 <template>
     <div class="gallery-text">
         <!-- Title -->
-        <p class="title">Our Ecosystem</p>
+        <h2 class="title">Our Ecosystem</h2>
 
         <!-- Subtitle w/ Arrow -->
-        <p class="subtitle">
+        <div class="subtitle">
             <span class="subtitle-text">We develop and produce original content for all genres and formats.</span>
             <span class="prompt">
-                <p class="prompt-text">EXPLORE</p>
-                <span class="arrow">Arrow</span>
+                <span class="prompt-text" >EXPLORE</span>
+                <svg-arrow-right class="arrow" />
             </span>
-        </p>
-
+        </div>
+        
         <!-- Block Links -->
-        <nuxt-link
-            v-for="(brand, index) in brands"
-            :key="index" 
-            class="brand-link"
-            @mouseover.native="set(brand.name)" 
-            @mouseout.native="set(null)"  
-            :to="`/${brand.name}`" tag="span"
-        >
-            <span class="logo">{{brand.name}} </span>{{brand.text}}
-        </nuxt-link>
+        <div class="text">
+            <nuxt-link
+                v-for="(company, index) in companies"
+                :key="`${index}-${company.name}`" 
+                class="company-link"  
+                :to="`/${company.name}`" tag="span"
+            >
+                <component 
+                    :is="`logo-${company.name}`"
+                    class="company-logo"
+                    @mouseover="set(company)" 
+                    @mouseout="set(null)" />
+                {{company.text}}
+            </nuxt-link>
+        </div>
 
         <!-- Images absolute -->
-        <wp-image
+        <transition
             v-for="(image, index) in images"
-            :key="`image-${index}`"
-            class="image"
-            :class="{'is-active': index == activeImage}"
-            :image="image"
-            mode="fullbleed"
-        />
+            :key="image.id"
+            name="fade"
+            mode="out-in"
+        >
+            <wp-image
+                v-show="index == activeImage"
+                class="image"
+                :image="image"
+                mode="fullbleed"
+            />
+        </transition>
 
         <!-- Bottom Text -->
         <p class="end-text">These diverse talent are connected by a creative singularity.</p>
         <p class="end-text">Together we are <span class="logo">MakeMake</span></p>
+
     </div>
 </template>
 
 <script>
 import WpImage from "@/components/global/WpImage"
 import NuxtLink from "@/components/global/NuxtLink"
+import SvgArrowRight from "@/assets/svgs/arrow-right.svg"
+
+// Company Logos
+import LogoRockPaperScissors from '@/assets/svgs/companies/logo-rock-paper-scissors.svg'
+import LogoElastic from '@/assets/svgs/companies/logo-elastic.svg'
+import LogoA52 from '@/assets/svgs/companies/logo-a52.svg'
+import LogoPrimary from '@/assets/svgs/companies/logo-primary.svg'
+import LogoJax from '@/assets/svgs/companies/logo-jax.svg'
+import LogoIndestructible from '@/assets/svgs/companies/logo-indestructible.svg'
 
 export default {
-    components: { WpImage, NuxtLink },
+    components: { 
+        WpImage, NuxtLink, SvgArrowRight, 
+        //Company Logos
+        LogoRockPaperScissors, LogoElastic, LogoA52, LogoPrimary, LogoJax, LogoIndestructible
+    },
     props: {
-        rpsImages: {
-            type: Array,
-            default: () => []
-        },
-        elasticImages: {
-            type: Array,
-            default: () => []
-        },
-        primaryImages: {
-            type: Array,
-            default: () => []
-        },
-        a52Images: {
-            type: Array,
-            default: () => []
-        },
-        jaxImages: {
-            type: Array,
-            default: () => []
-        },
-        indestructibleImages: {
+        companies: {
             type: Array,
             default: () => []
         }
     },
     data () {
         return {
-            brand: null,
-            brands: [
-                { name: 'rock-paper-scissors', text: 'edits films, television, commercials, and music videos.'},
-                { name: 'elastic', text: 'creates animation, motion design, and main titles.'},
-                { name: 'a52', text: 'is a leader in visual effects.'},
-                { name: 'primary', text: 'grades color and manages workflows and telecine.'},
-                { name: 'jax', text: 'markets films, tv shows, and games.'},
-                { name: 'indestructible', text: 'supervises musical direction, composition, and licensing.'},
-            ],
+            company: null,
             timer: null,
-            imagesLength: 0,
             activeImage: 0
         }
     },
     computed: {
         images() {
-            switch (this.brand) {
-                case 'rock-paper-scissors':
-                    this.imagesLength = this.rpsImages.length
-                    return this.rpsImages
-                case 'elastic':
-                    this.imagesLength = this.elasticImages.length
-                    return this.elasticImages
-                case 'a52': 
-                    this.imagesLength = this.a52Images.length
-                    return this.a52Images
-                case 'primary':
-                    this.imagesLength = this.primaryImages.length
-                    return this.primaryImages
-                case 'jax': 
-                    this.imagesLength = this.jaxImages.length
-                    return this.jaxImages
-                case 'indestructible': 
-                    this.imagesLength = this.indestructibleImages.length
-                    return this.indestructibleImages
-            }
+            return this.company ? this.company.images : []
+        },
+        imagesLength () {
+            return this.images.length
         }
     },
     methods: {
-        set(brand) {
-            if (!brand) return this.reset()
-            this.brand = brand
+        set(company) {
+            if (!company) return this.reset()
+            this.company = company
             this.start()
         },
         start() {
             if (!this.timer) {
-                this.timer = setInterval( () => {
+                this.timer = setInterval( () => {                    
                     return this.activeImage < this.imagesLength
                         ? this.activeImage = this.activeImage + 1 
                         : this.activeImage = 0
@@ -129,7 +108,7 @@ export default {
         },
         reset() {
             clearInterval(this.timer)
-            this.brand = null
+            this.company = null
             this.activeImage = 0
             this.timer = null
         }
@@ -150,37 +129,52 @@ export default {
     color: #d8d9be;
 
     .subtitle {
-        display: flex;
-        align-items: center;
+        display: inline-block;
         cursor: pointer;
+        margin-block-end: 1em;
+        line-height: 1.5em;
     }
+    
     .prompt {
         position: relative;
-        padding-left: 1rem;
+        // right screen edge offset for arrow
+        padding-left: 100px;
     }
+
     .prompt-text {
         font-size: 14px;
-        font-weight: 500;
-        overflow: hidden;
-        transition: opacity 200ms ease;
+        font-weight: 800;
         opacity: 0;
-        padding: 0 16px 0 8px;
-        margin: 0;
+        transition: opacity 200ms $authenticMotion;
 
-        //arrow offset for mobile
-        padding-right: 75px;
+        // center inline style
+        position:absolute;
+        top: 50%;
+        left: 1rem;
+        transform: translateY(-55%);
     }
 
     .arrow {
         position: absolute;
-        left: 24px;
         top: 50%;
-        transform: translateY(-50%);
-        transition: transform 400ms ease;
+        left: 1rem;
+        transform: translateY(-70%);
+        transition: transform 200ms $authenticMotion;
     }
 
-    .brand-link {
+    .text {
+        max-width: 1280px;
+    }
+
+    .company-link {
         line-height: 1.5em;
+    }
+
+    .company-logo {
+        padding-right: 0.25rem;
+        //centers the logo inside inline style
+        height: 35px;
+        transform: translateY(18%);
     }
 
     // Images
@@ -192,12 +186,7 @@ export default {
         bottom: 15%;
         margin: auto;
         z-index: 10;
-        transition: opacity 0.4s ease-in-out;
         pointer-events: none;
-        opacity: 0;
-    }
-    .image.is-active {
-        opacity: 1;
     }
 
     // Hover states
@@ -210,10 +199,10 @@ export default {
                 opacity: 1;
             }
             .arrow {
-                transform: translateY(-50%) translateX(100%);
+                transform: translateY(-70%) translateX(200%);
             }
         }
-        .brand-link:hover {
+        .company-link:hover {
             position: relative;
             z-index: 20;
         }
@@ -224,6 +213,15 @@ export default {
         // NOTE might want to change font sizes on mobile, no designs provided
     }
     
+}
+
+//fade transition effect
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 200ms $authenticMotion;
+}
+.fade-enter, .fade-leave-to {
+    //prevent complete fade out
+    opacity: 0.25;
 }
 
 // temporary until logo svg is provided
