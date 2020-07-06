@@ -46,7 +46,7 @@
 
         <!-- Bottom Text -->
         <p class="end-text">These diverse talent are connected by a creative singularity.</p>
-        <p class="end-text">Together we are <span class="logo">MakeMake</span></p>
+        <p class="end-text">Together we are <logo-makemake class="company-logo" /></p>
 
     </div>
 </template>
@@ -64,11 +64,13 @@ import LogoPrimary from '@/assets/svgs/companies/logo-primary.svg'
 import LogoJax from '@/assets/svgs/companies/logo-jax.svg'
 import LogoIndestructible from '@/assets/svgs/companies/logo-indestructible.svg'
 
+import LogoMakemake from '@/assets/svgs/companies/logo-makemake.svg'
+
 export default {
     components: { 
         WpImage, NuxtLink, SvgArrowRight, 
         //Company Logos
-        LogoRockPaperScissors, LogoElastic, LogoA52, LogoPrimary, LogoJax, LogoIndestructible
+        LogoRockPaperScissors, LogoElastic, LogoA52, LogoPrimary, LogoJax, LogoIndestructible, LogoMakemake
     },
     props: {
         companies: {
