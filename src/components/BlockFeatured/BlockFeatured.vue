@@ -8,16 +8,18 @@
             mode="fullbleed"
         >
         </wp-image>
+
         <!-- Text -->
         <div class="block-text">
             <h3 class="title" v-html="title" />
             <!-- Logos -->
-            <div v-if="logos.length" class="logos">
-                <div v-for="i in logos" :key="i.id" class="logo-container">
-                    <div class="sizer">
-                        <img class="logo" :src="i.sourceUrl" />
-                    </div>
-                </div>
+            <div v-if="logoNames.length" class="logos">
+                <component
+                    :is="`svg-logo-${name}`"
+                    v-for="(name, i) in logoNames"
+                    :key="name"
+                    class="logo"
+                />
             </div>
             <!-- Credits -->
             <p
@@ -37,9 +39,10 @@
             <!-- Date -->
             <time v-if="date" class="date" v-html="formattedDate" />
         </div>
+
         <!-- Background Credits hover state -->
         <div class="credits-play">
-            <svg-button-play class="svg" />
+            <svg-button-play class="svg play" />
             <h3 class="title spacer" v-html="title" />
             <p
                 v-if="credits"
@@ -68,12 +71,24 @@ import NuxtLink from "@/components/global/NuxtLink"
 import WpImage from "@/components/global/WpImage"
 // Assets
 import SvgButtonPlay from "@/assets/svgs/button-play.svg"
+import SvgLogoA52Color from "@/assets/svgs/company-logos/logo-a52-color.svg"
+import SvgLogoA52 from "@/assets/svgs/company-logos/logo-a52.svg"
+import SvgLogoElastic from "@/assets/svgs/company-logos/logo-elastic.svg"
+import SvgLogoIndestrucible from "@/assets/svgs/company-logos/logo-indestrucible.svg"
+import SvgLogoJax from "@/assets/svgs/company-logos/logo-jax.svg"
+import SvgLogoRpsg from "@/assets/svgs/company-logos/logo-rpsg.svg"
 
 export default {
     components: {
         NuxtLink,
         WpImage,
-        SvgButtonPlay
+        SvgButtonPlay,
+        SvgLogoA52Color,
+        SvgLogoA52,
+        SvgLogoElastic,
+        SvgLogoIndestrucible,
+        SvgLogoJax,
+        SvgLogoRpsg
     },
     props: {
         isNews: {
@@ -100,7 +115,7 @@ export default {
             type: String,
             default: ""
         },
-        logos: {
+        logoNames: {
             type: Array,
             default: () => []
         },
@@ -159,41 +174,35 @@ export default {
         position: relative;
         z-index: 30;
 
-        margin: 0 0 10px;
+        margin: 0 0 10px -3px;
         font-size: 50px;
         font-weight: 300;
         color: var(--color-company);
 
         transition: color 0.5s $authenticMotion;
     }
+
     // Play Button
-    .svg {
+    .play {
         margin-bottom: 10px;
         pointer-events: none;
         transition: opacity 0.5s $authenticMotion;
     }
+
     // Logos
     .logos {
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
     }
-    .logo-container {
-        width: 50px;
-        margin-right: 15px;
+    .logo {
+        path,
+        circle {
+            fill: var(--color-company);
+            opacity: 1;
+        }
+    }
 
-        .sizer {
-            padding-bottom: 100%;
-            position: relative;
-        }
-        .logo {
-            position: absolute;
-            top: 25%;
-            transform: translateY(-50%);
-            object-fit: contain;
-            height: 100%;
-            width: 100%;
-        }
-    }
     // Credits
     .first-credit {
         margin: 3px 0;
@@ -229,6 +238,7 @@ export default {
         flex-direction: column;
         justify-content: flex-end;
     }
+
     // News styles
     &.is-news {
         background-color: var(--color-black);

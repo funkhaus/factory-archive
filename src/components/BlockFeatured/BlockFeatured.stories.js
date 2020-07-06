@@ -9,14 +9,22 @@ export const FeaturedBlockLogos = () => ({
     components: { BlockFeatured },
     data() {
         return {
-            api: API
+            api: API,
+            logoNames: [
+                "a52-color",
+                "a52",
+                "elastic",
+                "indestrucible",
+                "jax",
+                "rpsg"
+            ]
         }
     },
     template: `<block-featured
                 :to="api.page.uri"
                 :title="api.page.title"
                 :image="api.page.featuredImage"
-                :logos="api.logos.slice(2, 5)"
+                :logo-names="logoNames"
                 />`
 })
 
