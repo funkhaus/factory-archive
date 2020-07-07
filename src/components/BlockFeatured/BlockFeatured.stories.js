@@ -10,14 +10,7 @@ export const FeaturedBlockLogos = () => ({
     data() {
         return {
             api: API,
-            logoNames: [
-                "a52-color",
-                "a52",
-                "elastic",
-                "indestrucible",
-                "jax",
-                "rpsg"
-            ]
+            logoNames: ["a52-color", "jax", "indestrucible"]
         }
     },
     template: `<block-featured

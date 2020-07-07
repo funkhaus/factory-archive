@@ -9,9 +9,10 @@
         >
         </wp-image>
 
-        <!-- Text -->
+        <!-- Block Text -->
         <div class="block-text">
-            <h3 class="title" v-html="title" />
+            <!-- Title -->
+            <h3 v-if="title" class="title" v-html="title" />
             <!-- Logos -->
             <div v-if="logoNames.length" class="logos">
                 <component
@@ -27,10 +28,9 @@
                 class="first-credit"
                 v-html="formattedCredits[0]"
             />
-            <div class="additional-credits spacer">
+            <div v-if="credits" class="additional-credits spacer">
                 <p
                     v-for="credit in formattedCredits.slice(1)"
-                    v-if="credits"
                     :key="credit"
                     class="credit"
                     v-html="credit"
@@ -40,8 +40,8 @@
             <time v-if="date" class="date" v-html="formattedDate" />
         </div>
 
-        <!-- Background Credits hover state -->
-        <div class="credits-play">
+        <!-- Credits hover state -->
+        <div v-if="credits" class="credits-play">
             <svg-button-play class="svg play" />
             <h3 class="title spacer" v-html="title" />
             <p
@@ -174,7 +174,7 @@ export default {
         position: relative;
         z-index: 30;
 
-        margin: 0 0 10px -3px;
+        margin: 0 0 0 -3px;
         font-size: 50px;
         font-weight: 300;
         color: var(--color-company);
@@ -196,11 +196,32 @@ export default {
         align-items: center;
     }
     .logo {
+        height: 17px;
+        padding: var(--unit-spacer) var(--unit-spacer) 0 0;
+
         path,
         circle {
             fill: var(--color-company);
             opacity: 1;
         }
+    }
+    .logo-indestrucible {
+        height: 10px;
+    }
+    .logo-jax {
+        height: 17px;
+    }
+    .logo-a52 {
+        height: 15px;
+    }
+    .logo-a52-color {
+        height: 17px;
+    }
+    .logo-rpsg {
+        height: 17px;
+    }
+    .logo-elastic {
+        height: 12px;
     }
 
     // Credits
