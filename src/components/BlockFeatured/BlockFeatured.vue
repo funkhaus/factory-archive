@@ -41,7 +41,7 @@
         </div>
 
         <!-- Credits hover state -->
-        <div v-if="credits" class="credits-play">
+        <div v-if="credits" class="credits-hover">
             <svg-button-play class="svg play" />
             <h3 class="title spacer" v-html="title" />
             <p
@@ -205,10 +205,10 @@ export default {
             opacity: 1;
         }
     }
-    .logo-indestrucible {
-        height: 10px;
-    }
     .logo-jax {
+        height: 17px;
+    }
+    .logo-rpsg {
         height: 17px;
     }
     .logo-a52 {
@@ -217,16 +217,17 @@ export default {
     .logo-a52-color {
         height: 17px;
     }
-    .logo-rpsg {
-        height: 17px;
-    }
     .logo-elastic {
         height: 12px;
+    }
+    .logo-indestrucible {
+        height: 10px;
     }
 
     // Credits
     .first-credit {
         margin: 3px 0;
+        padding-top: var(--unit-spacer);
         color: var(--color-company);
         transition: color 0.5s $authenticMotion;
     }
@@ -239,11 +240,12 @@ export default {
         font-weight: 300;
         margin: 3px 0;
     }
+    // Used to occupy same amount of space so background lines up with foreground
     .spacer {
         opacity: 0;
         pointer-events: none;
     }
-    .credits-play {
+    .credits-hover {
         position: absolute;
         top: 0;
         left: 0;
