@@ -5,7 +5,8 @@
         </wp-image>
 
         <div class="credits">
-            <svg-icon-play v-if="hoverType !== 'default'" class="play" />
+            <svg-icon-play v-if="hoverType == 'default'" class="play" />
+
             <split-text :text="title" element="h2" />
         </div>
     </nuxt-link>
@@ -82,6 +83,10 @@ export default {
         left: 0;
         z-index: 10;
         color: var(--color-black);
+        h2 {
+            margin: 0;
+            font-size: 16px;
+        }
         /deep/ .line {
             margin: 0;
             font-weight: 300;
@@ -100,6 +105,8 @@ export default {
         .credits {
             z-index: 30;
             color: var(--color-company);
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
         }
     }
 
@@ -116,6 +123,9 @@ export default {
         &.hover-solid:hover {
             .image .scrim {
                 background-color: rgba(black, 0.2);
+            }
+            .credits {
+                opacity: 1;
             }
         }
     }
