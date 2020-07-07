@@ -151,30 +151,36 @@ export default {
         }
     },
     mounted() {
-        // Get height of credits block to find how much to translate image
-        this.imageTranslateValue = this.$refs.hover.clientHeight + "px"
-        // Get height of additional credits to set the spacer height on hover
-        this.creditsHeight = this.$refs.credits.clientHeight + "px"
+        if (this.credits) {
+            // Get height of credits block to find how much to translate image
+            this.imageTranslateValue = this.$refs.hover.clientHeight + "px"
+            // Get height of additional credits to set the spacer height on hover
+            this.creditsHeight = this.$refs.credits.clientHeight + "px"
+        }
     },
     methods: {
         startHover() {
-            // Move image up the height of the credits block
-            this.$el.querySelector(
-                ".media"
-            ).style.transform = `translateY(-${this.imageTranslateValue})`
-            // Animate height of credits spacer to match visible credits
-            this.$el.querySelector(
-                ".additional-credits.spacer"
-            ).style.maxHeight = `${this.creditsHeight}`
-            // Animate background hover state credits up from translated position
-            this.$refs.hover.style.transform = "none"
+            if (this.credits) {
+                // Move image up the height of the credits block
+                this.$el.querySelector(
+                    ".media"
+                ).style.transform = `translateY(-${this.imageTranslateValue})`
+                // Animate height of credits spacer to match visible credits
+                this.$el.querySelector(
+                    ".additional-credits.spacer"
+                ).style.maxHeight = `${this.creditsHeight}`
+                // Animate background hover state credits up from translated position
+                this.$refs.hover.style.transform = "none"
+            }
         },
         resetHover() {
-            this.$el.querySelector(".media").style.transform = "none"
-            this.$el.querySelector(
-                ".additional-credits.spacer"
-            ).style.maxHeight = "0"
-            this.$refs.hover.style.transform = "translateY(100%)"
+            if (this.credits) {
+                this.$el.querySelector(".media").style.transform = "none"
+                this.$el.querySelector(
+                    ".additional-credits.spacer"
+                ).style.maxHeight = "0"
+                this.$refs.hover.style.transform = "translateY(100%)"
+            }
         }
     }
 }
