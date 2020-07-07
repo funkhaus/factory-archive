@@ -54,7 +54,7 @@
                 class="first-credit spacer"
                 v-html="formattedCredits[0]"
             />
-            <div ref="credits" class="additional-credits">
+            <div ref="credits" class="additional-credits hover-state">
                 <p
                     v-for="credit in formattedCredits.slice(1)"
                     v-if="credits"
@@ -170,7 +170,7 @@ export default {
                     ".additional-credits.spacer"
                 ).style.maxHeight = `${this.creditsHeight}`
                 // Animate background hover state credits up from translated position
-                this.$refs.hover.style.transform = "none"
+                this.$refs.credits.style.transform = "none"
             }
         },
         resetHover() {
@@ -179,7 +179,7 @@ export default {
                 this.$el.querySelector(
                     ".additional-credits.spacer"
                 ).style.maxHeight = "0"
-                this.$refs.hover.style.transform = "translateY(100%)"
+                this.$refs.credits.style.transform = "translateY(100%)"
             }
         }
     }
@@ -284,6 +284,10 @@ export default {
         max-height: 0;
         transition: max-height 0.5s $authenticMotion;
     }
+    .additional-credits.hover-state {
+        transform: translateY(100%);
+        transition: transform 0.5s $authenticMotion;
+    }
     // Used to occupy same amount of space so background lines up with foreground
     .spacer {
         opacity: 0;
@@ -303,9 +307,6 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-
-        transform: translateY(100%);
-        transition: transform 0.5s $authenticMotion;
     }
 
     // News styles
