@@ -394,5 +394,67 @@
             "name": "News",
             "description": "Bender, being God isn't easy. If you do too much, people get dependent on you, and if you do nothing, they lose hope. You have to use a light touch. Like a safecracker, or a pickpocket."
         }
-    ]
+    ],
+    "menuItems": {
+        "nodes": [
+            {
+                "label": "Front Page",
+                "cssClasses": ["red"],
+                "target": null,
+                "url": "http://fuxt-backend.flywheelsites.com/featured/",
+                "childItems": {
+                    "nodes": []
+                }
+            },
+            {
+                "label": "Work",
+                "cssClasses": ["green"],
+                "target": null,
+                "url": "http://fuxt-backend.flywheelsites.com/work/",
+                "childItems": {
+                    "nodes": [
+                        {
+                            "label": "Child Item 1",
+                            "cssClasses": [],
+                            "target": null,
+                            "url": "http://old.reddit.com/r/freefolk"
+                        },
+                        {
+                            "label": "Child Item 2",
+                            "cssClasses": [],
+                            "target": null,
+                            "url": "http://google.com"
+                        }
+                    ]
+                }
+            },
+            {
+                "label": "Contact",
+                "cssClasses": ["blue"],
+                "target": null,
+                "url": "http://fuxt-backend.flywheelsites.com/contact/",
+                "childItems": {
+                    "nodes": []
+                }
+            },
+            {
+                "label": "About",
+                "cssClasses": [],
+                "target": "_blank",
+                "url": "http://fuxt-backend.flywheelsites.com/about/",
+                "childItems": {
+                    "nodes": []
+                }
+            },
+            {
+                "label": "Directors",
+                "cssClasses": [],
+                "target": null,
+                "url": "http://fuxt-backend.flywheelsites.com/directors/",
+                "childItems": {
+                    "nodes": []
+                }
+            }
+        ]
+    }
 }
