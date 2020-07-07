@@ -2,8 +2,8 @@
     <nuxt-link
         :class="classes"
         :to="to"
-        @mouseover.native="translateImage"
-        @mouseleave.native="resetImage"
+        @mouseover.native="startHover"
+        @mouseleave.native="resetHover"
     >
         <!-- Image -->
         <wp-image
@@ -54,7 +54,7 @@
                 class="first-credit spacer"
                 v-html="formattedCredits[0]"
             />
-            <div class="additional-credits">
+            <div ref="credits" class="additional-credits">
                 <p
                     v-for="credit in formattedCredits.slice(1)"
                     v-if="credits"
@@ -131,7 +131,8 @@ export default {
     },
     data() {
         return {
-            hoverHeight: ""
+            imageTranslateValue: "",
+            creditsHeight: ""
         }
     },
     computed: {
@@ -150,17 +151,30 @@ export default {
         }
     },
     mounted() {
-        const heightSet = this.$refs.hover.clientHeight + "px"
-        this.hoverHeight = heightSet
+        // Get height of credits block to find how much to translate image
+        this.imageTranslateValue = this.$refs.hover.clientHeight + "px"
+        // Get height of additional credits to set the spacer height on hover
+        this.creditsHeight = this.$refs.credits.clientHeight + "px"
     },
     methods: {
-        translateImage() {
+        startHover() {
+            // Move image up the height of the credits block
             this.$el.querySelector(
                 ".media"
-            ).style.transform = `translateY(-${this.hoverHeight})`
+            ).style.transform = `translateY(-${this.imageTranslateValue})`
+            // Animate height of credits spacer to match visible credits
+            this.$el.querySelector(
+                ".additional-credits.spacer"
+            ).style.maxHeight = `${this.creditsHeight}`
+            // Animate background hover state credits up from translated position
+            this.$refs.hover.style.transform = "none"
         },
-        resetImage() {
+        resetHover() {
             this.$el.querySelector(".media").style.transform = "none"
+            this.$el.querySelector(
+                ".additional-credits.spacer"
+            ).style.maxHeight = "0"
+            this.$refs.hover.style.transform = "translateY(100%)"
         }
     }
 }
@@ -260,6 +274,10 @@ export default {
         font-weight: 300;
         margin: 3px 0;
     }
+    .additional-credits.spacer {
+        max-height: 0;
+        transition: max-height 0.5s $authenticMotion;
+    }
     // Used to occupy same amount of space so background lines up with foreground
     .spacer {
         opacity: 0;
@@ -279,6 +297,9 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
+
+        transform: translateY(100%);
+        transition: transform 0.5s $authenticMotion;
     }
 
     // News styles
