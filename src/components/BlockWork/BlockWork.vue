@@ -6,7 +6,7 @@
 
         <div class="credits">
             <svg-icon-play v-if="hoverType !== 'default'" class="play" />
-            <split-text :text="title" />
+            <split-text :text="title" element="h2" />
         </div>
     </nuxt-link>
 </template>
