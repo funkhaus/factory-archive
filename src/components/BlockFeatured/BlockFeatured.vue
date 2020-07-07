@@ -1,5 +1,10 @@
 <template>
-    <nuxt-link :class="classes" :to="to">
+    <nuxt-link
+        :class="classes"
+        :to="to"
+        @mouseover.native="translateImage"
+        @mouseleave.native="resetImage"
+    >
         <!-- Image -->
         <wp-image
             v-if="image"
@@ -41,7 +46,7 @@
         </div>
 
         <!-- Credits hover state -->
-        <div v-if="credits" class="credits-hover">
+        <div v-if="credits" ref="hover" class="credits-hover">
             <svg-button-play class="svg play" />
             <h3 class="title spacer" v-html="title" />
             <p
@@ -124,6 +129,11 @@ export default {
             default: ""
         }
     },
+    data() {
+        return {
+            hoverHeight: ""
+        }
+    },
     computed: {
         classes() {
             return [
@@ -138,6 +148,20 @@ export default {
         formattedCredits() {
             return nl2br(this.credits).split("<br>")
         }
+    },
+    mounted() {
+        const heightSet = this.$refs.hover.clientHeight + "px"
+        this.hoverHeight = heightSet
+    },
+    methods: {
+        translateImage() {
+            this.$el.querySelector(
+                ".media"
+            ).style.transform = `translateY(-${this.hoverHeight})`
+        },
+        resetImage() {
+            this.$el.querySelector(".media").style.transform = "none"
+        }
     }
 }
 </script>
@@ -148,10 +172,11 @@ export default {
     position: relative;
     height: 720px;
     background-color: var(--color-company);
+    overflow: hidden;
 
     .block-image {
         .media {
-            transition: top 0.5s $authenticMotion;
+            transition: transform 0.5s $authenticMotion;
         }
     }
     .block-text {
@@ -231,11 +256,6 @@ export default {
         color: var(--color-company);
         transition: color 0.5s $authenticMotion;
     }
-    .additional-credits {
-        max-height: 0;
-        transition: max-height 0.5s $authenticMotion,
-            opacity 0.5s $authenticMotion;
-    }
     .credit {
         font-weight: 300;
         margin: 3px 0;
@@ -247,9 +267,8 @@ export default {
     }
     .credits-hover {
         position: absolute;
-        top: 0;
+        bottom: 0;
         left: 0;
-        height: 100%;
         width: 100%;
         z-index: 5;
 
@@ -280,15 +299,9 @@ export default {
     // Hovers
     @media #{$has-hover} {
         &.has-hover:hover {
-            .media {
-                top: -50%;
-            }
             .title,
             .first-credit {
                 color: var(--color-black);
-            }
-            .additional-credits {
-                max-height: 200px;
             }
         }
     }
