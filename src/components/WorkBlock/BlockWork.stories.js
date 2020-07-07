@@ -1,12 +1,12 @@
 import BlockWork from "./BlockWork"
 import API from "@/static/db.json"
 
-// When you develop your own components, this should be named like `@{githubusername} / CR{issueNumber} - {ComponentName}`
+// When you develop your own components, this should be named like `{ComponentName}`
 export default {
-    title: "Examples / CR1 - BlockWork"
+    title: "Examples / BlockWork"
 }
 
-export const BlockWorkDefault = () => ({
+export const Default = () => ({
     components: { BlockWork },
     data() {
         return {
@@ -16,7 +16,7 @@ export const BlockWorkDefault = () => ({
     template: `<block-work title="Sample title" :image="api.image"/>`
 })
 
-export const BlockWorkWithoutTitle = () => ({
+export const WithoutTitle = () => ({
     components: { BlockWork },
     data() {
         return {

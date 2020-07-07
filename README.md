@@ -33,9 +33,11 @@ Every issue is assigned to a Github Project and every Github Project has an asso
 
 ### For Project Branch
 
-1. Fork the Project branch [from here](https://github.com/funkhaus/factory/branches)
+1. Fork the desired Project branch [from here](https://github.com/funkhaus/factory/branches)
 2. Code your component
 3. Create a new PR from your fork to the project branch, be sure to include a list of issues (Component Requests) your PR addresses in the PR description.
+
+TIP If you use git CLI, then [syncing your fork to the project branch](https://digitaldrummerj.me/git-syncing-fork-with-original-repo/) is a good idea.
 
 ### Storybook Development
 
@@ -47,26 +49,26 @@ To get started:
 2. `npm run storybook`
 3. Develop your new component in the `src/components` directory
 
--   Be sure to create a new directory with the component name and GitHub CR issue number, like `CR1 - WorkBlock`. Place the component file in this directory. [See an example component here](https://github.com/funkhaus/factory/tree/master/src/components/CR1%20-%20WorkBlock).
+-   Be sure to create a new directory with the component name, like `/src/components/WorkBlock`. Place the component file in this directory. [See an example component here](https://github.com/funkhaus/factory/tree/master/src/components/WorkBlock).
 -   At a minimum the `${component}.vue` file and `${component}.stories.js` file should be here.
--   Name your storybook story like `@{githubusername} / CR1 - WorkBlock`. This will organzine all your components into a Storybook structure.
+-   Name your storybook story like `WorkBlock`. Include an author credit comment in the top of your Vue file.
 
 For example:
 
 ```
 - src/components
-- - CR1 - WorkBlock
+- - WorkBlock
 - - - WorkBlock.vue
 - - - WorkBlock.stories.js
 ```
 
-Please see look at the above example for a better understanding of coding standards and how to pass in mock data.
+Please look at [the above example](https://github.com/funkhaus/factory/tree/master/src/components/WorkBlock) for a better understanding of coding standards and how to pass in mock data.
 
 ## How to submit a finished Component for review
 
-Once a CR has been accepted, and developed, you can open a Pull Request for review. When creating the Pull Request, please make the PR against the Project's Branch. IE: `factory:makemake`.
+Once a component request (CR) has been accepted, and developed, you can open a Pull Request for review. When creating the Pull Request, please make the PR against the Project's Branch. IE: `factory:makemake`.
 
-In the GitHub Project Board, we will move your CR to the "In Review" column and tag your issue as such. If we have notes for you, we will reply in the issue, you'll make the changes and and open a new PR.
+In the GitHub Project Board, we will move your CR to the "In Review" column and tag your issue as such. If we have notes for you, we will reply in the PR, you'll make the changes and commit to open PR.
 
 ## How to get paid
 
@@ -104,7 +106,7 @@ But we've setup some ways to access the data easily. Please see this [sample Sto
 
 ## SVGs
 
-For all icons or logos, it's recommended that you use a SVG file. These should be placed in `/src/assets/svgs` and then imported and used as a component, but please prepended component name with SVG.
+For all icons or logos, it's recommended that you use a SVG file. These should be placed in `/src/assets/svgs` and then imported and used as a component, but please prepend the component name with SVG.
 
 For example, in a Vue Component you'd end up with:
 
@@ -118,6 +120,8 @@ components: {
 <svg-logo-funkhaus class="svg" />
 
 ```
+
+Most XD design files allow you to select the SVG and in the lower right of the screen you will see a download button. Sometimes the designers will forget to enable the SVG for export, so please reply to the component request issue asking for the SVG and it will be supplied.
 
 ## CSS & SCSS variables
 
@@ -191,8 +195,5 @@ Some good things to read here.
 
 ## TODO
 
--   Create sample project, issue and component.
--   Build out GitHub issue tags for things like difficulty level, budget, ready for code review etc.
--   Add a PR template that includes, reference the issue(s), list what was built, explains varients and hover states.
--   Make all SVG exportable in the designs!
--   Slack channel!
+-   Add some portrait images to mock data
+-   Give a better example of a test

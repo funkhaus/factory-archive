@@ -22,6 +22,10 @@ If no mobile designs provided, please use your best judgment for responsiveness.
 
 Email {projectOwnerEmail} for the design password.
 
+## Slots
+
+Name and description of any slots needed.
+
 ## Props
 
 ```
