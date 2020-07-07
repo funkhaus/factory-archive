@@ -14,10 +14,9 @@ export const BlockWorkDefaultHover = () => ({
     },
     template: `<block-work
         :key="api.pages[1].childPages[0].id"
-        :title="api.pages[1].childPages[0].title"
+        title="split title &#8211; bottom title"
         :image="api.pages[1].childPages[0].featuredImage"
         :path="api.pages[1].childPages[0].uri"
-
     />`
 })
 
