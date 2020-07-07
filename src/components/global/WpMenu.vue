@@ -20,9 +20,6 @@ import _kebabCase from "lodash/kebabCase"
 import _upperCase from "lodash/upperCase"
 import _get from "lodash/get"
 
-// GQL
-// import MENU_BY_LOCATION from "~/gql/queries/MenuByLocation"
-
 // Components
 import WpMenuItem from "@/components/global/WpMenuItem"
 
@@ -42,9 +39,7 @@ export default {
     },
     async fetch() {
         // Don't fetch if WordPress menu items provided, use them.
-        console.log("fetch")
         if (this.items.length) {
-            // this.menuItems = this.items
             return
         }
 
@@ -76,13 +71,12 @@ export default {
                 "wp-menu",
                 `location-${_kebabCase(this.location) || "custom"}`
             ]
-        },
-        computedItems() {
-            if (this.items.length) {
-                this.menuItems = this.items
-                console.log("menuItems", this.menuItems)
-                return;
-            }
+        }
+    },
+    // Moved this from fetch() bc of this issue: https://stackoverflow.com/questions/47145971/vuejs-component-wont-render-until-i-click-on-it-in-vue-devtools
+    mounted() {
+        if (this.items.length) {
+            this.menuItems = this.items
         }
     },
     methods: {
