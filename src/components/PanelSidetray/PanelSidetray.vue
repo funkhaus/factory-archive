@@ -1,10 +1,10 @@
 <template lang="html">
     <div class="panel-sidetray">
         <nuxt-link
-            :to="item.uri"
             v-for="(item, i) in items"
-            :key="item.id"
             v-if="item.featuredImage.sourceUrl"
+            :key="item.id"
+            :to="item.uri"
             @click.native="handleClick"
         >
             <wp-image
@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import WpImage from "@/components/global/WpImage";
-import NuxtLink from "@/components/global/NuxtLink";
+import WpImage from "@/components/global/WpImage"
+import NuxtLink from "@/components/global/NuxtLink"
 
 export default {
     components: {
@@ -42,15 +42,17 @@ export default {
     },
     methods: {
         handleClick() {
-            this.$emit("panel-interacted", event);
+            this.$emit("panel-interacted", event)
         }
     }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .panel-sidetray {
-    background-color: var(--color-black); //placeholder
+    height: var(--unit-100vh);
+    overflow-y: auto;
+    background-color: var(--color-black);
     padding: 20px;
     box-sizing: border-box;
     width: 420px;

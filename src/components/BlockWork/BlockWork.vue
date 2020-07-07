@@ -6,7 +6,7 @@
 
         <div class="credits">
             <svg-icon-play v-if="hoverType == 'default'" class="play" />
-            <split-text :text="title" />
+            <split-text :text="title" element="h2" />
         </div>
     </nuxt-link>
 </template>
@@ -82,6 +82,10 @@ export default {
         left: 0;
         z-index: 10;
         color: var(--color-black);
+        h2 {
+            margin: 0;
+            font-size: 16px;
+        }
         /deep/ .line {
             margin: 0;
             font-weight: 300;
