@@ -62,7 +62,7 @@ export default {
     },
     data() {
         return {
-            menuItems: []
+            menuItems: this.items
         }
     },
     computed: {
@@ -71,12 +71,6 @@ export default {
                 "wp-menu",
                 `location-${_kebabCase(this.location) || "custom"}`
             ]
-        }
-    },
-    // Moved this from fetch() bc of this issue: https://stackoverflow.com/questions/47145971/vuejs-component-wont-render-until-i-click-on-it-in-vue-devtools
-    mounted() {
-        if (this.items.length) {
-            this.menuItems = this.items
         }
     },
     methods: {
