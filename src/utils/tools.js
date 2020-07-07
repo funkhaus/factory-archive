@@ -9,14 +9,14 @@ export const formatDate = date => {
     // See: https://stackoverflow.com/questions/21883699/safari-javascript-date-nan-issue-yyyy-mm-dd-hhmmss
     const d = new Date(date.replace(/\s/, "T"))
     const year = d.getFullYear()
-    const month = d.toLocaleString("en-us", { month: "long" })
+    const month = ("0" + (d.getMonth() + 1)).slice(-2)
 
     const day = d
         .getDate()
         .toString()
         .padStart(2, "0")
 
-    return `${month} ${day}, ${year}`
+    return `${month} - ${day} ${year}`
 };
 
 /*

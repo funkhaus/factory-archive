@@ -1,11 +1,13 @@
-# {projectName}
+# Make Make Entertainment
 
 This is a website for {clientName}. They are a {companyType} based in {companyLocation}.
 
 ## Designs
 
--   Desktop: https://xd.adobe.com/view/1234-5678/
--   Mobile: https://xd.adobe.com/view/1234-5678/
+-   Desktop: https://xd.adobe.com/view/7151981e-160b-4249-53ed-9dc365d20fa8-0760/
+-   Mobile: https://xd.adobe.com/view/fdfa03f9-36db-4e2f-5200-19ec6adc2d57-8bcb/
+
+Email drew@funkhaus.us for the password.
 
 Email {projectOwner} for the password to the design files.
 
@@ -19,17 +21,14 @@ CSS vars are defined in `@/styles/global.scss`, you should review that file befo
 
 ## Fonts
 
-Font's families are defined as CSS vars above, but the following weights are available:
+Font's families are defined as CSS vars already, but the following weights are available:
 
 ```
-sans-serif
-- 400 (book, italic)
-- 600 (book)
-
-serif
-- 300 (book)
-- 400 (book)
-```
+    RM Neue (sans-serif)
+    - 300 (regular, italic)
+    - 400 (regular, italic)
+    - 600 (regular)
+    - 900 (regular)
 
 You can also see what fonts are available in `@/styles/fonts.css`.
 
@@ -38,18 +37,18 @@ You can also see what fonts are available in `@/styles/fonts.css`.
 The site uses the following breakpoints:
 
 ```
-// Device supports hovers
-@media #{$has-hover} {
+    // Device supports hovers
+    @media #{$has-hover} {
 
-}
+    }
 
-// Screen greater-than 1800px wide
-@media #{$gt-wide} {
+    // Screen greater-than 1800px wide
+    @media #{$gt-wide} {
 
-}
+    }
 
-// Screen less-than 1024px wide
-@media #{$lt-tablet} {
+    // Screen less-than 1024px wide
+    @media #{$lt-tablet} {
 
-}
+    }
 ```
