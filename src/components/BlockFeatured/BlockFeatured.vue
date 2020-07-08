@@ -7,7 +7,7 @@
     >
         <!-- Image -->
         <wp-image
-            v-if="image"
+            v-if="image && !isNews"
             class="block-image"
             :image="image"
             mode="fullbleed"
@@ -42,7 +42,7 @@
                 />
             </div>
             <!-- Date -->
-            <time v-if="date" class="date" v-html="formattedDate" />
+            <time v-if="isNews" class="date" v-html="formattedDate" />
         </div>
 
         <!-- Credits hover state -->

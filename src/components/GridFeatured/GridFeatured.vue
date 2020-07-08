@@ -4,8 +4,13 @@
             v-for="(block, i) in blocks"
             :key="i"
             :to="block.uri"
+            :is-news="block.isNews"
+            :has-hover="block.hasHover"
             :title="block.title"
             :image="block.featuredImage"
+            :date="block.date"
+            :logo-names="block.logoNames"
+            :credits="block.credits"
         />
     </div>
 </template>
