@@ -16,7 +16,7 @@
                 :image="item.image"
                 :aspect-ratio="130"
             />
-            <wp-content :key="text" :html="item.text" />
+            <wp-content :key="item.text" :html="item.text" />
         </div>
     </div>
 </template>
@@ -64,7 +64,7 @@ export default {
     flex-direction: row;
     align-items: flex-start;
 
-    max-width: var(--unit-max-width);
+    max-width: 1400px;
     margin: 0 auto;
 
     .images {
@@ -84,7 +84,6 @@ export default {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-
             width: 100%;
             height: auto;
         }
