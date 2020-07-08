@@ -1,17 +1,22 @@
 <template lang="html">
-    <div class="side-by-side">
+    <div v-if="!isMobile" class="side-by-side">
         <div class="images">
             <div v-for="(image, i) in images" class="wrapper">
-                <wp-image :key="image.id" :image="image" :aspect-ratio="103" />
+                <wp-image :key="image.id" :image="image" :aspect-ratio="130" />
             </div>
         </div>
         <div class="text">
-            <wp-content
-                v-for="(text, i) in texts"
-                :key="text"
-                class="wrapper"
-                :html="text"
+            <wp-content v-for="(text, i) in texts" :key="text" :html="text" />
+        </div>
+    </div>
+    <div v-else class="side-by-side">
+        <div v-for="(item, i) in items" class="item">
+            <wp-image
+                :key="item.image.id"
+                :image="item.image"
+                :aspect-ratio="130"
             />
+            <wp-content :key="text" :html="item.text" />
         </div>
     </div>
 </template>
@@ -29,6 +34,10 @@ export default {
         items: {
             type: Array,
             default: () => []
+        },
+        isMobile: {
+            type: Boolean,
+            default: false
         }
     },
     computed: {
@@ -50,11 +59,11 @@ export default {
 .side-by-side {
     background-color: beige; //DELETE placeholder
     position: relative;
-    font-size: 0px;
-
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    max-width: var(--unit-max-width);
+    margin: 0 auto;
 
     .images {
         width: 50%;
@@ -86,12 +95,33 @@ export default {
         font-size: 14px;
 
         /deep/ .wp-content {
-            // border-top: 2px solid red; // DELETE
             height: var(--unit-100vh);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+        }
+    }
+
+    .item {
+        display: none;
+    }
+
+    // // Breakpoints
+    @media #{$lt-phone} {
+        flex-direction: column;
+
+        .images,
+        .text {
+            display: none;
+        }
+        .item {
+            display: block;
+        }
+
+        .wp-content {
+            padding: 20px;
+            box-sizing: border-box;
         }
     }
 }
