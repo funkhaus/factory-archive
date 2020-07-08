@@ -107,7 +107,7 @@ export default {
         display: none;
     }
 
-    // // Breakpoints
+    // Breakpoints
     @media #{$lt-phone} {
         flex-direction: column;
 
