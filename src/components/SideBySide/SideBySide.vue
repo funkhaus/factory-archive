@@ -1,8 +1,17 @@
 <template lang="html">
     <div v-if="!isMobile" class="side-by-side">
         <div class="images">
-            <div v-for="(image, i) in images" class="wrapper">
-                <wp-image :key="image.id" :image="image" :aspect-ratio="130" />
+            <div
+                v-for="(image, i) in images"
+                v-if="images.length"
+                class="wrapper"
+            >
+                <wp-image
+                    v-if="image"
+                    :key="image.id"
+                    :image="image"
+                    :aspect-ratio="130"
+                />
             </div>
         </div>
         <div class="text">
@@ -10,8 +19,9 @@
         </div>
     </div>
     <div v-else class="side-by-side">
-        <div v-for="(item, i) in items" class="mobile-item">
+        <div v-for="(item, i) in items" v-if="items.length" class="mobile-item">
             <wp-image
+                v-if="item.image"
                 :key="item.image.id"
                 :image="item.image"
                 :aspect-ratio="130"
@@ -64,7 +74,7 @@ export default {
     flex-direction: row;
     align-items: flex-start;
 
-    max-width: 1400px;
+    max-width: var(--unit-max-width);
     margin: 0 auto;
 
     .images {
@@ -101,6 +111,9 @@ export default {
             flex-direction: column;
             justify-content: center;
             align-items: center;
+
+            max-width: 640px;
+            margin: 0 auto;
         }
     }
 
