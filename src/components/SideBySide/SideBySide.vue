@@ -1,5 +1,5 @@
 <template lang="html">
-    <div v-if="!isMobile" class="side-by-side">
+    <div v-if="!isMobile" class="gallery-side-by-side">
         <div class="images">
             <div
                 v-for="(image, i) in images"
@@ -66,7 +66,7 @@ export default {
 </script>
 
 <style lang="scss">
-.side-by-side {
+.gallery-side-by-side {
     background-color: beige; //DELETE placeholder
     position: relative;
 
