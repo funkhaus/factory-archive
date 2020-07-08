@@ -29,13 +29,17 @@
             </div>
             <!-- Credits -->
             <p
+                v-for="credit in formattedCredits"
                 v-if="credits"
-                class="first-credit"
-                v-html="formattedCredits[0]"
+                :key="credit"
+                class="primary-credit credit"
+                v-html="credit"
             />
-            <div v-if="credits" class="additional-credits spacer">
+            <!-- spacer to create space for hover state credits -->
+            <div class="additional-credits spacer">
                 <p
-                    v-for="credit in formattedCredits.slice(1)"
+                    v-for="credit in formattedCreditsSecondary"
+                    v-if="creditsSecondary"
                     :key="credit"
                     class="credit"
                     v-html="credit"
@@ -45,19 +49,23 @@
             <time v-if="isNews" class="date" v-html="formattedDate" />
         </div>
 
-        <!-- Credits hover state -->
-        <div v-if="credits" ref="hover" class="credits-hover">
+        <!-- Credits - hover state -->
+        <div ref="hover" class="credits-hover">
             <svg-button-play class="svg play" />
+            <!-- Spacer because visible title & primary credits are in Block Text above -->
             <h3 class="title spacer" v-html="title" />
             <p
+                v-for="credit in formattedCredits"
                 v-if="credits"
-                class="first-credit spacer"
-                v-html="formattedCredits[0]"
+                :key="credit"
+                class="primary-credit credit spacer"
+                v-html="credit"
             />
-            <div ref="credits" class="additional-credits hover-state">
+            <!-- Secondary Credits -->
+            <div ref="secondary" class="additional-credits hover-state">
                 <p
-                    v-for="credit in formattedCredits.slice(1)"
-                    v-if="credits"
+                    v-for="credit in formattedCreditsSecondary"
+                    v-if="creditsSecondary"
                     :key="credit"
                     class="credit"
                     v-html="credit"
@@ -120,6 +128,10 @@ export default {
             type: String,
             default: ""
         },
+        creditsSecondary: {
+            type: String,
+            default: ""
+        },
         logoNames: {
             type: Array,
             default: () => []
@@ -148,6 +160,9 @@ export default {
         },
         formattedCredits() {
             return nl2br(this.credits).split("<br>")
+        },
+        formattedCreditsSecondary() {
+            return nl2br(this.creditsSecondary).split("<br>")
         }
     },
     mounted() {
@@ -155,7 +170,7 @@ export default {
             // Get height of credits block to find how much to translate image
             this.imageTranslateValue = this.$refs.hover.clientHeight + "px"
             // Get height of additional credits to set the spacer height on hover
-            this.creditsHeight = this.$refs.credits.clientHeight + "px"
+            this.creditsHeight = this.$refs.secondary.clientHeight + "px"
         }
     },
     methods: {
@@ -167,10 +182,10 @@ export default {
                 ).style.transform = `translateY(-${this.imageTranslateValue})`
                 // Animate height of credits spacer to match visible credits
                 this.$el.querySelector(
-                    ".additional-credits.spacer"
+                    ".additional-credits"
                 ).style.maxHeight = `${this.creditsHeight}`
                 // Animate background hover state credits up from translated position
-                this.$refs.credits.style.transform = "none"
+                this.$refs.secondary.style.transform = "none"
             }
         },
         resetHover() {
@@ -179,7 +194,7 @@ export default {
                 this.$el.querySelector(
                     ".additional-credits.spacer"
                 ).style.maxHeight = "0"
-                this.$refs.credits.style.transform = "translateY(100%)"
+                this.$refs.secondary.style.transform = "translateY(100%)"
             }
         }
     }
@@ -270,15 +285,18 @@ export default {
     }
 
     // Credits
-    .first-credit {
-        margin: 3px 0;
-        padding-top: var(--unit-spacer);
-        color: var(--color-company);
-        transition: color 0.5s $authenticMotion;
-    }
     .credit {
         font-weight: 300;
         margin: 3px 0;
+    }
+    .primary-credit {
+        font-weight: 400;
+        color: var(--color-company);
+        transition: color 0.5s $authenticMotion;
+
+        &:first-of-type {
+            padding-top: var(--unit-spacer);
+        }
     }
     .additional-credits.spacer {
         max-height: 0;
@@ -288,7 +306,7 @@ export default {
         transform: translateY(100%);
         transition: transform 0.5s $authenticMotion;
     }
-    // Used to occupy same amount of space so background lines up with foreground
+    // Spacer used to occupy same amount of space so background lines up with foreground
     .spacer {
         opacity: 0;
         pointer-events: none;
@@ -331,7 +349,7 @@ export default {
     @media #{$has-hover} {
         &.has-hover:hover {
             .title,
-            .first-credit {
+            .primary-credit {
                 color: var(--color-black);
             }
         }

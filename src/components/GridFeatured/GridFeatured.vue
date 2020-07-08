@@ -11,6 +11,7 @@
             :date="block.date"
             :logo-names="block.logoNames"
             :credits="block.credits"
+            :credits-secondary="block.creditsSecondary"
         />
     </div>
 </template>
