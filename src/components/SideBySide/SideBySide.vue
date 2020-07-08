@@ -10,7 +10,7 @@
         </div>
     </div>
     <div v-else class="side-by-side">
-        <div v-for="(item, i) in items" class="item">
+        <div v-for="(item, i) in items" class="mobile-item">
             <wp-image
                 :key="item.image.id"
                 :image="item.image"
@@ -59,9 +59,11 @@ export default {
 .side-by-side {
     background-color: beige; //DELETE placeholder
     position: relative;
+
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+
     max-width: var(--unit-max-width);
     margin: 0 auto;
 
@@ -103,21 +105,9 @@ export default {
         }
     }
 
-    .item {
-        display: none;
-    }
-
-    // Breakpoints
-    @media #{$lt-phone} {
+    // // Breakpoints
+    @media #{$lt-tablet} {
         flex-direction: column;
-
-        .images,
-        .text {
-            display: none;
-        }
-        .item {
-            display: block;
-        }
 
         .wp-content {
             padding: 20px;
