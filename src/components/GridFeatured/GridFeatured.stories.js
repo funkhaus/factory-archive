@@ -23,7 +23,7 @@ const logos = []
 // News and Credits
 const newsAndCredits = []
     .concat({
-        ...API.page,
+        ...API.pages[0],
         hasHover: true,
         credits: `Artists – Angus Wall & Hazel Baird
     Editor – Jamie Foord
@@ -37,7 +37,7 @@ const newsAndCredits = []
             "Mikkel EG Nielsen’s first spot for the new year is an inverted twist to the story of Narcissus"
     })
     .concat({
-        ...API.page,
+        ...API.pages[2],
         hasHover: true,
         credits: `Artists – Angus Wall & Hazel Baird
     Agency – Placeholder`
@@ -56,7 +56,7 @@ const newsAndCredits = []
             "A whole lot more than deep dish pizza in Nike’s ‘Chicago Style.’"
     })
     .concat({
-        ...API.page,
+        ...API.pages[0],
         hasHover: true,
         credits: `Artists – Angus Wall & Hazel Baird
         Editor – Jamie Foord

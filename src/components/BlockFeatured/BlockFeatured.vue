@@ -316,6 +316,9 @@ export default {
         .block-text {
             justify-content: space-between;
         }
+        .title {
+            font-size: 70px;
+        }
         .svg {
             display: none;
         }
