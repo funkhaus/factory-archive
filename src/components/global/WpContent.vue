@@ -36,78 +36,78 @@ export default {
         return {
             scripts: [],
             loadedScripts: []
-        };
+        }
     },
     computed: {
         classes() {
             // Need to do this as a string becuase of render components
-            let output = "wp-content " + this.loadedScripts.join(" ");
+            let output = "wp-content " + this.loadedScripts.join(" ")
             if (this.enableStyles) {
-                output = output + " has-styles";
+                output = output + " has-styles"
             }
-            return output;
+            return output
         },
         htmlTemplate() {
             // This is the main computed function that parses the HTML that ends up on the page
 
             // Abort if empty
-            let output = this.html;
+            let output = this.html
             if (!output) {
-                return output;
+                return output
             }
 
             // Strip tags (important to strip script tags here)
-            output = this.removeElements(output, this.removeSelector);
+            output = this.removeElements(output, this.removeSelector)
 
             // Unwrap any elements
-            output = this.unwrapElements(output, this.unwrapSelector);
+            output = this.unwrapElements(output, this.unwrapSelector)
 
             // Strip tags again (the unwrap method maybe left empty P tags)
-            output = this.removeElements(output, this.removeSelector);
+            output = this.removeElements(output, this.removeSelector)
 
             // Setup fitVids on the HTML
-            output = this.initFitVids(output);
+            output = this.initFitVids(output)
 
             // Sanitize HTML (good for cleaning up WP's bad formatted p tag combinations)
             output = sanitizeHtml(output, {
                 allowedTags: false,
                 allowedAttributes: false,
                 allowedIframeHostnames: false
-            });
+            })
 
-            const $ = cheerio.load(output);
-            output = $("body").html();
+            const $ = cheerio.load(output)
+            output = $("body").html()
 
-            return output;
+            return output
         }
     },
     mounted() {
         this.$nextTick(() => {
-            this.scripts = this.getScripts();
-        })
+            this.scripts = this.getScripts()
+        });
     },
     updated() {
         this.$nextTick(() => {
-            this.scripts = this.getScripts();
-        })
+            this.scripts = this.getScripts()
+        });
     },
     methods: {
         getScripts() {
-            let output = [];
+            let output = []
 
             // Abort if empty
             if (!this.html) {
-                return output;
+                return output
             }
 
-            const $ = cheerio.load(this.html);
+            const $ = cheerio.load(this.html)
 
             // Collect script tags so we can put them in head
             $("script").each((i, elem) => {
                 // Get domain name using RegEx
-                const parseUrl = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
-                const urlParts = parseUrl.exec(elem.attribs.src);
-                const domain = urlParts[3];
+                const parseUrl = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/
+                const urlParts = parseUrl.exec(elem.attribs.src)
+                const domain = urlParts[3]
 
                 output[i] = {
                     src: elem.attribs.src,
@@ -119,75 +119,75 @@ export default {
                         console.log(
                             "Loaded embedded script:",
                             elem.attribs.src
-                        );
+                        )
                         // Run any required JS callbacks for known embed scripts
                         switch (domain) {
                             case "www.instagram.com":
-                                window.instgrm.Embeds.process();
+                                window.instgrm.Embeds.process()
                                 break;
 
                             case "connect.facebook.net":
-                                FB.XFBML.parse();
+                                FB.XFBML.parse()
                                 break;
                         }
 
                         this.loadedScripts.push(
                             _kebabCase(`embed-loaded-${domain}`)
-                        );
+                        )
                     }
-                };
-            })
+                }
+            });
 
-            return output;
+            return output
         },
         wrapElements(html, selector, className = "wrapper") {
             // This will wrap all elements selected in a DIV with the provided class
-            const $ = cheerio.load(html);
-            $(selector).wrap(`<div class="${className}"></div>`);
-            return $("body").html();
+            const $ = cheerio.load(html)
+            $(selector).wrap(`<div class="${className}"></div>`)
+            return $("body").html()
         },
         unwrapElements(html, selector) {
             // This will unwrap all elements selected from it's parent
-            const $ = cheerio.load(html);
+            const $ = cheerio.load(html)
 
             $(selector).each(function() {
-                var $p = $(this).parent();
-                $(this).insertAfter($(this).parent());
-            })
+                var $p = $(this).parent()
+                $(this).insertAfter($(this).parent())
+            });
 
-            return $("body").html();
+            return $("body").html()
         },
         removeElements(html, selector) {
             // Removes any tags from the HTML
-            const $ = cheerio.load(html);
-            $(selector).remove();
-            return $("body").html();
+            const $ = cheerio.load(html)
+            $(selector).remove()
+            return $("body").html()
         },
         initFitVids(html) {
-            const $ = cheerio.load(html);
+            const $ = cheerio.load(html)
 
             // Use intrinsic-ratio scaling of iFrame
             $(this.fitVidsPlayers)
                 .not(".ignore-fit-vids")
                 .each(function() {
-                    const height = $(this).attr("height") || 9;
-                    const width = $(this).attr("width") || 16;
+                    const height = $(this).attr("height") || 9
+                    const width = $(this).attr("width") || 16
 
                     // Wrap to allow better styling
                     $(this).wrap(
                         `<div class="fit-vid"><div class="responsive-video" style="padding-bottom: ${(height /
                             width) *
                             100}%"></div></div>`
-                    );
-                })
+                    )
+                });
 
-            return $("body").html();
+            return $("body").html()
         }
     },
     head() {
         return {
             script: this.scripts
-        };
+        }
     },
     render(h) {
         return h({
@@ -197,7 +197,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .wp-content {
     .responsive-video {
         position: relative;

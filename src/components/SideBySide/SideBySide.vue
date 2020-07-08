@@ -18,7 +18,7 @@
             <wp-content v-for="(text, i) in texts" :key="text" :html="text" />
         </div>
     </div>
-    <div v-else class="side-by-side">
+    <div v-else class="gallery-side-by-side">
         <div v-for="(item, i) in items" v-if="items.length" class="mobile-item">
             <wp-image
                 v-if="item.image"
@@ -65,7 +65,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .gallery-side-by-side {
     background-color: beige; //DELETE placeholder
     position: relative;
@@ -74,6 +74,7 @@ export default {
     flex-direction: row;
     align-items: flex-start;
 
+    min-height: var(--unit-100vh);
     max-width: var(--unit-max-width);
     margin: 0 auto;
 
@@ -112,18 +113,34 @@ export default {
             justify-content: center;
             align-items: center;
 
+            font-size: 25px;
             max-width: 640px;
             margin: 0 auto;
         }
     }
 
+    .mobile-item {
+        display: none;
+    }
+
     // // Breakpoints
     @media #{$lt-tablet} {
         flex-direction: column;
+        background-color: beige;
 
         .wp-content {
             padding: 20px;
             box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .text,
+        .images {
+            display: none;
+        }
+
+        .mobile-item {
+            display: block;
         }
     }
 }
