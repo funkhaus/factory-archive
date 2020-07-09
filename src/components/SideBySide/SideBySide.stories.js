@@ -56,7 +56,7 @@ export const Mobile = () => ({
                 {
                     image: API.images[1],
                     text:
-                        "<p>Quem liberavisse te nec. Agam minim delenit mel ea. Est eu autem ceteros omnesque, his cu tantas feugait adolescens. At eum porro regione. Duo no oratio dissentiunt.<br>Ex assum affert has. Ei blandit intellegam mel. Eos dico propriae nominati ne. Tale repudiandae ea per.</p>"
+                        "<p>Quem liberavisse te nec. Agam minim delenit mel ea. Est eu autem ceteros omnesque, his cu tantas feugait adolescens. At eum porro regione. Duo no oratio dissentiunt.<br>\nEx assum affert has. Ei blandit intellegam mel. Eos dico propriae nominati ne. Tale repudiandae ea per.</p>"
                 },
                 {
                     image: API.images[5],
@@ -66,7 +66,7 @@ export const Mobile = () => ({
                 {
                     image: API.images[3],
                     text:
-                        "<p>Nam discere deserunt no, decore nominavi rationibus eu mea. Cum ut possit sanctus abhorreant. Ea quem dicit munere qui, augue propriae an quo. Ex omnium convenire est, usu vidit essent animal et.<br>At oblique tibique pro, ei has possit ponderum atomorum. Mea nibh copiosae luptatum te, in qui facilisis ullamcorper, ipsum noster reprehendunt quo ut. Evertitur forensibus ne nam, tantas eleifend mediocritatem eam ad. Fuisset verterem ea eam. Et mea mollis praesent. Oratio prodesset ei vim, vix vero rebum assueverit ei, mel quod feugiat concludaturque ea.</p>"
+                        "<p>We&#8217;re rescuing ya. Who said that? SURE you can die! You want to die?! Pansy. I didn&#8217;t ask for a completely reasonable excuse! I asked you to get busy! Meh.</p>\n<p>Too much work. Let&#8217;s burn it and say we dumped it in the sewer. Incidentally, you have a dime up your nose. Doomsday device? Ah, now the ball&#8217;s in Farnsworth&#8217;s court! I&#8217;ve been there. My folks were always on me to groom myself and wear underpants. What am I, the pope?</p>\n<p>Why am I sticky and naked? Did I miss something fun? No, of course not. It was… uh… porno. Yeah, that&#8217;s it. Who are those horrible orange men? Fry! Quit doing the right thing, you jerk! I decline the title of Iron Cook and accept the lesser title of Zinc Saucier, which I just made up. Uhh… also, comes with double prize money.</p>\n<p>We&#8217;ll need to have a look inside you with this camera. Dear God, they&#8217;ll be killed on our doorstep! And there&#8217;s no trash pickup until January 3rd. But, like most politicians, he promised more than he could deliver.</p>\n"
                 },
                 {
                     image: API.images[4],
@@ -77,21 +77,4 @@ export const Mobile = () => ({
         }
     },
     template: `<side-by-side  :items="items" :isMobile="true"/>`
-})
-
-export const Single = () => ({
-    components: { SideBySide },
-    data() {
-        return {
-            api: API,
-            items: [
-                {
-                    image: API.images[0],
-                    text:
-                        "<p>We&#8217;re rescuing ya. Who said that? SURE you can die! You want to die?! Pansy. I didn&#8217;t ask for a completely reasonable excuse! I asked you to get busy! Meh.</p>\n<p>Too much work. Let&#8217;s burn it and say we dumped it in the sewer. Incidentally, you have a dime up your nose. Doomsday device? Ah, now the ball&#8217;s in Farnsworth&#8217;s court! I&#8217;ve been there. My folks were always on me to groom myself and wear underpants. What am I, the pope?</p>\n<p>Why am I sticky and naked? Did I miss something fun? No, of course not. It was… uh… porno. Yeah, that&#8217;s it. Who are those horrible orange men? Fry! Quit doing the right thing, you jerk! I decline the title of Iron Cook and accept the lesser title of Zinc Saucier, which I just made up. Uhh… also, comes with double prize money.</p>\n<p>We&#8217;ll need to have a look inside you with this camera. Dear God, they&#8217;ll be killed on our doorstep! And there&#8217;s no trash pickup until January 3rd. But, like most politicians, he promised more than he could deliver.</p>\n"
-                }
-            ]
-        }
-    },
-    template: `<side-by-side  :items="items" />`
 })

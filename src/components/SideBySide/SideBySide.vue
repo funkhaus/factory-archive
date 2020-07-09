@@ -1,5 +1,21 @@
 <template lang="html">
-    <div v-if="!isMobile" class="gallery-side-by-side">
+    <!-- Mobile  -->
+    <div v-if="isMobile" class="gallery-side-by-side">
+        <div v-for="(item, i) in items" v-if="items.length" class="mobile-item">
+            <div class="wrapper">
+                <wp-image
+                    v-if="item.image"
+                    :key="item.image.id"
+                    :image="item.image"
+                />
+            </div>
+            <div class="panel">
+                <wp-content :html="item.text" />
+            </div>
+        </div>
+    </div>
+    <!-- Desktop  -->
+    <div v-else-if="!isMobile" class="gallery-side-by-side">
         <div class="images">
             <div
                 v-for="(image, i) in images"
@@ -10,23 +26,14 @@
                     v-if="image"
                     :key="image.id"
                     :image="image"
-                    :aspect-ratio="130"
+                    mode="fullbleed"
                 />
             </div>
         </div>
         <div class="text">
-            <wp-content v-for="(text, i) in texts" :key="text" :html="text" />
-        </div>
-    </div>
-    <div v-else class="gallery-side-by-side">
-        <div v-for="(item, i) in items" v-if="items.length" class="mobile-item">
-            <wp-image
-                v-if="item.image"
-                :key="item.image.id"
-                :image="item.image"
-                :aspect-ratio="130"
-            />
-            <wp-content :key="item.text" :html="item.text" />
+            <div v-for="(text, i) in texts" class="panel">
+                <wp-content :html="text" />
+            </div>
         </div>
     </div>
 </template>
@@ -67,13 +74,12 @@ export default {
 
 <style lang="scss" scoped>
 .gallery-side-by-side {
-    background-color: beige; //DELETE placeholder
+    // QUESTION:how to style in story?
+    background-color: beige; // DELETE placeholder
     position: relative;
-
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-
     min-height: var(--unit-100vh);
 
     .images {
@@ -90,9 +96,10 @@ export default {
 
         /deep/ .wp-image {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 100px;
+            right: 0px;
+            left: 0px;
+            bottom: 100px;
             width: 100%;
             height: auto;
         }
@@ -104,13 +111,15 @@ export default {
         box-sizing: border-box;
         font-size: 14px;
 
-        /deep/ .wp-content {
-            height: var(--unit-100vh);
+        .panel {
+            min-height: var(--unit-100vh);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+        }
 
+        /deep/ .wp-content {
             font-size: 25px;
             font-weight: 300;
             max-width: 640px;
@@ -125,7 +134,6 @@ export default {
     // // Breakpoints
     @media #{$lt-tablet} {
         flex-direction: column;
-        background-color: beige;
 
         .wp-content {
             padding: 20px;
