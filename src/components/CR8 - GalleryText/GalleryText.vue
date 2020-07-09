@@ -7,26 +7,26 @@
         <div class="subtitle">
             <span class="subtitle-text">We develop and produce original content for all genres and formats.</span>
             <span class="prompt">
-                <span class="prompt-text" >EXPLORE</span>
+                <span class="text" >explore</span>
                 <svg-arrow-right class="arrow" />
             </span>
         </div>
         
         <!-- Block Links -->
-        <div class="text">
-            <nuxt-link
-                v-for="(company, index) in companies"
-                :key="`${index}-${company.name}`" 
-                class="company-link"  
-                :to="`/${company.name}`" tag="span"
+        <div class="text-block">
+            <span
+                v-for="company in companies"
+                :key="company.name"
             >
-                <component 
-                    :is="`logo-${company.name}`"
-                    class="company-logo"
-                    @mouseover="set(company)" 
-                    @mouseout="set(null)" />
-                {{company.text}}
-            </nuxt-link>
+                <nuxt-link class="company-link" :to="`/${company.name}`" tag="a">
+                    <component 
+                        :is="`logo-${company.name}`"
+                        class="company-logo"
+                        @mouseover="set(company)" 
+                        @mouseout="set(null)" />
+                </nuxt-link>
+                <span class="text">{{company.text}} </span>
+            </span>
         </div>
 
         <!-- Images absolute -->
@@ -46,7 +46,7 @@
 
         <!-- Bottom Text -->
         <p class="end-text">These diverse talent are connected by a creative singularity.</p>
-        <p class="end-text">Together we are <logo-makemake class="company-logo" /></p>
+        <p class="end-text">Together we are <logo-makemake class="company-logo is-makemake" /></p>
 
     </div>
 </template>
@@ -68,9 +68,17 @@ import LogoMakemake from '@/assets/svgs/companies/logo-makemake.svg'
 
 export default {
     components: { 
-        WpImage, NuxtLink, SvgArrowRight, 
+        WpImage, 
+        NuxtLink, 
+        SvgArrowRight, 
         //Company Logos
-        LogoRockPaperScissors, LogoElastic, LogoA52, LogoPrimary, LogoJax, LogoIndestructible, LogoMakemake
+        LogoRockPaperScissors, 
+        LogoElastic, 
+        LogoA52, 
+        LogoPrimary, 
+        LogoJax, 
+        LogoIndestructible, 
+        LogoMakemake
     },
     props: {
         companies: {
@@ -101,11 +109,13 @@ export default {
         },
         start() {
             if (!this.timer) {
-                this.timer = setInterval( () => {                    
-                    return this.activeImage < this.imagesLength
-                        ? this.activeImage = this.activeImage + 1 
-                        : this.activeImage = 0
-                }, 500)
+                this.timer = setInterval( () => {               
+                    if (this.activeImage < this.imagesLength) {
+                        this.activeImage++
+                    } else {
+                        this.activeImage = 0
+                    }
+                }, 800)
             }
         },
         reset() {
@@ -114,6 +124,9 @@ export default {
             this.activeImage = 0
             this.timer = null
         }
+    },
+    destroyed() {
+        clearInterval(this.timer)
     }
 }
 </script>
@@ -135,48 +148,47 @@ export default {
         cursor: pointer;
         margin-block-end: 1em;
         line-height: 1.5em;
+        .subtitle-text {
+            border-bottom: 1px solid transparent;
+            transition: border 400ms $authenticMotion;
+        }
     }
     
     .prompt {
         position: relative;
-        // right screen edge offset for arrow
-        padding-left: 100px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 8px;
+
+        .text {
+            font-size: 12px;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 400ms $authenticMotion;
+            vertical-align: middle;
+            text-transform: uppercase;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            transition: transform 400ms $authenticMotion;
+        }
     }
 
-    .prompt-text {
-        font-size: 14px;
-        font-weight: 800;
-        opacity: 0;
-        transition: opacity 200ms $authenticMotion;
-
-        // center inline style
-        position:absolute;
-        top: 50%;
-        left: 1rem;
-        transform: translateY(-55%);
-    }
-
-    .arrow {
-        position: absolute;
-        top: 50%;
-        left: 1rem;
-        transform: translateY(-70%);
-        transition: transform 200ms $authenticMotion;
-    }
-
-    .text {
+    .text-block {
         max-width: 1280px;
-    }
-
-    .company-link {
         line-height: 1.5em;
     }
 
     .company-logo {
-        padding-right: 0.25rem;
-        //centers the logo inside inline style
-        height: 35px;
-        transform: translateY(18%);
+        padding-right: 4px;
+        vertical-align: middle;
+        &.is-makemake {
+            max-width: 240px;
+        }
     }
 
     // Images
@@ -195,18 +207,24 @@ export default {
     @media #{$has-hover} {
         .subtitle:hover {
             .subtitle-text {
-                text-decoration: underline;
+                border-color: #d8d9be;
             }
-            .prompt-text {
-                opacity: 1;
-            }
-            .arrow {
-                transform: translateY(-70%) translateX(200%);
+            .prompt {
+                .text {
+                    opacity: 1;
+                }
+                .arrow {
+                    transform: translateY(-50%) translateX(170%);
+                }
             }
         }
         .company-link:hover {
             position: relative;
             z-index: 20;
+            ~ .text {
+                position: relative;
+                z-index: 20;    
+            }
         }
     }
 
@@ -219,16 +237,11 @@ export default {
 
 //fade transition effect
 .fade-enter-active, .fade-leave-active {
-    transition: opacity 200ms $authenticMotion;
+    transition: opacity 400ms $authenticMotion;
 }
 .fade-enter, .fade-leave-to {
     //prevent complete fade out
-    opacity: 0.25;
+    opacity: 0.7;
 }
 
-// temporary until logo svg is provided
-.logo {
-    text-transform: capitalize;
-    font-weight: 800;
-}
 </style>
