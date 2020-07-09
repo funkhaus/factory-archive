@@ -8,6 +8,7 @@ export default {
 export const Default = () => ({
     components: { SideBySide },
     data() {
+        // QUESTION: what do you mean only mock up once?
         return {
             api: API,
             items: [

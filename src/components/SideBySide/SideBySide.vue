@@ -131,23 +131,22 @@ export default {
         display: none;
     }
 
-    // // Breakpoints
+    // Breakpoints
     @media #{$lt-tablet} {
         flex-direction: column;
-
-        .wp-content {
-            padding: 20px;
-            box-sizing: border-box;
-            font-size: 14px;
-        }
 
         .text,
         .images {
             display: none;
         }
-
         .mobile-item {
             display: block;
+        }
+
+        .wp-content {
+            padding: 20px;
+            box-sizing: border-box;
+            font-size: 14px;
         }
     }
 }
