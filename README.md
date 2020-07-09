@@ -33,11 +33,13 @@ Every issue is assigned to a Github Project and every Github Project has an asso
 
 ### For Project Branch
 
-1. Fork the desired Project branch [from here](https://github.com/funkhaus/factory/branches)
-2. Code your component
-3. Create a new PR from your fork to the project branch, be sure to include a list of issues (Component Requests) your PR addresses in the PR description.
+1. Fork the `factory` repo into your account (button is in top right corner of GitHub)
+2. Code your component in a new local branch
+3. When you're finished, create a new PR from your local branch, into the project branch of `factory/project-name`.
+    1.  Be sure to include a list of issues (Component Requests) your PR relates to in the PR description.
+    1.  Only commit the files that relate to your component. The most common source of PR rejections are because of files like `package.lock` getting included in a PR.
 
-TIP If you use git CLI, then [syncing your fork to the project branch](https://digitaldrummerj.me/git-syncing-fork-with-original-repo/) is a good idea.
+TIP If you use git CLI, then [syncing your fork to the upstream repo](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork) is a good idea.
 
 ### Storybook Development
 
