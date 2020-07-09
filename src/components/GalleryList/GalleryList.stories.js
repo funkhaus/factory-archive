@@ -13,7 +13,7 @@ const manyItems = API.pages
     .concat(API.pages)
 
 export default {
-    title: "@ibanzajoe / CR11 - GalleryList"
+    title: "@ibanzajoe / GalleryList"
 }
 
 export const GalleryListColumns = () => ({

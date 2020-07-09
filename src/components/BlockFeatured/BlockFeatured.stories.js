@@ -24,7 +24,11 @@ export const FeaturedBlockCredits = () => ({
     components: { BlockFeatured },
     data() {
         return {
-            api: API
+            api: API,
+            credits: `Artists – Angus Wall & Hazel Baird
+            Editor – Jamie Foord
+            Production Co. – Placeholder
+            Agency – Placeholder`
         }
     },
     template: `<block-featured
@@ -32,7 +36,7 @@ export const FeaturedBlockCredits = () => ({
                 :to="api.page.uri"
                 :title="api.page.title"
                 :image="api.page.featuredImage"
-                :credits="api.credits"
+                :credits="credits"
                 />`
 })
 
