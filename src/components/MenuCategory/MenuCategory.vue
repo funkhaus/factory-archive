@@ -62,7 +62,7 @@ export default {
         }
 
         .sub-menu {
-            display: none; // Should i just exclude this item with subItems?
+            display: none; // QUESTION: Should i just exclude this item with subItems?
         }
     }
 }
