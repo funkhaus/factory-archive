@@ -1,17 +1,20 @@
 <template>
-    <nuxt-link class="block-news" :to="to">
+    <nuxt-link :class="classes" :to="to">
         <wp-image class="block-image" :image="image">
             <span class="more">More</span>
         </wp-image>
         <div class="block-text">
-            <time class="date" v-html="formattedDate" />
-            <h3 class="title" v-html="title" />
-            <p class="excerpt" v-html="stripTags(excerpt)" />
-            <div v-if="categories" class="categories">
-                <span
-                    v-for="(category, i) in categories"
-                    v-html="category.name + comma(i)"
-                />
+            <p class="prompt">Next</p>
+            <div class="meta">
+                <time class="date" v-html="formattedDate" />
+                <h3 class="title" v-html="title" />
+                <p class="excerpt" v-html="stripTags(excerpt)" />
+                <div v-if="categories" class="categories">
+                    <span
+                        v-for="(category, i) in categories"
+                        v-html="category.name + comma(i)"
+                    />
+                </div>
             </div>
         </div>
     </nuxt-link>
@@ -54,9 +57,16 @@ export default {
         categories: {
             type: Array,
             default: () => []
+        },
+        hasPrompt: {
+            type: Boolean,
+            default: false
         }
     },
     computed: {
+        classes() {
+            return ["block-news", { "has-prompt": this.hasPrompt }]
+        },
         formattedDate() {
             return formatDate(this.date)
         }
@@ -117,6 +127,9 @@ export default {
         margin: 15px 0;
         font-size: 14px;
     }
+    .date {
+        font-size: 14px;
+    }
     .more {
         position: absolute;
         bottom: 0;
@@ -132,6 +145,33 @@ export default {
         background-color: var(--color-company);
         color: var(--color-black);
         opacity: 0;
+    }
+    .prompt {
+        display: none;
+        margin: 0;
+        font-size: 25px;
+        font-weight: 300;
+    }
+    // Promt styles
+    &.has-prompt {
+        align-items: normal;
+
+        .excerpt,
+        .categories {
+            display: none;
+        }
+        .prompt {
+            display: block;
+            margin-bottom: auto;
+        }
+        .block-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .meta {
+            margin-bottom: auto;
+        }
     }
 
     // Hovers
@@ -156,6 +196,9 @@ export default {
         .block-text {
             margin-top: 15px;
             padding: 0;
+        }
+        &.has-prompt {
+            align-items: center;
         }
     }
 }
