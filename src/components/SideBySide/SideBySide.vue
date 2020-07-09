@@ -114,6 +114,7 @@ export default {
             align-items: center;
 
             font-size: 25px;
+            font-weight: 300;
             max-width: 640px;
             margin: 0 auto;
         }
