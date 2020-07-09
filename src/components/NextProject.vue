@@ -1,6 +1,6 @@
 <template lang="html">
     <nuxt-link :to="to" class="next-project">
-        <!-- Question: How should i use aspect ratio here? -->
+        <!-- QUESTION: How should i use aspect ratio here? -->
         <!-- <wp-image :image="image" :aspect-ratio="72" /> -->
         <wp-image :image="image" mode="fullbleed" />
         <div class="meta">
@@ -65,6 +65,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// QUESTION: hover state?
 .next-project {
     background-color: var(--color-black);
     display: flex;
@@ -76,8 +77,7 @@ export default {
     .wp-image {
         width: 50%;
         position: relative;
-
-        // Use with aspect ratio?
+        // QUESTION: Use with aspect ratio?
         // display: inline-flex;
         // flex-direction: column;
         // justify-content: center;
