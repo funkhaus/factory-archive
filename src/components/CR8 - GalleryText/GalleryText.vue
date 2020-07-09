@@ -22,6 +22,7 @@
                     <component 
                         :is="`logo-${company.name}`"
                         class="company-logo"
+                        :class="`is-${company.name}`"
                         @mouseover="set(company)" 
                         @mouseout="set(null)" />
                 </nuxt-link>
@@ -30,19 +31,18 @@
         </div>
 
         <!-- Images absolute -->
-        <transition
-            v-for="(image, index) in images"
-            :key="image.id"
+        <transition-group 
             name="fade"
-            mode="out-in"
         >
             <wp-image
+                v-for="(image, index) in images"
+                :key="image.id"
                 v-show="index == activeImage"
                 class="image"
                 :image="image"
                 mode="fullbleed"
             />
-        </transition>
+        </transition-group>
 
         <!-- Bottom Text -->
         <p class="end-text">These diverse talent are connected by a creative singularity.</p>
@@ -108,21 +108,32 @@ export default {
             this.start()
         },
         start() {
-            if (!this.timer) {
-                this.timer = setInterval( () => {               
-                    if (this.activeImage < this.imagesLength) {
-                        this.activeImage++
-                    } else {
-                        this.activeImage = 0
-                    }
-                }, 800)
-            }
+            clearInterval(this.timer)
+            this.timer = setInterval( () => {               
+                if (this.activeImage < this.imagesLength) {
+                    this.activeImage++
+                } else {
+                    this.activeImage = 0
+                }
+            }, 800)
         },
         reset() {
             clearInterval(this.timer)
             this.company = null
             this.activeImage = 0
             this.timer = null
+        },
+        // transition effect
+        beforeEnter (el) {
+            el.style.opacity = 0
+        },
+        enter (el, done) {
+            el.style.opacity = 1
+        },
+        leave (el) {
+            setTimeout(() => {
+                el.style.opacity = 0
+            }, 100)
         }
     },
     destroyed() {
@@ -142,6 +153,11 @@ export default {
     font-size: 33px;
     font-weight: 300;
     color: #d8d9be;
+
+    .title {
+        font-size: 33px;
+        font-weight: 300;
+    }
 
     .subtitle {
         display: inline-block;
@@ -184,10 +200,16 @@ export default {
     }
 
     .company-logo {
-        padding-right: 4px;
+        padding: 0 4px;
         vertical-align: middle;
+        position: relative;
+        top: -2px;
+        &.is-indestructible {
+            top: -4px;
+        }
         &.is-makemake {
             max-width: 240px;
+            top: -4px;
         }
     }
 
@@ -236,12 +258,46 @@ export default {
 }
 
 //fade transition effect
-.fade-enter-active, .fade-leave-active {
-    transition: opacity 400ms $authenticMotion;
+.fade-enter-to, .fade-leave {
+    opacity: 1;
 }
-.fade-enter, .fade-leave-to {
-    //prevent complete fade out
-    opacity: 0.7;
+.fade-enter-active {
+    animation: fadein;
+    animation-duration: 400ms;
+    animation-timing-function: $authenticMotion;
+}
+.fade-leave-action {
+    animation-name: fadeout;
+    animation-duration: 400ms;
+    animation-delay: 100ms;
+    animation-timing-function: $authenticMotion;
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0.3;
+    }
+    25% {
+        opacity: 0.75;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 0.9;
+    }
+    50% {
+        opacity: 0.75;
+    }
+    100% {
+        opacity: 0.3;
+    }
 }
 
 </style>
