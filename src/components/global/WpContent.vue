@@ -29,7 +29,7 @@ export default {
         },
         enableStyles: {
             type: Boolean,
-            default: true
+            default: false
         }
     },
     data() {
@@ -197,7 +197,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .wp-content {
     .responsive-video {
         position: relative;

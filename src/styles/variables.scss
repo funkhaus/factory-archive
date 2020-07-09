@@ -10,6 +10,5 @@ $authenticMotion: cubic-bezier(0.4, 0, 0.2, 1);
 $gt-wide: "only screen and (min-width: 1800px)";
 // $lt-desktop: 'only screen and (max-width: 1280px)';
 $lt-tablet: "only screen and (max-width: 1024px)";
-// $lt-phone: 'only screen and (max-width: 750px)';
-// $lt-phone-landscape: 'only screen and (max-width: 750px) and (orientation: landscape)';
+$lt-phone: "only screen and (max-width: 750px)";
 $has-hover: "(hover: hover)";
