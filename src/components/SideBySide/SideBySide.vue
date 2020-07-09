@@ -75,8 +75,6 @@ export default {
     align-items: flex-start;
 
     min-height: var(--unit-100vh);
-    max-width: var(--unit-max-width);
-    margin: 0 auto;
 
     .images {
         width: 50%;
