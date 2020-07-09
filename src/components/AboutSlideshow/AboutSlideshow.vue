@@ -7,12 +7,14 @@
                     slot-scope="{ slide }"
                     class="slide-image"
                     :image="slide"
-                    :aspect-ratio="1.3"
+                    mode="fullbleed"
                 />
             </slideshow>
         </div>
 
-        <wp-content :html="text" />
+        <div class="panel">
+            <wp-content :html="text" />
+        </div>
     </div>
 </template>
 
@@ -45,28 +47,29 @@ export default {
     display: flex;
     flex-direction: row;
     background-color: beige;
+    height: var(--unit-100vh);
 
     .container {
         width: 50%;
         padding: 50px;
         box-sizing: border-box;
         position: relative;
+
+        .slideshow {
+            height: 100%;
+            width: 100%;
+        }
     }
 
-    .slideshow {
-        height: 100%;
-        width: 100%;
-    }
-
-    .wp-content {
+    .panel {
         width: 50%;
         height: 100%;
-        padding: 60px;
+        padding: 0 60px;
         box-sizing: border-box;
         font-size: 25px;
         font-weight: 300;
+        overflow-y: scroll;
 
-        box-sizing: border-box;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -80,17 +83,15 @@ export default {
         .container {
             width: 100%;
             height: 100%;
+            padding: 20px;
         }
 
-        .slideshow,
-        .wp-content {
-            // width: 100%;
-        }
-
-        .wp-content {
+        .panel {
             width: 100%;
             padding: 20px;
             font-size: 14px;
+
+            justify-content: flex-start;
         }
     }
 }

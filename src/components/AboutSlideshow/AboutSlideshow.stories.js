@@ -9,8 +9,7 @@ export const Default = () => ({
     components: { AboutSlideshow },
     data() {
         return {
-            api: API,
-            images: [API.images[0], API.images[1]]
+            api: API
         }
     },
     template: `<about-slideshow  :slides="api.images" :text="api.page.content" />`
