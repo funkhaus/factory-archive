@@ -114,7 +114,7 @@ export default {
     @media #{$has-hover} {
         &:hover:not(.hover-solid) {
             .image {
-                transform: translateY(-40%);
+                transform: translateY(-100px);
                 .scrim {
                     background-color: rgba(black, 0.2);
                 }
