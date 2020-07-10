@@ -718,5 +718,50 @@
             "name": "News",
             "description": "Bender, being God isn't easy. If you do too much, people get dependent on you, and if you do nothing, they lose hope. You have to use a light touch. Like a safecracker, or a pickpocket."
         }
-    ]
+    ],
+    "menuItems": {
+        "nodes": [
+            {
+                "url": "//fuxt-backend.funkhaus.us/featured/",
+                "target": null,
+                "cssClasses": [
+                    "red"
+                ],
+                "id": "bmF2X21lbnVfaXRlbTo5MQ==",
+                "label": "Front Page"
+            },
+            {
+                "url": "//fuxt-backend.funkhaus.us/work/",
+                "target": null,
+                "cssClasses": [
+                    "green"
+                ],
+                "id": "bmF2X21lbnVfaXRlbTo5MA==",
+                "label": "Work"
+            },
+            {
+                "url": "//fuxt-backend.funkhaus.us/contact/",
+                "target": null,
+                "cssClasses": [
+                    "blue"
+                ],
+                "id": "bmF2X21lbnVfaXRlbTo5Mg==",
+                "label": "Contact"
+            },
+            {
+                "url": "//fuxt-backend.funkhaus.us/about/",
+                "target": "_blank",
+                "cssClasses": [],
+                "id": "bmF2X21lbnVfaXRlbTo5Mw==",
+                "label": "About"
+            },
+            {
+                "url": "//fuxt-backend.funkhaus.us/directors/",
+                "target": null,
+                "cssClasses": [],
+                "id": "bmF2X21lbnVfaXRlbToxMTg=",
+                "label": "Directors"
+            }
+        ]
+    }
 }
