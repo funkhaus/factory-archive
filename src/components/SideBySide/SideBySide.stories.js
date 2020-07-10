@@ -1,6 +1,7 @@
 import SideBySide from "./SideBySide"
 import API from "@/static/db.json"
 
+// QUESTION: is this what  you mean only mock up once?
 const Items = [
     {
         image: API.images[0],
@@ -36,7 +37,6 @@ export default {
 export const Default = () => ({
     components: { SideBySide },
     data() {
-        // QUESTION: what do you mean only mock up once?
         return {
             api: API,
             items: Items
