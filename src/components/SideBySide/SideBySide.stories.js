@@ -1,7 +1,6 @@
 import SideBySide from "./SideBySide"
 import API from "@/static/db.json"
 
-// QUESTION: is this what  you mean only mock up once?
 const Items = [
     {
         image: API.images[0],
