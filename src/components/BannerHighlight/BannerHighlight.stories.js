@@ -5,12 +5,32 @@ export default {
     title: "@uptownhr / BannerHighlight"
 }
 
-export const BlockWorkWithTitle = () => ({
+export const Default = () => ({
     components: { BannerHighlight },
     data() {
         return {
             api: API
         }
     },
-    template: `<banner-highlight text="Originals" prompt="Explore" :image="api.image" to="/" />`
+    template: `<banner-highlight :image="api.image" to="/" />`
+})
+
+export const WithTitle = () => ({
+    components: { BannerHighlight },
+    data() {
+        return {
+            api: API
+        }
+    },
+    template: `<banner-highlight text="Sample" :image="api.image" to="/" />`
+})
+
+export const WithPrompt = () => ({
+    components: { BannerHighlight },
+    data() {
+        return {
+            api: API
+        }
+    },
+    template: `<banner-highlight prompt="Sample" :image="api.image" to="/" />`
 })
