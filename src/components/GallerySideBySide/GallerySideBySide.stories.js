@@ -1,4 +1,4 @@
-import SideBySide from "./SideBySide"
+import GallerySideBySide from "./GallerySideBySide"
 import API from "@/static/db.json"
 
 const Items = [
@@ -30,27 +30,27 @@ const Items = [
 ]
 
 export default {
-    title: "@dchiamp / SideBySide"
+    title: "@dchiamp / GallerySideBySide"
 }
 
 export const Default = () => ({
-    components: { SideBySide },
+    components: { GallerySideBySide },
     data() {
         return {
             api: API,
             items: Items
         }
     },
-    template: `<side-by-side  :items="items" style="background-color: beige;"/>`
+    template: `<gallery-side-by-side  :items="items" style="background-color: beige;"/>`
 })
 
 export const Mobile = () => ({
-    components: { SideBySide },
+    components: { GallerySideBySide },
     data() {
         return {
             api: API,
             items: Items
         }
     },
-    template: `<side-by-side  :items="items" :isMobile="true" style="background-color: beige;"/>`
+    template: `<gallery-side-by-side  :items="items" :isMobile="true" style="background-color: beige;"/>`
 })
