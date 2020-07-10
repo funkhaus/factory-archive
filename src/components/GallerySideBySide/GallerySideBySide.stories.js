@@ -43,14 +43,3 @@ export const Default = () => ({
     },
     template: `<gallery-side-by-side  :items="items" style="background-color: beige;"/>`
 })
-
-export const Mobile = () => ({
-    components: { GallerySideBySide },
-    data() {
-        return {
-            api: API,
-            items: Items
-        }
-    },
-    template: `<gallery-side-by-side  :items="items" :isMobile="true" style="background-color: beige;"/>`
-})

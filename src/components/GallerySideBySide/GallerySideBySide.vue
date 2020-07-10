@@ -1,38 +1,44 @@
 <template lang="html">
-    <!-- Mobile  -->
-    <div v-if="isMobile" class="gallery-side-by-side">
-        <div v-for="(item, i) in items" v-if="items.length" class="mobile-item">
-            <div class="wrapper">
-                <wp-image
-                    v-if="item.image"
-                    :key="item.image.id"
-                    :image="item.image"
-                />
-            </div>
-            <div class="panel">
-                <wp-content :html="item.text" />
-            </div>
-        </div>
-    </div>
-    <!-- Desktop  -->
-    <div v-else-if="!isMobile" class="gallery-side-by-side">
-        <div class="images">
+    <div class="gallery-side-by-side">
+        <!-- Mobile  -->
+        <div class="gallery-mobile">
             <div
-                v-for="(image, i) in images"
-                v-if="images.length"
-                class="wrapper"
+                v-for="(item, i) in items"
+                v-if="items.length"
+                class="mobile-item"
             >
-                <wp-image
-                    v-if="image"
-                    :key="image.id"
-                    :image="image"
-                    mode="fullbleed"
-                />
+                <div class="wrapper">
+                    <wp-image
+                        v-if="item.image"
+                        :key="item.image.id"
+                        :image="item.image"
+                    />
+                </div>
+                <div class="panel">
+                    <wp-content :html="item.text" />
+                </div>
             </div>
         </div>
-        <div class="text">
-            <div v-for="(text, i) in texts" class="panel">
-                <wp-content :html="text" />
+        <!-- Desktop  -->
+        <div class="gallery-dekstop">
+            <div class="images">
+                <div
+                    v-for="(image, i) in images"
+                    v-if="images.length"
+                    class="wrapper"
+                >
+                    <wp-image
+                        v-if="image"
+                        :key="image.id"
+                        :image="image"
+                        mode="fullbleed"
+                    />
+                </div>
+            </div>
+            <div class="text">
+                <div v-for="(text, i) in texts" class="panel">
+                    <wp-content :html="text" />
+                </div>
             </div>
         </div>
     </div>
@@ -51,10 +57,6 @@ export default {
         items: {
             type: Array,
             default: () => []
-        },
-        isMobile: {
-            type: Boolean,
-            default: false
         }
     },
     computed: {
@@ -74,11 +76,16 @@ export default {
 
 <style lang="scss" scoped>
 .gallery-side-by-side {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    min-height: var(--unit-100vh);
+    .gallery-mobile {
+        display: none;
+    }
+    .gallery-dekstop {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        min-height: var(--unit-100vh);
+    }
 
     .images {
         width: 50%;
@@ -125,20 +132,19 @@ export default {
         }
     }
 
-    .mobile-item {
-        display: none;
-    }
-
     // Breakpoints
     @media #{$lt-tablet} {
-        flex-direction: column;
-
-        .text,
-        .images {
+        .gallery-desktop {
             display: none;
         }
-        .mobile-item {
+
+        .gallery-mobile {
             display: block;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-height: var(--unit-100vh);
         }
 
         .wp-content {
