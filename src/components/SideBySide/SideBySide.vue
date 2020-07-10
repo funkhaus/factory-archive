@@ -74,8 +74,6 @@ export default {
 
 <style lang="scss" scoped>
 .gallery-side-by-side {
-    // QUESTION:how to style in story?
-    background-color: beige; // DELETE placeholder
     position: relative;
     display: flex;
     flex-direction: row;

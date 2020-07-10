@@ -42,7 +42,7 @@ export const Default = () => ({
             items: Items
         }
     },
-    template: `<side-by-side  :items="items"/>`
+    template: `<side-by-side  :items="items" style="background-color: beige;"/>`
 })
 
 export const Mobile = () => ({
@@ -53,5 +53,5 @@ export const Mobile = () => ({
             items: Items
         }
     },
-    template: `<side-by-side  :items="items" :isMobile="true"/>`
+    template: `<side-by-side  :items="items" :isMobile="true" style="background-color: beige;"/>`
 })
