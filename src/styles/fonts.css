@@ -26,3 +26,49 @@
         800 - Extra Bold (Ultra Bold)
         900 - Black (Heavy)
 */
+
+/* Druk Wide */
+@font-face {
+    font-family: "Druk Wide";
+    src: url("/fonts/DrukWide-MediumItalic-Web.woff2") format("woff2"),
+        url("/fonts/DrukWide-MediumItalic-Web.woff") format("woff");
+    font-weight: 500;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Druk Wide";
+    src: url("/fonts/DrukWide-Medium-Web.woff2") format("woff2"),
+        url("/fonts/DrukWide-Medium-Web.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Druk Wide";
+    src: url("/fonts/DrukWide-BoldItalic-Web.woff2") format("woff2"),
+        url("/fonts/DrukWide-BoldItalic-Web.woff") format("woff");
+    font-weight: 700;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Druk Wide";
+    src: url("/fonts/DrukWide-Bold-Web.woff2") format("woff2"),
+        url("/fonts/DrukWide-Bold-Web.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Favorit */
+@font-face {
+    font-family: "Favorit";
+    src: url("/fonts/FavoritStd-Regualr.woff2") format("woff2"),
+        url("/fonts/FavoritStd-Regualr.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Favorit";
+    src: url("/fonts/FavoritStd-Italic.woff2") format("woff2"),
+        url("/fonts/FavoritStd-Italic.woff") format("woff");
+    font-weight: 400;
+    font-style: italic;
+}
