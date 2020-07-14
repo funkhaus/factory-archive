@@ -41,6 +41,7 @@ export default {
         }
     },
     methods: {
+        // May not be needed
         handleClick() {
             this.$emit("panel-interacted", event)
         }
