@@ -26,7 +26,7 @@ export const FeaturedBlockCredits = () => ({
     data() {
         return {
             api: API,
-            credits: `Artists – Angus Wall & Hazel Baird`,
+            creditsPrimary: `Artists – Angus Wall & Hazel Baird`,
             creditsSecondary: `Editor – Jamie Foord
             Production Co. – Placeholder
             Agency – Placeholder`
@@ -37,7 +37,7 @@ export const FeaturedBlockCredits = () => ({
                 :to="api.page.uri"
                 :title="api.page.title"
                 :image="api.page.featuredImage"
-                :credits="credits"
+                :creditsPrimary="creditsPrimary"
                 :creditsSecondary="creditsSecondary"
                 />`
 })

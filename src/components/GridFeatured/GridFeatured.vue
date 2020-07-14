@@ -2,15 +2,15 @@
     <div class="grid-featured">
         <block-featured
             v-for="(block, i) in blocks"
-            :key="i"
+            :key="i.id"
             :to="block.uri"
             :is-news="block.isNews"
-            :has-hover="block.hasHover"
+            :has-hover="hasHover(block)"
             :title="block.title"
             :image="block.featuredImage"
             :date="block.date"
             :logo-names="block.logoNames"
-            :credits="block.credits"
+            :credits-primary="block.creditsPrimary"
             :credits-secondary="block.creditsSecondary"
         />
     </div>
@@ -28,6 +28,11 @@ export default {
         blocks: {
             type: Array,
             default: () => []
+        }
+    },
+    methods: {
+        hasHover(block) {
+            return block.hasHover
         }
     }
 }

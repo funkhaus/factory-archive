@@ -25,7 +25,7 @@ const newsAndCredits = []
     .concat({
         ...API.pages[0],
         hasHover: true,
-        credits: `Artists – Angus Wall & Hazel Baird
+        creditsPrimary: `Artists – Angus Wall & Hazel Baird
         Editor – Jamie Foord`,
         creditsSecondary: `Production Co. – Placeholder
         Agency – Placeholder`
@@ -39,7 +39,7 @@ const newsAndCredits = []
     .concat({
         ...API.pages[2],
         hasHover: true,
-        credits: `Artists – Angus Wall & Hazel Baird
+        creditsPrimary: `Artists – Angus Wall & Hazel Baird
         Agency – Placeholder`,
         creditsSecondary: `Production Co. – Placeholder
         Agency – Placeholder`
@@ -47,7 +47,7 @@ const newsAndCredits = []
     .concat({
         ...API.page,
         hasHover: true,
-        credits: `Artists – Angus Wall & Hazel Baird
+        creditsPrimary: `Artists – Angus Wall & Hazel Baird
         Production Co. – Placeholder`,
         creditsSecondary: `Editor – Jamie Foord
         Agency – Placeholder`
@@ -61,7 +61,7 @@ const newsAndCredits = []
     .concat({
         ...API.pages[0],
         hasHover: true,
-        credits: `Artists – Angus Wall & Hazel Baird
+        creditsPrimary: `Artists – Angus Wall & Hazel Baird
         Editor – Jamie Foord
         Agency – Placeholder`
     })
