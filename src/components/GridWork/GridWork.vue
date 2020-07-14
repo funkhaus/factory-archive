@@ -15,6 +15,7 @@
 
 <script>
 import BlockWork from "@/components/BlockWork/BlockWork"
+
 export default {
     components: {
         BlockWork
@@ -42,6 +43,7 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     margin-top: 200px; // placeholder
+
     .title {
         position: fixed;
         top: 0;
@@ -50,6 +52,7 @@ export default {
         font-size: 120px;
         color: var(--color-company);
     }
+
     // Breakpoints
     @media #{$lt-phone} {
         .title {
