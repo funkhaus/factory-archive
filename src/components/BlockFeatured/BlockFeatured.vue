@@ -1,5 +1,5 @@
 <template>
-    <nuxt-link
+    <smart-link
         :class="classes"
         :to="to"
         @mouseover.native="startHover"
@@ -52,15 +52,15 @@
             <!-- Date -->
             <time v-if="isNews" class="date" v-html="formattedDate" />
         </div>
-    </nuxt-link>
+    </smart-link>
 </template>
 
 <script>
 // Helpers
 import { formatDate } from "@/utils/tools"
 // Components
-import NuxtLink from "@/components/global/NuxtLink"
 import WpImage from "@/components/global/WpImage"
+import SmartLink from "@/components/global/SmartLink"
 // Assets
 import SvgButtonPlay from "@/assets/svgs/button-play.svg"
 import SvgLogoA52Color from "@/assets/svgs/company-logos/logo-a52-color.svg"
@@ -72,8 +72,8 @@ import SvgLogoRpsg from "@/assets/svgs/company-logos/logo-rpsg.svg"
 
 export default {
     components: {
-        NuxtLink,
         WpImage,
+        SmartLink,
         SvgButtonPlay,
         SvgLogoA52Color,
         SvgLogoA52,
