@@ -18,7 +18,7 @@
             <!-- Meta -->
             <div ref="meta" :style="metaStyle" class="meta">
                 <!-- Play SVG -->
-                <svg-button-play class="svg play" />
+                <svg-button-play v-if="hasHover" class="svg play" />
                 <!-- Title -->
                 <h3 v-if="title" class="title" v-html="title" />
                 <!-- Logos -->
@@ -123,7 +123,8 @@ export default {
     data() {
         return {
             imageTranslateValue: "",
-            secondaryCreditsHeight: ""
+            secondaryCreditsHeight: "",
+            currentMetaPosition: ""
         }
     },
     computed: {
@@ -136,7 +137,7 @@ export default {
         },
         metaStyle() {
             return {
-                "margin-bottom": `-${this.secondaryCreditsHeight}`
+                "margin-bottom": this.currentMetaPosition
             }
         },
         formattedDate() {
@@ -150,29 +151,35 @@ export default {
         }
     },
     mounted() {
-        if (this.creditsPrimary) {
+        if (this.hasHover) {
             // Get height of block-text + padding to find how much to translate image on hover
             this.imageTranslateValue =
                 this.$refs.meta.clientHeight + 100 + "px"
-            // Get height of additional-credits to determine where to place meta so that
-            // primary credits sit in the correct place before hover
+            // Get height of additional-credits, set to negative to use with margin-bottom
             this.secondaryCreditsHeight =
-                this.$refs.secondary.clientHeight + "px"
+                "-" + this.$refs.secondary.clientHeight + "px"
+            // Move meta down equivalent of additional-credits height, so that
+            // primary credits sit in the correct place before hover
+            this.currentMetaPosition = this.secondaryCreditsHeight
         }
     },
     methods: {
         startHover() {
-            if (this.creditsPrimary) {
+            if (this.hasHover) {
                 // Move image up the height of meta
                 this.$el.querySelector(
                     ".media"
                 ).style.transform = `translateY(-${this.imageTranslateValue})`
+                // Move meta to its natural position
+                this.currentMetaPosition = "0"
             }
         },
         resetHover() {
-            if (this.creditsPrimary) {
-                // Return the image to its starting position
+            if (this.hasHover) {
+                // Return image to initial position
                 this.$el.querySelector(".media").style.transform = "none"
+                // Return meta to initial, lowered position
+                this.currentMetaPosition = this.secondaryCreditsHeight
             }
         }
     }
@@ -215,13 +222,6 @@ export default {
         color: var(--color-company);
 
         transition: color 0.4s $authenticMotion;
-    }
-
-    // Play Button
-    .play {
-        margin-bottom: 10px;
-        pointer-events: none;
-        // transition: opacity 0.4s $authenticMotion;
     }
 
     // Logos
@@ -267,6 +267,13 @@ export default {
         &:first-of-type {
             padding-top: var(--unit-spacer);
         }
+    }
+
+    // Play Button
+    .play {
+        margin-bottom: 10px;
+        pointer-events: none;
+        // transition: opacity 0.4s $authenticMotion;
     }
 
     // Hover state required styles
@@ -317,9 +324,6 @@ export default {
     // Hovers
     @media #{$has-hover} {
         &.has-hover:hover {
-            .meta {
-                margin-bottom: 0 !important;
-            }
             .title,
             .primary-credit {
                 color: var(--color-black);
