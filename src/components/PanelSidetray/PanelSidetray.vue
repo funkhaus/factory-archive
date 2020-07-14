@@ -50,12 +50,12 @@ export default {
 
 <style lang="scss" scoped>
 .panel-sidetray {
+    width: 420px;
     height: var(--unit-100vh);
     overflow-y: auto;
     background-color: var(--color-black);
     padding: 20px;
     box-sizing: border-box;
-    width: 420px;
 
     .wp-image {
         display: block;
@@ -72,7 +72,6 @@ export default {
             height: 100%;
             width: 100%;
             background-color: rgba(black, 0);
-            color: var(--color-company);
             transition: background-color 0.2s ease-in-out;
 
             display: flex;
@@ -81,6 +80,7 @@ export default {
             align-items: center;
 
             h4 {
+                color: var(--color-company);
                 font-size: 16px;
                 font-weight: 300;
                 opacity: 0;
