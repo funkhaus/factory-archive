@@ -1,70 +1,83 @@
 import GridFeatured from "./GridFeatured"
 import API from "@/static/db.json"
 
+let creditsItem = {
+    ...API.pages[0]
+}
+
+let logosItem = {
+    ...API.pages[0],
+    logoNames: ["rpsg", "jax", "elastic"]
+}
+
 // Logos
-const logos = []
-    .concat({
-        ...API.pages[0],
+const logos = [
+    { ...logosItem },
+    {
+        ...logosItem,
+        ...API.pages[1],
         logoNames: ["rpsg", "jax", "elastic", "indestrucible"]
-    })
-    .concat({
-        ...API.pages[1],
+    },
+    {
+        ...logosItem,
+        ...API.pages[2],
         logoNames: ["a52-color", "jax", "indestrucible"]
-    })
-    .concat({ ...API.pages[2], logoNames: ["elastic", "rpsg", "a52"] })
-    .concat({ ...API.pages[0], logoNames: ["a52", "jax", "indestrucible"] })
-    .concat({
+    },
+    { ...logosItem },
+    {
+        ...logosItem,
         ...API.pages[1],
-        logoNames: ["a52-color", "jax", "indestrucible"]
-    })
-    .concat({ ...API.pages[2], logoNames: ["elastic", "rpsg", "a52"] })
-    .concat({ ...API.pages[0], logoNames: ["a52", "jax", "indestrucible"] })
+        logoNames: ["rpsg", "jax", "elastic", "indestrucible"]
+    },
+    { ...logosItem }
+]
 
 // News and Credits
-const newsAndCredits = []
-    .concat({
-        ...API.pages[0],
+const newsAndCredits = [
+    {
+        ...creditsItem,
         hasHover: true,
         creditsPrimary: `Artists – Angus Wall & Hazel Baird
-        Editor – Jamie Foord`,
+            Editor – Jamie Foord`,
         creditsSecondary: `Production Co. – Placeholder
-        Agency – Placeholder`
-    })
-    .concat({
-        ...API.page,
-        isNews: true,
-        title:
-            "Mikkel EG Nielsen’s first spot for the new year is an inverted twist to the story of Narcissus"
-    })
-    .concat({
+            Agency – Placeholder`
+    },
+    {
+        ...creditsItem,
+        ...API.pages[1],
+        isNews: true
+    },
+    {
+        ...creditsItem,
+        ...API.pages[1],
+        hasHover: true,
+        creditsPrimary: `Artists – Angus Wall & Hazel Baird`,
+        creditsSecondary: `Production Co. – Placeholder
+            Agency – Placeholder
+            Editor – Jamie Foord`
+    },
+    {
+        ...creditsItem,
+        hasHover: true,
+        creditsPrimary: `Artists – Angus Wall & Hazel Baird
+            Editor – Jamie Foord`,
+        creditsSecondary: `Production Co. – Placeholder
+            Agency – Placeholder
+            Editor – Jamie Foord`
+    },
+    {
+        ...creditsItem,
+        ...API.pages[2],
+        isNews: true
+    },
+    {
+        ...creditsItem,
         ...API.pages[2],
         hasHover: true,
         creditsPrimary: `Artists – Angus Wall & Hazel Baird
-        Agency – Placeholder`,
-        creditsSecondary: `Production Co. – Placeholder
-        Agency – Placeholder`
-    })
-    .concat({
-        ...API.page,
-        hasHover: true,
-        creditsPrimary: `Artists – Angus Wall & Hazel Baird
-        Production Co. – Placeholder`,
-        creditsSecondary: `Editor – Jamie Foord
-        Agency – Placeholder`
-    })
-    .concat({
-        ...API.page,
-        isNews: true,
-        title:
-            "A whole lot more than deep dish pizza in Nike’s ‘Chicago Style.’"
-    })
-    .concat({
-        ...API.pages[0],
-        hasHover: true,
-        creditsPrimary: `Artists – Angus Wall & Hazel Baird
-        Editor – Jamie Foord
-        Agency – Placeholder`
-    })
+            Editor – Jamie Foord`
+    }
+]
 
 export default {
     title: "@austinblanchard / GridFeatured"
