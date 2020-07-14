@@ -132,10 +132,16 @@ export default {
     // Breakpoints
     @media #{$lt-phone} {
         width: 100%;
+        &.hover-solid .credits,
         .credits {
             z-index: 30;
+            opacity: 1;
             h2 {
                 font-size: 16px;
+                color: var(--color-company);
+            }
+            .svg path {
+                fill: var(--color-company);
             }
         }
         .image .scrim {
