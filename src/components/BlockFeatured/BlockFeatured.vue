@@ -268,12 +268,16 @@ export default {
             padding-top: var(--unit-spacer);
         }
     }
-
+    .additional-credits {
+        opacity: 0;
+        transition: opacity 0.4s $authenticMotion;
+    }
     // Play Button
     .play {
         margin-bottom: 10px;
         pointer-events: none;
-        // transition: opacity 0.4s $authenticMotion;
+        opacity: 0;
+        transition: opacity 0.4s $authenticMotion;
     }
 
     // Hover state required styles
@@ -327,6 +331,10 @@ export default {
             .title,
             .primary-credit {
                 color: var(--color-black);
+            }
+            .play,
+            .additional-credits {
+                opacity: 1;
             }
         }
     }
