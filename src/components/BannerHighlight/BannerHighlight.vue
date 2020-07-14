@@ -9,27 +9,26 @@
 
         <div class="block-text">
             <h3 class="text" v-html="text" />
-            <!-- prompt -->
 
             <div class="prompt-container">
-                <p class="prompt" v-html="prompt" />
-                <span class="arrow">Arrow</span>
+                <span class="prompt" v-html="prompt" />
+                <svg-arrow class="arrow" />
             </div>
         </div>
     </nuxt-link>
 </template>
 
 <script>
-// Helpers
-import { formatDate } from "@/utils/tools";
 // Components
 import NuxtLink from "@/components/global/NuxtLink";
 import WpImage from "@/components/global/WpImage";
+import SvgArrow from "@/assets/svgs/arrow.svg";
 
 export default {
     components: {
         NuxtLink,
-        WpImage
+        WpImage,
+        SvgArrow
     },
     props: {
         to: {
@@ -77,45 +76,35 @@ export default {
     .text {
         margin: 0;
         font-size: 89px;
-        padding-bottom: 43px;
         font-weight: 300;
     }
 
     .prompt-container {
-        position: absolute;
+        position: relative;
+        margin-top: 10px;
 
         .prompt {
             font-size: 28px;
-            overflow: hidden;
-            transition: opacity 200ms ease;
-            opacity: 0;
             padding: 0 15px 0 0;
             margin: 0;
             padding-left: 8px;
         }
 
         .arrow {
-            position: absolute;
-            left: 8px;
-            top: 50%;
-
-            transform: translateY(-50%);
-            transition: left 200ms ease;
+            transition: transform 200ms ease;
         }
+    }
 
-        &:hover .prompt {
-            opacity: 1;
-        }
-
+    @media #{$has-hover} {
         &:hover .arrow {
             left: 100%;
+            transform: translateX(30%);
         }
     }
 
     @media #{$lt-tablet} {
         .text {
             font-size: 59px;
-            padding-bottom: 29px;
         }
 
         .prompt-container .prompt {
