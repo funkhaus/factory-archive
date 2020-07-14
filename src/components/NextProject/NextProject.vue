@@ -1,8 +1,13 @@
 <template lang="html">
     <nuxt-link :to="to" class="next-project">
         <!-- QUESTION: How should i use aspect ratio here? -->
-        <!-- <wp-image :image="image" :aspect-ratio="72" /> -->
-        <wp-image :image="image" mode="fullbleed" />
+        <wp-image
+            v-if="aspectRatio"
+            :image="image"
+            :aspect-ratio="72"
+            :class="{ 'aspect-ratio': aspectRatio }"
+        />
+        <wp-image v-if="!aspectRatio" :image="image" mode="fullbleed" />
         <div class="meta">
             <h4>Next Project</h4>
             <div class="credits">
@@ -51,6 +56,10 @@ export default {
         to: {
             type: String,
             default: ""
+        },
+        aspectRatio: {
+            type: Boolean,
+            default: false
         }
     },
     computed: {
@@ -65,7 +74,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// QUESTION: hover state?
+// QUESTION: what is the hover state?
 .next-project {
     background-color: var(--color-black);
     display: flex;
@@ -78,14 +87,16 @@ export default {
         width: 50%;
         position: relative;
         // QUESTION: Use with aspect ratio?
-        // display: inline-flex;
-        // flex-direction: column;
-        // justify-content: center;
+        &.aspect-ratio {
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+        }
     }
 
     .meta {
         width: 50%;
-        padding: 20px;
+        padding: 50px;
         box-sizing: border-box;
         color: var(--color-company);
 
@@ -130,7 +141,7 @@ export default {
 
         li {
             margin: 2.5px 0;
-            font-size: 12px;
+            font-size: 14px;
         }
     }
 
@@ -140,6 +151,7 @@ export default {
         .wp-image,
         .meta {
             width: 100%;
+            padding: 20px 0;
         }
 
         .wp-image {
