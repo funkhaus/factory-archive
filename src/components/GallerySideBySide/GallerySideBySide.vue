@@ -20,7 +20,7 @@
             </div>
         </div>
         <!-- Desktop  -->
-        <div class="gallery-dekstop">
+        <div class="gallery-desktop">
             <div class="images">
                 <div
                     v-for="(image, i) in images"
@@ -76,10 +76,11 @@ export default {
 
 <style lang="scss" scoped>
 .gallery-side-by-side {
+    // hide mobile on desktop
     .gallery-mobile {
         display: none;
     }
-    .gallery-dekstop {
+    .gallery-desktop {
         position: relative;
         display: flex;
         flex-direction: row;
