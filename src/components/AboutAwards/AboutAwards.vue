@@ -4,7 +4,7 @@
             <wp-image :image="image" mode="fullbleed" />
         </div>
         <div class="text-panel">
-            <h4 v-html="'Awards'" />
+            <h4 class="title" v-html="'Awards'" />
             <div class="awards">
                 <div v-for="(award, i) in awards" class="award">
                     <div class="wrapper">
@@ -14,7 +14,14 @@
                             class="logo"
                         />
                     </div>
-                    <span>{{ award.total }}</span>
+
+                    <count-up
+                        class="count"
+                        element="span"
+                        :to="award.total"
+                        :start-count="startCount"
+                        :duration="2000"
+                    />
                 </div>
             </div>
         </div>
@@ -24,14 +31,16 @@
 <script>
 //  Components
 import WpImage from "@/components/global/WpImage"
-import SvgAwardAice from "@/assets/svgs/awards/aice.svg"
-import SvgAwardAicp from "@/assets/svgs/awards/aicp.svg"
+import CountUp from "@/components/global/CountUp"
+import SvgAwardLogoAice from "@/assets/svgs/awards/logo-aice.svg"
+import SvgAwardLogoAicp from "@/assets/svgs/awards/logo-aicp.svg"
 
 export default {
     components: {
         WpImage,
-        SvgAwardAice,
-        SvgAwardAicp
+        SvgAwardLogoAice,
+        SvgAwardLogoAicp,
+        CountUp
     },
     props: {
         image: {
@@ -42,6 +51,18 @@ export default {
             type: Array,
             default: () => []
         }
+    },
+    // NOTE: Using this to simulate in-view boolean bc count-up only starts when start-count prop changes
+    data() {
+        return {
+            startCount: false
+        }
+    },
+    mounted() {
+        // simulating in view
+        setTimeout(() => {
+            this.startCount = true
+        }, 1200)
     }
 }
 </script>
@@ -50,10 +71,10 @@ export default {
 .about-awards {
     display: flex;
     flex-direction: row;
-    background-color: beige; // DELETE
+    background-color: var(--color-company);
     height: var(--unit-100vh);
-    // padding: 20px;
-    // box-sizing: border-box;
+    padding: 20px;
+    box-sizing: border-box;
 
     .image-panel,
     .text-panel {
@@ -81,37 +102,42 @@ export default {
         text-align: center;
         padding: 0 var(--unit-gutter);
         box-sizing: border-box;
-
-        h4 {
+        .title {
             text-align: left;
             font-size: 50px;
             font-weight: 300;
             margin: 50px 0;
+            padding: 0 35px;
+            color: var(--color-black);
         }
     }
 
     .awards {
         width: 100%;
+        max-width: 550px;
+        margin-right: auto;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: flex-start;
         align-items: center;
-        // align-content: flex-start;
+        align-content: flex-start;
     }
-
     .award {
-        span {
+        padding: 15px;
+        box-sizing: border-box;
+        width: 25%;
+        .count {
             display: block;
             font-weight: 300;
             font-size: 25px;
+            color: var(--color-black);
+            margin-top: 10px;
         }
         .wrapper {
             position: relative;
             display: inline-block;
-            height: 100px;
-            width: 100px;
-
+            height: 80px;
+            width: 80px;
             .logo {
                 position: absolute;
                 top: 0;
@@ -119,8 +145,6 @@ export default {
                 width: 100%;
                 height: 100%;
                 object-fit: contain;
-                padding: 10px;
-                box-sizing: border-box;
                 * {
                     fill: var(--color-black);
                 }
@@ -130,15 +154,25 @@ export default {
 
     // Breakpoints
     @media #{$lt-tablet} {
+        .text-panel {
+            padding: 0 20px;
+        }
+        .award {
+            width: 33.33%;
+        }
+    }
+    @media #{$lt-phone} {
         flex-direction: column;
+        min-height: 100vh;
+        height: auto;
 
         .image-panel,
         .text-panel {
             width: 100%;
             height: 100%;
         }
-
         .image-panel {
+            min-height: 50vh;
             /deep/ .wp-image {
                 position: absolute;
                 top: 0px;
@@ -148,6 +182,21 @@ export default {
                 width: 100%;
                 height: auto;
             }
+        }
+
+        .text-panel {
+            padding: 30px 0;
+            .title {
+                margin: 0 0 30px 0;
+                font-size: 40px;
+            }
+        }
+
+        .awards {
+            margin-left: auto;
+        }
+        .award {
+            width: 50%;
         }
     }
 }

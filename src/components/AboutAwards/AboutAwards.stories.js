@@ -1,6 +1,41 @@
 import AboutAwards from "./AboutAwards"
 import API from "@/static/db.json"
 
+const Awards = [
+    {
+        slug: "logo-aicp",
+        total: 52
+    },
+    {
+        slug: "logo-aice",
+        total: 120
+    },
+    {
+        slug: "logo-aicp",
+        total: 52
+    },
+    {
+        slug: "logo-aice",
+        total: 120
+    },
+    {
+        slug: "logo-aicp",
+        total: 52
+    },
+    {
+        slug: "logo-aice",
+        total: 120
+    },
+    {
+        slug: "logo-aicp",
+        total: 52
+    },
+    {
+        slug: "logo-aice",
+        total: 120
+    }
+]
+
 export default {
     title: "@dchiamp / AboutAwards"
 }
@@ -10,16 +45,7 @@ export const Default = () => ({
     data() {
         return {
             api: API,
-            awards: [
-                {
-                    slug: "aicp",
-                    total: 52
-                },
-                {
-                    slug: "aice",
-                    total: 120
-                }
-            ]
+            awards: Awards
         }
     },
     template: `<about-awards :image="api.images[0]" :awards="awards" />`
