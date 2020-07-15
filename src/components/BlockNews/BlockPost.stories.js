@@ -21,3 +21,21 @@ export const BlockNewsDefault = () => ({
                 :categories="api.categories"
                 />`
 })
+
+export const BlockNewsPrompt = () => ({
+    components: { BlockNews },
+    data() {
+        return {
+            api: API
+        }
+    },
+    template: `<block-news
+                :to="api.page.uri"
+                :date="api.page.date"
+                :title="api.page.title"
+                :excerpt="api.page.excerpt"
+                :image="api.page.featuredImage"
+                :categories="api.categories"
+                :hasPrompt="true"
+                />`
+})
