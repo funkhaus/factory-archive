@@ -4,7 +4,7 @@
             <span class="more">More</span>
         </wp-image>
         <div class="block-text">
-            <p class="prompt">Next</p>
+            <span v-if="hasPrompt" class="prompt">Next</span>
             <div class="meta">
                 <time class="date" v-html="formattedDate" />
                 <h3 class="title" v-html="title" />
@@ -156,21 +156,20 @@ export default {
     &.has-prompt {
         align-items: normal;
 
-        .excerpt,
-        .categories {
-            display: none;
-        }
-        .prompt {
-            display: block;
-            margin-bottom: auto;
-        }
         .block-text {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
         }
-        .meta {
-            margin-bottom: auto;
+        .categories {
+            display: none;
+        }
+        .excerpt {
+            margin-bottom: 30px;
+        }
+        .prompt {
+            display: block;
+            margin-top: 30px;
         }
     }
 
