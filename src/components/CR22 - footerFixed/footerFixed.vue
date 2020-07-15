@@ -123,6 +123,7 @@ export default {
 
     @media #{$lt-tablet} {
         line-height: 1.71428;
+        padding: 0;
 
         .logo {
             margin-top: 80px;
@@ -134,12 +135,21 @@ export default {
         }
         .is-addresses {
             order: 1;
-            justify-content: space-around;
+            justify-content: space-between;
             margin-top: 16px;
             margin-bottom: 40px;
 
             address {
-                padding: 0 16px;
+                padding: 0 20px;
+            }
+
+            address:only-child {
+                margin: 0 auto;
+                margin-top: 16px;
+            }
+            address:nth-of-type(2) {
+                margin-right: 0;
+                margin-left: auto;
             }
         }
         .is-link {
@@ -151,6 +161,17 @@ export default {
             .social-links {
                 padding: 0;
                 text-align: center;
+            }
+        }
+    }
+
+    //Added this to center the addresses when they wrap.  
+    @media screen and (max-width: 450px) {
+        .is-addresses {
+            justify-content: space-around;
+            address:nth-of-type(2) {
+                margin: 0;
+                margin-top: 16px;
             }
         }
     }
