@@ -28,7 +28,7 @@
                         :is="`svg-logo-${name}`"
                         v-for="(name, i) in logoNames"
                         :key="name"
-                        class="logo"
+                        :class="`logo logo-${name}`"
                     />
                 </div>
                 <!-- Primary Credits -->
@@ -140,7 +140,7 @@ export default {
         metaStyle() {
             if (this.hasHover) {
                 return {
-                    "margin-bottom": this.currentMetaPosition
+                    top: this.currentMetaPosition
                 }
             }
         },
@@ -168,7 +168,7 @@ export default {
                 this.$refs.meta.clientHeight + 100 + "px"
             // Get height of additional-credits, set to negative to use with margin-bottom
             this.secondaryCreditsHeight =
-                "-" + this.$refs.secondary.clientHeight + "px"
+                this.$refs.secondary.clientHeight + "px"
             // Move meta down equivalent of additional-credits height, so that
             // primary credits sit in the correct place before hover
             this.currentMetaPosition = this.secondaryCreditsHeight
@@ -312,7 +312,8 @@ export default {
             transition: transform 0.4s $authenticMotion;
         }
         .meta {
-            transition: margin-bottom 0.4s $authenticMotion;
+            position: relative;
+            transition: top 0.4s $authenticMotion;
         }
     }
 
