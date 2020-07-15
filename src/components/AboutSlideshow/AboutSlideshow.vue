@@ -1,6 +1,6 @@
 <template lang="html">
     <div class="about-slideshow">
-        <div class="container">
+        <div class="slideshow-panel">
             <slideshow :slides="slides" next-transition-name="fade">
                 <wp-image
                     slot="slide"
@@ -12,7 +12,7 @@
             </slideshow>
         </div>
 
-        <div class="panel">
+        <div class="text-panel">
             <wp-content :html="text" />
         </div>
     </div>
@@ -44,16 +44,16 @@ export default {
 
 <style lang="scss">
 .about-slideshow {
+    background-color: var(--color-company);
+    min-height: var(--unit-100vh);
     display: flex;
     flex-direction: row;
-    background-color: beige;
-    height: var(--unit-100vh);
 
-    .container {
-        width: 50%;
-        padding: 50px;
-        box-sizing: border-box;
+    .slideshow-panel {
         position: relative;
+        width: 50%;
+        padding: 50px 60px;
+        box-sizing: border-box;
 
         .slideshow {
             height: 100%;
@@ -61,14 +61,15 @@ export default {
         }
     }
 
-    .panel {
+    .text-panel {
         width: 50%;
-        height: 100%;
-        padding: 0 60px;
+        padding: 0 65px;
         box-sizing: border-box;
         font-size: 25px;
         font-weight: 300;
         overflow-y: scroll;
+        max-width: 640px;
+        margin-right: auto;
 
         display: flex;
         flex-direction: column;
@@ -79,19 +80,32 @@ export default {
     // Breakpoints
     @media #{$lt-tablet} {
         flex-direction: column;
+        height: auto;
 
-        .container {
+        .slideshow-panel {
             width: 100%;
             height: 100%;
-            padding: 20px;
+            padding: 15px 15px 0;
+
+            .slideshow {
+                min-height: 50vh;
+            }
         }
 
-        .panel {
+        .text-panel {
             width: 100%;
-            padding: 20px;
-            font-size: 14px;
+            padding: 0 15px 15px;
+            font-size: 20px;
+            margin-left: auto;
 
             justify-content: flex-start;
+        }
+
+        /deep/ .wp-content {
+            padding: 20px;
+            p:first-of-type {
+                margin-top: 0;
+            }
         }
     }
 }
