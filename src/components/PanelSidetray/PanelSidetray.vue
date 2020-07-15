@@ -122,6 +122,9 @@ export default {
                 }
             }
         }
+        .svg:hover {
+            cursor: pointer;
+        }
     }
 }
 </style>
