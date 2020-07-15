@@ -9,6 +9,7 @@
         <wp-image
             v-if="image && !isNews"
             class="block-image"
+            :style="imageStyle"
             :image="image"
             mode="fullbleed"
         />
@@ -124,7 +125,8 @@ export default {
         return {
             imageTranslateValue: "",
             secondaryCreditsHeight: "",
-            currentMetaPosition: ""
+            currentMetaPosition: "",
+            currentImagePosition: "0"
         }
     },
     computed: {
@@ -136,8 +138,17 @@ export default {
             ]
         },
         metaStyle() {
-            return {
-                "margin-bottom": this.currentMetaPosition
+            if (this.hasHover) {
+                return {
+                    "margin-bottom": this.currentMetaPosition
+                }
+            }
+        },
+        imageStyle() {
+            if (this.hasHover) {
+                return {
+                    transform: `translateY(-${this.currentImagePosition})`
+                }
             }
         },
         formattedDate() {
@@ -167,9 +178,7 @@ export default {
         startHover() {
             if (this.hasHover) {
                 // Move image up the height of meta
-                this.$el.querySelector(
-                    ".media"
-                ).style.transform = `translateY(-${this.imageTranslateValue})`
+                this.currentImagePosition = this.imageTranslateValue
                 // Move meta to its natural position
                 this.currentMetaPosition = "0"
             }
@@ -177,7 +186,7 @@ export default {
         resetHover() {
             if (this.hasHover) {
                 // Return image to initial position
-                this.$el.querySelector(".media").style.transform = "none"
+                this.currentImagePosition = "0"
                 // Return meta to initial, lowered position
                 this.currentMetaPosition = this.secondaryCreditsHeight
             }
@@ -285,7 +294,8 @@ export default {
         .play,
         .title,
         .primary-credit,
-        .additional-credits {
+        .additional-credits,
+        .block-image {
             position: relative;
         }
         .title,
@@ -297,10 +307,9 @@ export default {
             z-index: 10;
         }
         .block-image {
-            .media {
-                z-index: 20;
-                transition: transform 0.4s $authenticMotion;
-            }
+            z-index: 20;
+            height: 100%;
+            transition: transform 0.4s $authenticMotion;
         }
         .meta {
             transition: margin-bottom 0.4s $authenticMotion;
