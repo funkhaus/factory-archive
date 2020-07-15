@@ -14,9 +14,9 @@ export const BlockWorkDefaultHover = () => ({
     },
     template: `<block-work
         :key="api.pages[1].childPages[0].id"
-        title="split title &#8211; bottom title"
+        title="Split title &#8211; Bottom title"
         :image="api.pages[1].childPages[0].featuredImage"
-        :path="api.pages[1].childPages[0].uri"
+        :to="api.pages[1].childPages[0].uri"
     />`
 })
 
@@ -31,7 +31,7 @@ export const BlockWorkSolidHover = () => ({
         :key="api.pages[1].childPages[0].id"
         :title="api.pages[1].childPages[0].title"
         :image="api.pages[1].childPages[0].featuredImage"
-        :path="api.pages[1].childPages[0].uri"
+        :to="api.pages[1].childPages[0].uri"
         hover-type="solid"
     />`
 })
