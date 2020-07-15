@@ -18,21 +18,28 @@
                 v-for="company in companies"
                 :key="company.name"
             >
-                <nuxt-link class="company-link" :to="`/${company.name}`" tag="a">
+                <nuxt-link 
+                    class="company-link" 
+                    :to="`/${company.name}`"
+                    @mouseover.native="set(company)" 
+                    @mouseleave.native="reset()"
+                >
                     <component 
                         :is="`logo-${company.name}`"
                         class="company-logo"
                         :class="`is-${company.name}`"
-                        @mouseover="set(company)" 
-                        @mouseout="set(null)" />
+                    />
                 </nuxt-link>
                 <span class="text">{{company.text}} </span>
             </span>
         </div>
 
         <!-- Images absolute -->
-        <transition-group 
+        <transition-group
+            v-show="images.length > 0"
+            class="transition-block"
             name="fade"
+            mode="in-out"
         >
             <wp-image
                 v-for="(image, index) in images"
@@ -43,6 +50,7 @@
                 mode="fullbleed"
             />
         </transition-group>
+        
 
         <!-- Bottom Text -->
         <p class="end-text">These diverse talent are connected by a creative singularity.</p>
@@ -103,13 +111,13 @@ export default {
     },
     methods: {
         set(company) {
-            if (!company) return this.reset()
+            if (this.company) return
             this.company = company
             this.start()
         },
         start() {
             clearInterval(this.timer)
-            this.timer = setInterval( () => {               
+            this.timer = setInterval( () => {
                 if (this.activeImage < this.imagesLength) {
                     this.activeImage++
                 } else {
@@ -202,7 +210,7 @@ export default {
     }
 
     // Images
-    .image {
+    .transition-block {
         position: absolute;
         top: 35%;
         left: 15%;
@@ -211,6 +219,7 @@ export default {
         margin: auto;
         z-index: 10;
         pointer-events: none;
+        background-color: black;
     }
 
     // Hover states
@@ -246,46 +255,13 @@ export default {
 }
 
 //fade transition effect
-.fade-enter-to, .fade-leave {
-    opacity: 1;
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
 }
-.fade-enter-active {
-    animation: fadein;
-    animation-duration: 400ms;
-    animation-timing-function: $authenticMotion;
-}
-.fade-leave-action {
-    animation-name: fadeout;
-    animation-duration: 400ms;
-    animation-delay: 100ms;
-    animation-timing-function: $authenticMotion;
-}
-
-@keyframes fadein {
-    0% {
-        opacity: 0.3;
-    }
-    25% {
-        opacity: 0.75;
-    }
-    50% {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeout {
-    0% {
-        opacity: 1;
-    }
-    25% {
-        opacity: 0.9;
-    }
-    50% {
-        opacity: 0.75;
-    }
-    100% {
-        opacity: 0.3;
-    }
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.4s $authenticMotion;
 }
 
 </style>
