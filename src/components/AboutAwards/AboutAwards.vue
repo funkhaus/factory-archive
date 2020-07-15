@@ -10,7 +10,6 @@
                     <div class="wrapper">
                         <component
                             :is="`svg-award-${award.slug}`"
-                            :key="award.slug"
                             class="logo"
                         />
                     </div>
@@ -59,7 +58,7 @@ export default {
         }
     },
     mounted() {
-        // simulating in view
+        // simulating in-view
         setTimeout(() => {
             this.startCount = true
         }, 1200)
