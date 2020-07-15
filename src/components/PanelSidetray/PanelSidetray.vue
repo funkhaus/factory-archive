@@ -1,11 +1,12 @@
 <template lang="html">
     <div class="panel-sidetray">
+        <svg-icon-reel class="svg" />
+        <!-- TODO: replace :key with item.id -->
         <nuxt-link
             v-for="(item, i) in items"
             v-if="item.featuredImage.sourceUrl"
-            :key="item.id"
+            :key="i"
             :to="item.uri"
-            @click.native="handleClick"
         >
             <wp-image
                 :image="item.featuredImage"
@@ -13,8 +14,10 @@
                 :class="{ active: i == activeIndex }"
             >
                 <div class="scrim">
-                    <h4 v-if="i == activeIndex">Currently Viewing</h4>
-                    <h4 v-else v-html="item.title" />
+                    <h4 v-if="i == activeIndex" class="title">
+                        Currently Viewing
+                    </h4>
+                    <h4 v-else class="title" v-html="item.title" />
                 </div>
             </wp-image>
         </nuxt-link>
@@ -24,11 +27,13 @@
 <script>
 import WpImage from "@/components/global/WpImage"
 import NuxtLink from "@/components/global/NuxtLink"
+import SvgIconReel from "@/assets/svgs/icon-reel.svg"
 
 export default {
     components: {
         WpImage,
-        NuxtLink
+        NuxtLink,
+        SvgIconReel
     },
     props: {
         items: {
@@ -39,12 +44,6 @@ export default {
             type: Number,
             default: -1
         }
-    },
-    methods: {
-        // May not be needed
-        handleClick() {
-            this.$emit("panel-interacted", event)
-        }
     }
 }
 </script>
@@ -52,57 +51,73 @@ export default {
 <style lang="scss" scoped>
 .panel-sidetray {
     width: 420px;
-    height: var(--unit-100vh);
-    overflow-y: auto;
+    min-height: var(--unit-100vh);
+    // NOTE: causes issue with abs pos svg: https://css-tricks.com/popping-hidden-overflow/
+    // overflow-y: auto;
+    // overflow-x: visible;
     background-color: var(--color-black);
     padding: 20px;
     box-sizing: border-box;
 
-    .wp-image {
+    position: absolute;
+    right: 0px;
+    top: 0;
+
+    .svg {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -35px;
+        z-index: 100;
+    }
+
+    /deep/ .wp-image {
         display: block;
         transition: transform 0.2s ease-in-out;
         position: relative;
         z-index: 20;
         cursor: pointer;
+    }
 
-        .scrim {
-            position: absolute;
-            z-index: 20;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background-color: rgba(black, 0);
-            transition: background-color 0.2s ease-in-out;
+    .scrim {
+        position: absolute;
+        z-index: 20;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(black, 0);
+        transition: background-color 0.2s ease-in-out;
 
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
 
-            h4 {
-                color: var(--color-company);
-                font-size: 16px;
-                font-weight: 300;
-                opacity: 0;
-                transition: opacity 0.2s ease-in-out;
-            }
+        .title {
+            color: var(--color-company);
+            font-size: 16px;
+            font-weight: 300;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            margin: 0;
+            padding: 10px;
         }
+    }
 
-        &.active .scrim {
-            background-color: rgba(black, 0.6);
-            h4 {
-                opacity: 1;
-            }
+    .wp-image.active .scrim {
+        background-color: rgba(black, 0.6);
+        .title {
+            opacity: 1;
         }
     }
 
     // Hovers
     @media #{$has-hover} {
-        .wp-image:hover:not(.active) {
+        /deep/ .wp-image:hover:not(.active) {
             .scrim {
                 background-color: rgba(black, 0.6);
-                h4 {
+                .title {
                     opacity: 1;
                 }
             }
