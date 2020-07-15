@@ -122,18 +122,6 @@ export default {
             this.company = null
             this.activeImage = 0
             this.timer = null
-        },
-        // transition effect
-        beforeEnter (el) {
-            el.style.opacity = 0
-        },
-        enter (el, done) {
-            el.style.opacity = 1
-        },
-        leave (el) {
-            setTimeout(() => {
-                el.style.opacity = 0
-            }, 100)
         }
     },
     destroyed() {
