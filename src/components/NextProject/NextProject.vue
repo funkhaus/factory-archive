@@ -65,7 +65,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// QUESTION: what is the hover state?
 .next-project {
     background-color: var(--color-black);
     display: flex;
