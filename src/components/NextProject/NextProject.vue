@@ -100,14 +100,14 @@ export default {
             height: 100%;
             z-index: 10;
             background-color: var(--color-company);
-            transition: all 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
         }
 
         h4,
         .credit {
             margin: 0;
             font-weight: 300;
-            transition: color 0.4s ease-in-out 0.2s;
+            transition: color 0.4s ease-in-out;
         }
 
         h4 {
@@ -121,7 +121,7 @@ export default {
             font-weight: 300;
             margin: 20px 0;
             display: block;
-            transition: all 0.4s ease-in-out 0.2s;
+            transition: color 0.4s ease-in-out;
 
             /deep/ .line {
                 display: block;
