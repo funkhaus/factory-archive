@@ -156,7 +156,7 @@ export default {
 
     // Hovers
     @media #{$has-hover} {
-        .meta:hover {
+        &:hover {
             .section-title,
             .credit,
             .title {
