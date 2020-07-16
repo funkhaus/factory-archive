@@ -39,6 +39,35 @@ const socialMenu = [
     }
 ]
 
+const companyMenu = [
+    {
+        label: "rpsg",
+        services:
+            "Editing for Feature Film - Television - Music Videos - Commercial"
+    },
+    {
+        label: "a52",
+        services: "VFX - Photo-Real CG - Seamless Compositing"
+    },
+    {
+        label: "primary",
+        services: "Digital Color Correction & Grading - Post Pipeline"
+    },
+    {
+        label: "elastic",
+        services: "Animation - Main Titles - Motion Design"
+    },
+    {
+        label: "jax",
+        services: "Film & Television Marketing - Movie Teasers & Trailers"
+    },
+    {
+        label: "indestrucible",
+        services:
+            "Composition - Sound Engineering -&nbsp;Liscensing -&nbsp;Mixing"
+    }
+]
+
 export default {
     title: "@austinblanchard / PanelMenu"
 }
@@ -49,8 +78,9 @@ export const PanelMenuDefault = () => ({
         return {
             api: API,
             mainMenu: mainMenu,
-            socialMenu: socialMenu
+            socialMenu: socialMenu,
+            companyMenu: companyMenu
         }
     },
-    template: `<panel-menu :mainMenu="mainMenu" :socialMenu="socialMenu" />`
+    template: `<panel-menu :mainMenu="mainMenu" :socialMenu="socialMenu" :companyMenu="companyMenu" />`
 })
