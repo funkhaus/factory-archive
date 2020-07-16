@@ -1,11 +1,10 @@
 <template lang="html">
     <div class="panel-sidetray">
         <svg-icon-reel class="svg" />
-        <!-- TODO: replace :key with item.id -->
         <nuxt-link
             v-for="(item, i) in items"
             v-if="item.featuredImage.sourceUrl"
-            :key="i"
+            :key="item.id"
             :to="item.uri"
         >
             <wp-image
