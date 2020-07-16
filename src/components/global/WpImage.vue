@@ -271,7 +271,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .wp-image {
     .sizer {
         position: relative;
