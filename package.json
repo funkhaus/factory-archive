@@ -9,8 +9,10 @@
         "test:unit": "vue-cli-service test:unit"
     },
     "dependencies": {
+        "cheerio": "^1.0.0-rc.3",
         "core-js": "^3.6.5",
         "lodash": "^4.17.15",
+        "sanitize-html": "^1.27.0",
         "vue": "^2.6.11",
         "vue-markdown": "^2.2.4"
     },
