@@ -1,17 +1,20 @@
 <template>
-    <nuxt-link class="block-news" :to="to">
+    <nuxt-link :class="classes" :to="to">
         <wp-image class="block-image" :image="image">
             <span class="more">More</span>
         </wp-image>
         <div class="block-text">
-            <time class="date" v-html="formattedDate" />
-            <h3 class="title" v-html="title" />
-            <p class="excerpt" v-html="stripTags(excerpt)" />
-            <div v-if="categories" class="categories">
-                <span
-                    v-for="(category, i) in categories"
-                    v-html="category.name + comma(i)"
-                />
+            <span v-if="hasPrompt" class="prompt">Next</span>
+            <div class="meta">
+                <time class="date" v-html="formattedDate" />
+                <h3 class="title" v-html="title" />
+                <p class="excerpt" v-html="stripTags(excerpt)" />
+                <div v-if="categories" class="categories">
+                    <span
+                        v-for="(category, i) in categories"
+                        v-html="category.name + comma(i)"
+                    />
+                </div>
             </div>
         </div>
     </nuxt-link>
@@ -54,9 +57,16 @@ export default {
         categories: {
             type: Array,
             default: () => []
+        },
+        hasPrompt: {
+            type: Boolean,
+            default: false
         }
     },
     computed: {
+        classes() {
+            return ["block-news", { "has-prompt": this.hasPrompt }]
+        },
         formattedDate() {
             return formatDate(this.date)
         }
@@ -82,30 +92,42 @@ export default {
     box-sizing: border-box;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
 
     .block-image {
-        width: calc(50% - (var(--unit-gutter) / 2));
+        width: 50%;
+        overflow: hidden;
+        max-width: 640px;
 
+        &.is-orientation-portrait {
+            max-width: 440px;
+        }
         &.has-loaded {
             .more {
                 opacity: 1;
             }
         }
         .media {
-            transition: transform 0.2s;
+            transition: transform 0.2s $authenticMotion;
         }
     }
     .block-text {
-        width: calc(50% - (var(--unit-gutter) / 2));
+        width: 50%;
+        max-width: 500px;
+        padding: 0 0 0 var(--unit-gutter);
+        box-sizing: border-box;
+        transition: transform 0.2s $authenticMotion;
     }
     .title {
         margin: 15px 0;
         font-size: 30px;
+        font-weight: 300;
     }
     .excerpt {
         margin: 15px 0;
+        font-size: 14px;
+    }
+    .date {
         font-size: 14px;
     }
     .more {
@@ -120,22 +142,49 @@ export default {
         display: flex;
         align-items: center;
 
-        // TODO set this with theme
         background-color: var(--color-company);
         color: var(--color-black);
         opacity: 0;
     }
+    .prompt {
+        display: none;
+        margin: 0;
+        font-size: 25px;
+        font-weight: 300;
+    }
+    // Promt styles
+    &.has-prompt {
+        align-items: normal;
 
-    // // Hovers
+        .block-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .categories {
+            display: none;
+        }
+        .excerpt {
+            margin-bottom: 30px;
+        }
+        .prompt {
+            display: block;
+            margin-top: 30px;
+        }
+    }
+
+    // Hovers
     @media #{$has-hover} {
         &:hover {
-            // TODO move this into the grid where text hover state will live
             .media {
                 transform: translateY(-40px);
             }
+            .block-text {
+                transform: translateX(var(--unit-gutter));
+            }
         }
     }
-    // // Breakpoints
+    // Breakpoints
     @media #{$lt-phone} {
         flex-direction: column;
 
@@ -145,6 +194,10 @@ export default {
         }
         .block-text {
             margin-top: 15px;
+            padding: 0;
+        }
+        &.has-prompt {
+            align-items: center;
         }
     }
 }

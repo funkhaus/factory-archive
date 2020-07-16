@@ -9,6 +9,7 @@
     --color-company: #d8d9be;
 
     --unit-100vh: 100vh;
+    --unit-vertical-gap: 70px;
     --unit-gutter: 50px;
     --unit-max-width: 1800px;
 }
@@ -17,6 +18,7 @@
 body {
     font-family: "RM Neue", sans-serif;
     color: var(--color-black);
+    margin: 0;
     background-color: #000000;
 }
 a {

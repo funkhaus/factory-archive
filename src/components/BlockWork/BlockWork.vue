@@ -1,11 +1,11 @@
 <template lang="html">
-    <nuxt-link v-if="image" :to="path" :class="classes">
+    <nuxt-link v-if="image" :to="to" :class="classes">
         <wp-image class="image" :image="image" :aspect-ratio="56.25">
             <div class="scrim" />
         </wp-image>
 
         <div class="credits">
-            <svg-icon-play v-if="hoverType == 'default'" class="play" />
+            <svg-icon-play v-if="hoverType == 'default'" class="svg" />
 
             <split-text :text="title" element="h2" />
         </div>
@@ -35,7 +35,7 @@ export default {
             type: String,
             default: ""
         },
-        path: {
+        to: {
             type: String,
             default: ""
         },
@@ -85,15 +85,15 @@ export default {
         color: var(--color-black);
         h2 {
             margin: 0;
-            font-size: 16px;
+            font-size: 20px;
         }
         /deep/ .line {
             margin: 0;
             font-weight: 300;
             display: block;
         }
-        svg {
-            width: 10px;
+        .svg {
+            width: 15px;
             height: auto;
             path {
                 fill: var(--color-black);
@@ -114,7 +114,7 @@ export default {
     @media #{$has-hover} {
         &:hover:not(.hover-solid) {
             .image {
-                transform: translateY(-40%);
+                transform: translateY(-110px);
                 .scrim {
                     background-color: rgba(black, 0.2);
                 }
@@ -132,8 +132,17 @@ export default {
     // Breakpoints
     @media #{$lt-phone} {
         width: 100%;
+        &.hover-solid .credits,
         .credits {
             z-index: 30;
+            opacity: 1;
+            h2 {
+                font-size: 16px;
+                color: var(--color-company);
+            }
+            .svg path {
+                fill: var(--color-company);
+            }
         }
         .image .scrim {
             background-color: rgba(black, 0.2);
