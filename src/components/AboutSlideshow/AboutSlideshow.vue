@@ -55,7 +55,7 @@ export default {
         padding: 50px 60px;
         box-sizing: border-box;
 
-        .slideshow {
+        /deep/ .slideshow {
             height: 100%;
             width: 100%;
         }
@@ -87,7 +87,7 @@ export default {
             height: 100%;
             padding: 15px 15px 0;
 
-            .slideshow {
+            /deep/ .slideshow {
                 min-height: 50vh;
             }
         }
