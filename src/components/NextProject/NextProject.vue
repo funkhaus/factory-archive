@@ -1,10 +1,12 @@
 <template lang="html">
     <nuxt-link :to="to" class="next-project">
-        <wp-image :image="image" mode="fullbleed" />
+        <wp-image :image="image" mode="fullbleed">
+            <h4 class="section-title">Next Project</h4>
+        </wp-image>
         <div class="meta">
-            <div class="hover-effect" />
+            <div class="hover-panel" />
 
-            <h4>Next Project</h4>
+            <h4 class="section-title">Next Project</h4>
             <div class="credits">
                 <split-text class="title" :text="title" element="h2" />
                 <ul>
@@ -76,6 +78,9 @@ export default {
     .wp-image {
         width: 50%;
         position: relative;
+        .section-title {
+            display: none;
+        }
     }
 
     .meta {
@@ -92,36 +97,40 @@ export default {
         justify-content: space-between;
         align-items: flex-start;
 
-        .hover-effect {
+        .hover-panel {
             position: absolute;
             left: 0;
             top: 0;
             width: 0%;
+            // width: 25%; //remove
             height: 100%;
             z-index: 10;
             background-color: var(--color-company);
             transition: width 0.4s ease-in-out;
         }
 
-        h4,
+        .section-title,
         .credit {
+            position: relative;
+            z-index: 20;
             margin: 0;
             font-weight: 300;
-            transition: color 0.4s ease-in-out;
+            transition: color 0.4s ease-in-out 0.3s;
         }
 
-        h4 {
+        .section-title {
             font-size: 25px;
             font-weight: 300;
         }
 
         .title {
             position: relative;
+            z-index: 20;
             font-size: 30px;
             font-weight: 300;
             margin: 20px 0;
             display: block;
-            transition: color 0.4s ease-in-out;
+            transition: color 0.4s ease-in-out 0.3s;
 
             /deep/ .line {
                 display: block;
@@ -140,7 +149,6 @@ export default {
         }
 
         .credit {
-            position: relative;
             margin: 2.5px 0;
             font-size: 14px;
         }
@@ -149,14 +157,14 @@ export default {
     // Hovers
     @media #{$has-hover} {
         .meta:hover {
-            h4,
+            .section-title,
             .credit,
             .title {
                 color: var(--color-black);
-                z-index: 20;
+                transition: color 0.4s ease-out;
             }
 
-            .hover-effect {
+            .hover-panel {
                 width: 100%;
             }
         }
@@ -165,14 +173,44 @@ export default {
     // Breakpoints
     @media #{$lt-phone} {
         flex-direction: column;
+        padding: 20px 15px;
+        height: auto;
         .wp-image,
         .meta {
             width: 100%;
             padding: 20px 0;
         }
 
+        .meta {
+            padding: 15px 10px 0 10px;
+            .section-title {
+                display: none;
+            }
+            .title {
+                margin: 0 0 10px;
+            }
+            .credits {
+                margin: 0;
+            }
+            .credit {
+                font-size: 12px;
+            }
+        }
+
         .wp-image {
             min-height: 250px;
+            .section-title {
+                display: block;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                z-index: 20;
+                padding: 15px 10px;
+                margin: 0;
+                font-size: 20px;
+                font-weight: 300;
+                color: var(--color-company);
+            }
         }
     }
 }
