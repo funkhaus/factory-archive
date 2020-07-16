@@ -1,25 +1,28 @@
 <template lang="html">
     <div class="panel-sidetray">
         <svg-icon-reel class="svg" />
-        <nuxt-link
-            v-for="(item, i) in items"
-            v-if="item.featuredImage.sourceUrl"
-            :key="item.id"
-            :to="item.uri"
-        >
-            <wp-image
-                :image="item.featuredImage"
-                :aspect-ratio="56.25"
-                :class="{ active: i == activeIndex }"
+
+        <div class="items">
+            <nuxt-link
+                v-for="(item, i) in items"
+                v-if="item.featuredImage.sourceUrl"
+                :key="item.id"
+                :to="item.uri"
             >
-                <div class="scrim">
-                    <h4 v-if="i == activeIndex" class="title">
-                        Currently Viewing
-                    </h4>
-                    <h4 v-else class="title" v-html="item.title" />
-                </div>
-            </wp-image>
-        </nuxt-link>
+                <wp-image
+                    :image="item.featuredImage"
+                    :aspect-ratio="56.25"
+                    :class="{ active: i == activeIndex }"
+                >
+                    <div class="scrim">
+                        <h4 v-if="i == activeIndex" class="title">
+                            Currently Viewing
+                        </h4>
+                        <h4 v-else class="title" v-html="item.title" />
+                    </div>
+                </wp-image>
+            </nuxt-link>
+        </div>
     </div>
 </template>
 
@@ -50,17 +53,25 @@ export default {
 <style lang="scss" scoped>
 .panel-sidetray {
     width: 420px;
-    min-height: var(--unit-100vh);
-    // NOTE: causes issue with abs pos svg: https://css-tricks.com/popping-hidden-overflow/
-    // overflow-y: auto;
-    // overflow-x: visible;
+    height: var(--unit-100vh);
     background-color: var(--color-black);
     padding: 20px;
     box-sizing: border-box;
+    transition: transform 0.4s ease-in-out;
+    // transform: translateX(100%); // NOTE: enable when parent class is added
 
-    position: absolute;
-    right: 0px;
+    position: fixed;
+    right: 0;
     top: 0;
+
+    .sidetray-opened & {
+        transform: translate(0);
+    }
+
+    .items {
+        overflow-y: auto;
+        height: 100%;
+    }
 
     .svg {
         position: absolute;
