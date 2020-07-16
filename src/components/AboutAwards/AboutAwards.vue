@@ -1,5 +1,11 @@
 <template lang="html">
-    <div class="about-awards">
+    <div
+        v-intersection-observer="{
+            threshold: 0
+        }"
+        class="about-awards"
+        @has-intersected="hasIntersected()"
+    >
         <div class="image-panel">
             <wp-image :image="image" mode="fullbleed" />
         </div>
@@ -34,6 +40,11 @@ import CountUp from "@/components/global/CountUp"
 import SvgAwardLogoAice from "@/assets/svgs/awards/logo-aice.svg"
 import SvgAwardLogoAicp from "@/assets/svgs/awards/logo-aicp.svg"
 
+// Directives
+import Vue from "vue"
+import intersectionObserver from "@/directives/IntersectionObserver"
+Vue.directive("intersection-observer", intersectionObserver)
+
 export default {
     components: {
         WpImage,
@@ -51,17 +62,16 @@ export default {
             default: () => []
         }
     },
-    // NOTE: Using this to simulate in-view boolean bc count-up only starts when start-count prop changes
     data() {
         return {
             startCount: false
         }
     },
-    mounted() {
-        // simulating in-view
-        setTimeout(() => {
+    methods: {
+        // Start count when component hasIntersected
+        hasIntersected() {
             this.startCount = true
-        }, 1200)
+        }
     }
 }
 </script>
