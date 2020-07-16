@@ -42,6 +42,7 @@ export default {
     p {
         margin: 20px 0;
         font-size: 14px;
+        font-weight: 400;
     }
 
     /deep/ .wp-menu {
@@ -61,8 +62,20 @@ export default {
             }
         }
 
+        // QUESTION: Should i just exclude this menu item with subItems?
         .sub-menu {
-            display: none; // QUESTION: Should i just exclude this item with subItems?
+            display: none;
+        }
+    }
+    // Hovers
+    @media #{$has-hover} {
+    }
+    // Breakpoints
+    @media #{$lt-phone} {
+        padding: 20px;
+
+        /deep/ .wp-menu li {
+            margin: 10px 0;
         }
     }
 }
