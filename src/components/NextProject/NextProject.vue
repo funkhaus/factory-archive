@@ -1,14 +1,9 @@
 <template lang="html">
     <nuxt-link :to="to" class="next-project">
-        <!-- QUESTION: How should i use aspect ratio here? -->
-        <wp-image
-            v-if="aspectRatio"
-            :image="image"
-            :aspect-ratio="72"
-            :class="{ 'aspect-ratio': aspectRatio }"
-        />
-        <wp-image v-if="!aspectRatio" :image="image" mode="fullbleed" />
+        <wp-image :image="image" mode="fullbleed" />
         <div class="meta">
+            <div class="hover-effect" />
+
             <h4>Next Project</h4>
             <div class="credits">
                 <split-text class="title" :text="title" element="h2" />
@@ -56,10 +51,6 @@ export default {
         to: {
             type: String,
             default: ""
-        },
-        aspectRatio: {
-            type: Boolean,
-            default: false
         }
     },
     computed: {
@@ -86,12 +77,6 @@ export default {
     .wp-image {
         width: 50%;
         position: relative;
-        // QUESTION: Use with aspect ratio?
-        &.aspect-ratio {
-            display: inline-flex;
-            flex-direction: column;
-            justify-content: center;
-        }
     }
 
     .meta {
@@ -99,6 +84,8 @@ export default {
         padding: 50px;
         box-sizing: border-box;
         color: var(--color-company);
+        position: relative;
+        z-index: 20;
 
         display: inline-flex;
         flex-direction: column;
@@ -106,10 +93,22 @@ export default {
         justify-content: space-between;
         align-items: flex-start;
 
+        .hover-effect {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0%;
+            height: 100%;
+            z-index: 10;
+            background-color: var(--color-company);
+            transition: all 0.4s ease-in-out;
+        }
+
         h4,
-        li {
+        .credit {
             margin: 0;
             font-weight: 300;
+            transition: color 0.4s ease-in-out 0.2s;
         }
 
         h4 {
@@ -118,10 +117,12 @@ export default {
         }
 
         .title {
+            position: relative;
             font-size: 30px;
             font-weight: 300;
             margin: 20px 0;
             display: block;
+            transition: all 0.4s ease-in-out 0.2s;
 
             /deep/ .line {
                 display: block;
@@ -139,9 +140,26 @@ export default {
             list-style: none;
         }
 
-        li {
+        .credit {
+            position: relative;
             margin: 2.5px 0;
             font-size: 14px;
+        }
+    }
+
+    // Hovers
+    @media #{$has-hover} {
+        .meta:hover {
+            h4,
+            .credit,
+            .title {
+                color: var(--color-black);
+                z-index: 20;
+            }
+
+            .hover-effect {
+                width: 100%;
+            }
         }
     }
 

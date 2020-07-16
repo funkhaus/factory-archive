@@ -20,14 +20,3 @@ export const Default = () => ({
     },
     template: `<next-project :image="api.page.featuredImage" title="Placeholder &#8211; Subtitle" :credits="credits" :to="api.page.uri" />`
 })
-
-export const AspectRatio = () => ({
-    components: { NextProject },
-    data() {
-        return {
-            api: API,
-            credits: Credits
-        }
-    },
-    template: `<next-project :image="api.page.featuredImage" title="Placeholder &#8211; Subtitle" :credits="credits" :to="api.page.uri" :aspect-ratio="true"/>`
-})
