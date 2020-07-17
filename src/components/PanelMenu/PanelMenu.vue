@@ -18,6 +18,7 @@
             </div>
             <!-- Main Menu + Social Menu -->
             <div class="right-menus">
+                <!-- TODO is this title dynamic? -->
                 <p class="menu-title">MakeMake</p>
                 <wp-menu :items="mainMenu" class="menu main-menu" />
                 <p class="menu-title">Social</p>
@@ -251,7 +252,24 @@ export default {
         }
     }
     // Breakpoints
-    // @media #{$lt-phone} {
-    // }
+    @media #{$lt-tablet} {
+        @for $i from 1 through 6 {
+            .company-menu-item:nth-child(6n + #{$i}) {
+                right: calc(100% - 50px);
+                top: calc(100% - (350px - (#{$i} * 50px)));
+            }
+        }
+        .logo {
+            opacity: 0;
+        }
+    }
+    @media #{$lt-phone} {
+        .right-menus {
+            padding-right: 15px;
+        }
+        .main-menu {
+            font-size: 30px;
+        }
+    }
 }
 </style>
