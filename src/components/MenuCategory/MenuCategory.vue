@@ -1,8 +1,15 @@
 <template lang="html">
     <div class="menu-category">
         <h3 v-if="caption" v-html="caption" />
-        <p v-if="items.length" v-html="'Refine By —'" />
-        <wp-menu v-if="items.length" :items="items" />
+
+        <p v-if="items.length" @click="toggleMenu" v-html="'Refine By —'" />
+
+        <wp-menu
+            v-if="items.length"
+            ref="menu"
+            :items="items"
+            :class="{ 'is-open': menuIsOpen }"
+        />
     </div>
 </template>
 
@@ -21,6 +28,16 @@ export default {
         items: {
             type: Array,
             default: () => []
+        }
+    },
+    data() {
+        return {
+            menuIsOpen: false
+        }
+    },
+    methods: {
+        toggleMenu() {
+            this.menuIsOpen = !this.menuIsOpen
         }
     }
 }
@@ -49,16 +66,25 @@ export default {
         padding: 0;
         margin: 0;
         width: 100%;
+        overflow: hidden;
+        transition: all 0.4s ease-in-out;
 
         li {
             display: inline-block;
             list-style: none;
-            padding: 0 15px;
+            margin: 0 5px;
 
             a {
                 color: var(--color-black);
                 font-size: 14px;
                 font-weight: 300;
+                transition: all 0.4s ease-in-out;
+                padding: 5px 10px;
+
+                &.exact-active-link {
+                    background-color: var(--color-black);
+                    color: white;
+                }
             }
         }
 
@@ -69,13 +95,27 @@ export default {
     }
     // Hovers
     @media #{$has-hover} {
+        /deep/ .wp-menu li a:hover {
+            background-color: var(--color-black);
+            color: white;
+        }
+        p:hover {
+            cursor: pointer;
+        }
     }
     // Breakpoints
     @media #{$lt-phone} {
         padding: 20px;
 
-        /deep/ .wp-menu li {
-            margin: 10px 0;
+        /deep/ .wp-menu {
+            max-height: 0;
+            &.is-open {
+                max-height: 300px;
+            }
+            li {
+                margin: 10px 0;
+                display: block;
+            }
         }
     }
 }
