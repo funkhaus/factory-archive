@@ -36,8 +36,8 @@ Every issue is assigned to a Github Project and every Github Project has an asso
 1. Fork the `factory` repo into your account (button is in top right corner of GitHub)
 2. Code your component in a new local branch
 3. When you're finished, create a new PR from your local branch, into the project branch of `factory/project-name`.
-    1.  Be sure to include a list of issues (Component Requests) your PR relates to in the PR description.
-    1.  Only commit the files that relate to your component. The most common source of PR rejections are because of files like `package.lock` getting included in a PR.
+    1. Be sure to include a list of issues (Component Requests) your PR relates to in the PR description.
+    1. Only commit the files that relate to your component. The most common source of PR rejections are because of files like `package.lock` getting included in a PR.
 
 TIP If you use git CLI, then [syncing your fork to the upstream repo](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork) is a good idea.
 
@@ -199,3 +199,30 @@ Some good things to read here.
 
 -   Add some portrait images to mock data
 -   Give a better example of a test
+
+## Doomsday Components
+
+-   BlockFeatured X
+-   GridFeatured X
+-   PanelMenu X
+
+-   ListDirectors (complicated hover and transition animation - Drew to build)
+-   BlockWork X
+-   GridWork X
+
+-   GridNews X
+-   BlockNews X
+
+-   VideoPlayer (custom video player - Drew to build)
+
+-   SectionMailingList (two variants)
+-   SlideshowWork
+
+-   SectionAwards
+-   SectionPress
+-   SectionReps
+-   SectionVisit
+
+-   FooterSocials (uses CSS color vars)
+
+-   BlockContact (need to figure out SVG async loader?)
