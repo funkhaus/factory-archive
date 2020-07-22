@@ -6,7 +6,7 @@
         class="section-awards"
         @has-intersected="hasIntersected()"
     >
-        <h2 class="title" v-html="'Awards'" />
+        <h2 class="title" v-html="title" />
 
         <ul class="awards">
             <li v-for="(award, i) in awards" class="award">
@@ -38,6 +38,10 @@ export default {
         CountUp
     },
     props: {
+        title: {
+            type: String,
+            default: "Awards"
+        },
         awards: {
             type: Array,
             default: () => []

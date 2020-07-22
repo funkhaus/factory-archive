@@ -56,5 +56,5 @@ export const Default = () => ({
             awards: Awards
         }
     },
-    template: `<section-awards  :awards="awards" />`
+    template: `<section-awards  :awards="awards" title="Awards" />`
 })
