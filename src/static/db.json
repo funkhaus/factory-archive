@@ -425,62 +425,39 @@
     "menuItems": {
         "nodes": [
             {
-                "label": "Front Page",
+                "url": "//fuxt-backend.funkhaus.us/featured/",
+                "target": null,
                 "cssClasses": ["red"],
-                "target": null,
-                "url": "http://fuxt-backend.flywheelsites.com/featured/",
-                "childItems": {
-                    "nodes": []
-                }
+                "id": "bmF2X21lbnVfaXRlbTo5MQ==",
+                "label": "Front Page"
             },
             {
-                "label": "Work",
+                "url": "//fuxt-backend.funkhaus.us/work/",
+                "target": null,
                 "cssClasses": ["green"],
-                "target": null,
-                "url": "http://fuxt-backend.flywheelsites.com/work/",
-                "childItems": {
-                    "nodes": [
-                        {
-                            "label": "Child Item 1",
-                            "cssClasses": [],
-                            "target": null,
-                            "url": "http://old.reddit.com/r/freefolk"
-                        },
-                        {
-                            "label": "Child Item 2",
-                            "cssClasses": [],
-                            "target": null,
-                            "url": "http://google.com"
-                        }
-                    ]
-                }
+                "id": "bmF2X21lbnVfaXRlbTo5MA==",
+                "label": "Work"
             },
             {
-                "label": "Contact",
+                "url": "//fuxt-backend.funkhaus.us/contact/",
+                "target": null,
                 "cssClasses": ["blue"],
-                "target": null,
-                "url": "http://fuxt-backend.flywheelsites.com/contact/",
-                "childItems": {
-                    "nodes": []
-                }
+                "id": "bmF2X21lbnVfaXRlbTo5Mg==",
+                "label": "Contact"
             },
             {
-                "label": "About",
-                "cssClasses": [],
+                "url": "//fuxt-backend.funkhaus.us/about/",
                 "target": "_blank",
-                "url": "http://fuxt-backend.flywheelsites.com/about/",
-                "childItems": {
-                    "nodes": []
-                }
+                "cssClasses": [],
+                "id": "bmF2X21lbnVfaXRlbTo5Mw==",
+                "label": "About"
             },
             {
-                "label": "Directors",
-                "cssClasses": [],
+                "url": "//fuxt-backend.funkhaus.us/directors/",
                 "target": null,
-                "url": "http://fuxt-backend.flywheelsites.com/directors/",
-                "childItems": {
-                    "nodes": []
-                }
+                "cssClasses": [],
+                "id": "bmF2X21lbnVfaXRlbToxMTg=",
+                "label": "Directors"
             }
         ]
     }
