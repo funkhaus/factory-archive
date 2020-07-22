@@ -62,7 +62,7 @@ export default {
     position: relative;
     background-color: var(--color-pink);
     color: var(--color-black);
-    padding: var(--unit-gutter);
+    padding: 60px 50px;
     box-sizing: border-box;
 
     .title {
@@ -91,7 +91,7 @@ export default {
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
-        margin: 0 0 10px 0;
+        margin: 10px 0;
 
         .count {
             font-size: 50px;
@@ -121,6 +121,8 @@ export default {
             columns: 1;
         }
         .award {
+            margin: 0 0 10px 0;
+
             .count {
                 font-size: 20px;
                 min-width: 30px;
