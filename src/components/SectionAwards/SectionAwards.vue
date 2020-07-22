@@ -18,7 +18,7 @@
                     :duration="1200"
                 />
 
-                <p v-html="award.text"></p>
+                <p v-html="award.text" />
             </li>
         </ul>
     </section>
