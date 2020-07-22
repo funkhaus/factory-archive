@@ -1,15 +1,16 @@
 <template lang="html">
-    <div class="menu-category">
+    <div :class="['menu-category', { 'is-open': menuIsOpen }]">
         <h3 v-if="caption" v-html="caption" />
 
-        <p v-if="items.length" @click="toggleMenu" v-html="'Refine By —'" />
+        <div v-if="items.length" class="select" @click="toggleMenu">
+            <p>Refine By</p>
+            <div class="bars">
+                <div class="bar bar-1" />
+                <div class="bar bar-2" />
+            </div>
+        </div>
 
-        <wp-menu
-            v-if="items.length"
-            ref="menu"
-            :items="items"
-            :class="{ 'is-open': menuIsOpen }"
-        />
+        <wp-menu v-if="items.length" ref="menu" :items="items" />
     </div>
 </template>
 
@@ -56,10 +57,39 @@ export default {
         margin: 50px 0;
     }
 
-    p {
-        margin: 20px 0;
-        font-size: 14px;
-        font-weight: 400;
+    .select {
+        position: relative;
+        margin: 10px 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        p {
+            font-size: 14px;
+            font-weight: 400;
+            margin: 0;
+        }
+    }
+
+    .bars {
+        position: relative;
+        width: 20px;
+        height: 10px;
+        padding: 10px;
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .bar {
+            height: 2px;
+            width: 20px;
+            transition: 0.3s;
+            background-color: var(--color-black);
+            transform-origin: center center;
+        }
+        .bar-1 {
+            display: none;
+        }
     }
 
     /deep/ .wp-menu {
@@ -73,13 +103,16 @@ export default {
             display: inline-block;
             list-style: none;
             margin: 0 5px;
+            padding: 5px 10px;
+            transition: all 0.4s ease-in-out;
 
             a {
                 color: var(--color-black);
                 font-size: 14px;
                 font-weight: 300;
                 transition: all 0.4s ease-in-out;
-                padding: 5px 10px;
+                margin: 0;
+                padding: 0;
 
                 &.exact-active-link {
                     background-color: var(--color-black);
@@ -87,7 +120,6 @@ export default {
                 }
             }
         }
-
         // QUESTION: Should i just exclude this menu item with subItems?
         .sub-menu {
             display: none;
@@ -95,27 +127,42 @@ export default {
     }
     // Hovers
     @media #{$has-hover} {
-        /deep/ .wp-menu li a:hover {
+        /deep/ .wp-menu li:hover {
             background-color: var(--color-black);
-            color: white;
-        }
-        p:hover {
-            cursor: pointer;
+            a {
+                color: white;
+            }
         }
     }
     // Breakpoints
     @media #{$lt-phone} {
         padding: 20px;
 
+        .bars {
+            justify-content: space-between;
+            align-items: center;
+            .bar-1 {
+                display: block;
+            }
+        }
+        &.is-open {
+            .bar-1 {
+                transform: rotate(-45deg) translate(-3px, 3px);
+            }
+            .bar-2 {
+                transform: rotate(45deg) translate(-2px, -3px);
+            }
+        }
+
         /deep/ .wp-menu {
             max-height: 0;
-            &.is-open {
-                max-height: 300px;
-            }
             li {
                 margin: 10px 0;
                 display: block;
             }
+        }
+        &.is-open /deep/ .wp-menu {
+            max-height: 300px;
         }
     }
 }
