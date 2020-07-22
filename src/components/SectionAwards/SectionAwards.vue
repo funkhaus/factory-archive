@@ -1,5 +1,5 @@
 <template lang="html">
-    <div
+    <section
         v-intersection-observer="{
             threshold: 0
         }"
@@ -21,7 +21,7 @@
                 <p v-html="award.text"></p>
             </li>
         </ul>
-    </div>
+    </section>
 </template>
 
 <script>
