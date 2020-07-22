@@ -15,7 +15,7 @@
                     element="span"
                     :to="award.total"
                     :start-count="startCount"
-                    :duration="2000"
+                    :duration="1200"
                 />
 
                 <p v-html="award.text"></p>
@@ -91,10 +91,11 @@ export default {
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
-        margin: 10px 0;
+        margin: 0 0 10px 0;
 
         .count {
             font-size: 50px;
+            font-weight: 400;
             min-width: 75px;
             height: auto;
             text-align: center;
