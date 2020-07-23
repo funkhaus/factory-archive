@@ -90,14 +90,12 @@ export default {
         max-width: var(--unit-max-width);
         margin: 0 auto;
     }
-
     .award {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
         margin: 10px 0;
-
         .count {
             font-family: var(--font-primary);
             font-size: 50px;
@@ -129,7 +127,6 @@ export default {
         }
         .award {
             margin: 0 0 10px 0;
-
             .count {
                 font-size: 20px;
                 min-width: 30px;
