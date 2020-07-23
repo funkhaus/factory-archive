@@ -70,13 +70,14 @@ export default {
     box-sizing: border-box;
 
     .title {
+        font-family: var(--font-secondary);
         font-size: 75px;
         font-weight: 500;
         text-transform: uppercase;
         -webkit-text-stroke: 1.5px var(--color-pink);
         margin: 0;
         position: absolute;
-        top: -40px;
+        top: -47px;
         left: 50%;
         transform: translate(-50%);
     }
@@ -98,6 +99,7 @@ export default {
         margin: 10px 0;
 
         .count {
+            font-family: var(--font-primary);
             font-size: 50px;
             font-weight: 400;
             min-width: 75px;
@@ -105,6 +107,7 @@ export default {
             text-align: center;
         }
         p {
+            font-family: var(--font-secondary);
             display: inline-block;
             font-size: 20px;
             font-weight: 500;
@@ -119,7 +122,7 @@ export default {
 
         .title {
             font-size: 30px;
-            top: -15px;
+            top: -20px;
         }
         .awards {
             columns: 1;
