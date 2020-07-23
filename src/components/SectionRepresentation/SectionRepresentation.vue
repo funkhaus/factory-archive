@@ -111,6 +111,7 @@ export default {
             margin: 15px 0;
             text-transform: uppercase;
             cursor: pointer;
+            transition: all 0.4s ease-in-out;
         }
     }
 
@@ -130,6 +131,13 @@ export default {
         left: 50%;
         transform: translateX(-50%);
         color: var(--color-black);
+    }
+
+    @media #{$has-hover} {
+        .person:hover {
+            color: var(--color-red);
+            -webkit-text-stroke: 1px var(--color-black);
+        }
     }
 
     // Breakpoints
