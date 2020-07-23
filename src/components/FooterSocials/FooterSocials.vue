@@ -46,14 +46,15 @@ export default {
         text-align: center;
         color: var(--color-yellow);
         text-transform: uppercase;
-        font-size: 40px;
+        font-size: 50px;
         flex-direction: column;
 
         a,
         .mock-nuxt-link {
             // DELETE .mock-nuxt-link when adding to project (will be an a tag)
             display: inline-flex;
-            font-weight: 900;
+            font-family: var(--font-secondary);
+            font-weight: 500;
             transition: color 0.4s ease-in-out,
                 -webkit-text-stroke 0.4s ease-in-out 0.2s;
         }
@@ -102,7 +103,7 @@ export default {
         height: auto;
 
         /deep/ .wp-menu {
-            font-size: 20px;
+            font-size: 25px;
         }
     }
 }
