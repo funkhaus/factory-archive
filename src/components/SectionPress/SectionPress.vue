@@ -51,16 +51,12 @@ export default {
         AddSvgsToItems() {
             // gets middle index
             const middleIndex = Math.floor(this.items.length / 2)
-            console.log("middleIndex", middleIndex)
-            // // adds to middle
+            // adds to middle
             this.allItems.splice(middleIndex, 0, { svg: "SvgChildishGambino" })
-
             // adds to start
             this.allItems.unshift({ svg: "SvgFireLady" })
-
             // adds to end
             this.allItems.push({ svg: "SvgRollerGal" })
-            console.log("items", this.allItems)
 
             return this.allItems
         }
@@ -99,12 +95,11 @@ export default {
         align-items: center;
         justify-content: center;
         position: relative;
-
-        .item {
-            font-size: 20px;
-            font-weight: 500;
-        }
-
+    }
+    .item {
+        font-size: 20px;
+        font-weight: 500;
+        padding: 0;
         .line {
             display: block;
             margin: 10px 0;
@@ -150,7 +145,10 @@ export default {
             font-size: 30px;
         }
 
-        .press {
+        .item {
+            p {
+                margin: 10px 0;
+            }
             .line-1 {
                 font-size: 18px;
             }
