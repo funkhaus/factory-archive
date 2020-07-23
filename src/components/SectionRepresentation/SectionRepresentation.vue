@@ -67,9 +67,10 @@ export default {
         -webkit-text-stroke: 1.5px var(--color-red);
         margin: 0;
         position: absolute;
-        top: -40px;
+        top: -45px;
         left: 50%;
         transform: translate(-50%);
+        font-family: var(--font-secondary);
     }
 
     .panel {
@@ -92,6 +93,7 @@ export default {
     .region {
         color: var(--color-black);
         margin: 70px 0;
+        font-family: var(--font-secondary);
         .location {
             text-transform: uppercase;
             font-size: 30px;
@@ -99,8 +101,10 @@ export default {
             margin: 0;
         }
         /deep/ .detail {
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             font-size: 20px;
+            font-family: var(--font-primary);
+            font-weight: 400;
             > p {
                 margin: 5px 0;
             }
@@ -145,7 +149,7 @@ export default {
         padding: 30px 20px 120px 20px;
         .title {
             font-size: 25px;
-            top: -14px;
+            top: -15px;
         }
         .region,
         .illustration {
@@ -154,7 +158,7 @@ export default {
         }
 
         .region {
-            margin: 25px 0;
+            margin: 15px 0;
             .location {
                 font-size: 25px;
             }
