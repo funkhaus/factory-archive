@@ -73,6 +73,7 @@ export default {
     padding: 60px 50px;
     box-sizing: border-box;
     .title {
+        font-family: var(--font-secondary);
         font-size: 75px;
         font-weight: 500;
         text-transform: uppercase;
@@ -81,7 +82,7 @@ export default {
         -webkit-text-stroke: 1.5px var(--color-pink);
         margin: 0;
         position: absolute;
-        top: -40px;
+        top: -50px;
         left: 50%;
         transform: translate(-50%);
     }
@@ -107,6 +108,7 @@ export default {
         }
         .line-1 {
             font-weight: 500;
+            font-family: var(--font-secondary);
         }
         .line-2 {
             font-weight: 400;
@@ -139,7 +141,7 @@ export default {
     @media #{$lt-phone} {
         padding: 60px 20px;
         .title {
-            top: -25px;
+            top: -27px;
             font-size: 30px;
         }
 
