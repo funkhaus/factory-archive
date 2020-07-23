@@ -1,5 +1,5 @@
 <template lang="html">
-    <section v-if="items.length" :class="`footer-socials theme-${colorTheme}`">
+    <section v-if="items.length" class="footer-socials">
         <wp-menu :items="items" />
     </section>
 </template>
@@ -18,10 +18,6 @@ export default {
         items: {
             type: Array,
             default: () => []
-        },
-        colorTheme: {
-            type: String,
-            default: "pink"
         }
     }
 }
@@ -36,7 +32,7 @@ export default {
     height: 255px;
     padding: 50px;
     box-sizing: border-box;
-    background-color: var(--color-pink);
+    background-color: var(--color-footer-background);
 
     /deep/ .wp-menu {
         display: block;
@@ -44,7 +40,6 @@ export default {
         margin: 0;
         list-style: none;
         text-align: center;
-        color: var(--color-yellow);
         text-transform: uppercase;
         font-size: 50px;
         flex-direction: column;
@@ -55,21 +50,10 @@ export default {
             display: inline-flex;
             font-family: var(--font-secondary);
             font-weight: 500;
+            color: var(--color-footer-text);
+            -webkit-text-stroke: 1px var(--color-footer-text);
             transition: color 0.4s ease-in-out,
-                -webkit-text-stroke 0.4s ease-in-out 0.2s;
-        }
-    }
-
-    &.theme-orange {
-        background-color: var(--color-orange);
-        /deep/ .wp-menu {
-            color: var(--color-yellow);
-        }
-    }
-    &.theme-black {
-        background-color: var(--color-black);
-        /deep/ .wp-menu {
-            color: var(--color-red);
+                -webkit-text-stroke 0.4s ease-in-out 0.1s;
         }
     }
 
@@ -80,20 +64,6 @@ export default {
             -webkit-text-stroke: 1px var(--color-black);
             transition: color 0.4s ease-in-out,
                 -webkit-text-stroke 0.4s ease-in-out;
-        }
-        &.theme-black {
-            /deep/ .wp-menu a:hover,
-            /deep/ .wp-menu .mock-nuxt-link:hover {
-                color: var(--color-black);
-                -webkit-text-stroke: 1px var(--color-red);
-            }
-        }
-        &.theme-orange {
-            /deep/ .wp-menu a:hover,
-            /deep/ .wp-menu .mock-nuxt-link:hover {
-                color: var(--color-orange);
-                -webkit-text-stroke: 1px var(--color-black);
-            }
         }
     }
 

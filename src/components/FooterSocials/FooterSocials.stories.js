@@ -16,23 +16,3 @@ export const Default = () => ({
     },
     template: `<footer-socials :items="items" />`
 })
-
-export const BlackTheme = () => ({
-    components: { FooterSocials },
-    data() {
-        return {
-            items: Items
-        }
-    },
-    template: `<footer-socials :items="items" color-theme="black" />`
-})
-
-export const OrangeTheme = () => ({
-    components: { FooterSocials },
-    data() {
-        return {
-            items: Items
-        }
-    },
-    template: `<footer-socials :items="items" color-theme="orange" />`
-})
