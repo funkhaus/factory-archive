@@ -3,14 +3,13 @@
         <h2 class="title" v-html="title" />
 
         <ul class="press">
-            <li v-for="(item, i) in allItems" class="item">
+            <li v-for="(item, i) in items" class="item">
                 <split-text v-if="item.title" :text="item.title" element="p" />
                 <component
                     :is="item.svg"
                     v-else-if="item.svg"
-                    :class="`logo ${item.svg}`"
+                    :class="`logo ${kebabClass(item.svg)}`"
                 />
-                <!-- TODO: make class kebabCase -->
             </li>
         </ul>
     </section>
@@ -42,23 +41,25 @@ export default {
             default: () => []
         }
     },
-    data() {
-        return {
-            allItems: this.items
-        }
+    mounted() {
+        // avoids using data() and computed
+        this.AddSvgsToItems()
     },
-    computed: {
+    methods: {
+        kebabClass(name) {
+            return _kebabCase(name)
+        },
         AddSvgsToItems() {
             // gets middle index
             const middleIndex = Math.floor(this.items.length / 2)
             // adds to middle
-            this.allItems.splice(middleIndex, 0, { svg: "SvgChildishGambino" })
+            this.items.splice(middleIndex, 0, { svg: "SvgChildishGambino" })
             // adds to start
-            this.allItems.unshift({ svg: "SvgFireLady" })
+            this.items.unshift({ svg: "SvgFireLady" })
             // adds to end
-            this.allItems.push({ svg: "SvgRollerGal" })
+            this.items.push({ svg: "SvgRollerGal" })
 
-            return this.allItems
+            return this.items
         }
     }
 }
@@ -115,21 +116,18 @@ export default {
     // Breakpoints
     // only position absolute svgs gt-tablet
     @media #{"only screen and (min-width: 1024px)"} {
-        .SvgFireLady,
         .svg-fire-lady {
             position: absolute;
             right: -40px;
-            top: 40px;
+            top: 30px;
         }
 
-        .SvgRollerGal,
-        .SvgRollerGal {
+        .svg-roller-gal {
             position: absolute;
             bottom: 0;
             right: 0;
         }
 
-        .SvgChildishGambino,
         .svg-childish-gambino {
             position: absolute;
             top: 50%;
