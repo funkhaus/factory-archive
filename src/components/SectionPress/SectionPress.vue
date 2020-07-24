@@ -112,7 +112,7 @@ export default {
             font-weight: 400;
         }
     }
-    // Svg Positions
+    // Svgs
     .svg {
         position: absolute;
     }
@@ -131,7 +131,6 @@ export default {
     }
 
     // Breakpoints
-    // only position absolute svgs gt-tablet
     @media #{$lt-tablet} {
         .svg {
             position: static;
