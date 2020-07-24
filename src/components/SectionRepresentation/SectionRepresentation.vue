@@ -94,6 +94,9 @@ export default {
         color: var(--color-black);
         margin: 70px 0;
         font-family: var(--font-secondary);
+        display: flex;
+        flex-direction: column;
+
         .location {
             text-transform: uppercase;
             font-size: 30px;
@@ -110,7 +113,7 @@ export default {
             }
         }
         .person {
-            display: block;
+            align-self: flex-start;
             font-size: 20px;
             margin: 15px 0;
             text-transform: uppercase;
@@ -145,12 +148,15 @@ export default {
     }
 
     // Breakpoints
-    @media #{$lt-phone} {
-        padding: 30px 20px 120px 20px;
+    @media #{$lt-tablet} {
         .title {
             font-size: 25px;
             top: -15px;
         }
+    }
+    @media #{$lt-phone} {
+        padding: 30px 20px 120px 20px;
+
         .region,
         .illustration {
             width: 100%;
@@ -163,11 +169,13 @@ export default {
                 font-size: 25px;
             }
             /deep/ .detail {
-                margin-bottom: 25px;
+                margin-bottom: 15px;
                 font-size: 16px;
             }
             .person {
                 font-size: 15px;
+                margin: 0 0 5px 0;
+                align-self: center;
             }
         }
 
