@@ -61,7 +61,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .section-awards {
     position: relative;
     background-color: var(--color-pink);
