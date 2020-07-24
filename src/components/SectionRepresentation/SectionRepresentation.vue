@@ -104,7 +104,7 @@ export default {
             margin: 0;
         }
         /deep/ .detail {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             font-size: 20px;
             font-family: var(--font-primary);
             font-weight: 400;
@@ -115,7 +115,7 @@ export default {
         .person {
             align-self: flex-start;
             font-size: 20px;
-            margin: 15px 0;
+            margin: 0 0 15px 0;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.4s ease-in-out;
@@ -150,12 +150,17 @@ export default {
     // Breakpoints
     @media #{$lt-tablet} {
         .title {
-            font-size: 25px;
-            top: -15px;
+            font-size: 35px;
+            top: -22px;
         }
     }
     @media #{$lt-phone} {
         padding: 30px 20px 120px 20px;
+
+        .title {
+            font-size: 25px;
+            top: -15px;
+        }
 
         .region,
         .illustration {
