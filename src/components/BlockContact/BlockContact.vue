@@ -1,10 +1,10 @@
 <template lang="html">
     <div class="block-contact">
-        <component :is="svgName" class="svg" />
+        <component :is="svgName" :class="`svg ${svgName}`" />
         <div class="panel">
             <split-text
                 element="a"
-                :src="`mailto:${email}`"
+                :href="`mailto:${email}`"
                 class="name"
                 target="_blank"
                 :text="name"
@@ -47,13 +47,15 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .block-contact {
     width: 50%;
     height: auto;
     color: var(--color-red);
     padding: 20px;
     box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
 
     display: flex;
     flex-direction: row;
@@ -65,9 +67,10 @@ export default {
         font-size: 30px;
         font-weight: 500;
         margin: 10px 0;
-        cursor: pointer;
+        text-transform: uppercase;
+        transition: all 0.4s ease-in-out;
 
-        display: flex;
+        display: inline-flex;
         flex-direction: column;
         flex-wrap: nowrap;
         align-items: flex-start;
@@ -75,15 +78,35 @@ export default {
         /deep/ .line {
             -webkit-text-stroke: 1.5px var(--color-red);
             transition: all 0.4s ease-in-out;
-            display: block;
         }
     }
-    .title {
+
+    .svg {
+        transform-origin: 80% 80%;
+        transition: all 0.2s ease-in-out;
+        path {
+            transition: all 0.4s ease-in-out;
+        }
     }
 
     // Hovers
     @media #{$has-hover} {
-        .name:hover .line {
+        &:hover {
+            color: var(--color-pink);
+
+            .name /deep/ .line {
+                color: var(--color-pink);
+                -webkit-text-stroke: 1.5px var(--color-pink);
+            }
+
+            .svg {
+                transform: rotateZ(8deg);
+                path:nth-child(1) {
+                    fill: var(--color-pink);
+                }
+            }
+        }
+        .name:hover /deep/ .line {
             color: var(--color-black);
         }
     }
