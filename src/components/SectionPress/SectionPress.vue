@@ -3,12 +3,12 @@
         <h2 class="title" v-html="title" />
 
         <ul class="press">
-            <li v-for="(item, i) in items" class="item">
+            <li v-for="(item, i) in svgItems" class="item">
                 <split-text v-if="item.title" :text="item.title" element="p" />
                 <component
                     :is="item.svg"
                     v-else-if="item.svg"
-                    :class="`logo ${kebabClass(item.svg)}`"
+                    :class="`svg ${kebabClass(item.svg)}`"
                 />
             </li>
         </ul>
@@ -41,15 +41,8 @@ export default {
             default: () => []
         }
     },
-    mounted() {
-        // avoids using data() and computed
-        this.AddSvgsToItems()
-    },
-    methods: {
-        kebabClass(name) {
-            return _kebabCase(name)
-        },
-        AddSvgsToItems() {
+    computed: {
+        svgItems() {
             // gets middle index
             const middleIndex = Math.floor(this.items.length / 2)
             // adds to middle
@@ -60,6 +53,11 @@ export default {
             this.items.push({ svg: "SvgRollerGal" })
 
             return this.items
+        }
+    },
+    methods: {
+        kebabClass(name) {
+            return _kebabCase(name)
         }
     }
 }
@@ -114,27 +112,30 @@ export default {
             font-weight: 400;
         }
     }
+    // Svg Positions
+    .svg {
+        position: absolute;
+    }
+    .svg-fire-lady {
+        right: -40px;
+        top: 30px;
+    }
+    .svg-roller-gal {
+        bottom: 0;
+        right: 0;
+    }
+    .svg-childish-gambino {
+        top: 50%;
+        left: 40px;
+        transform: translateY(-50%);
+    }
 
     // Breakpoints
     // only position absolute svgs gt-tablet
-    @media #{"only screen and (min-width: 1024px)"} {
-        .svg-fire-lady {
-            position: absolute;
-            right: -40px;
-            top: 30px;
-        }
-
-        .svg-roller-gal {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-        }
-
-        .svg-childish-gambino {
-            position: absolute;
-            top: 50%;
-            left: 40px;
-            transform: translateY(-50%);
+    @media #{$lt-tablet} {
+        .svg {
+            position: static;
+            transform: none;
         }
     }
 
@@ -155,6 +156,10 @@ export default {
             .line-2 {
                 font-size: 16px;
             }
+        }
+        .svg {
+            max-width: 310px;
+            height: auto;
         }
     }
 }
