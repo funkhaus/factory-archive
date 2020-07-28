@@ -5,32 +5,25 @@
     </div>
 </template>
 
-<script>
-export default {}
-</script>
-
 <style lang="scss">
 :root {
     --color-rpsg: #fdc760;
 }
 .site-hamburger {
     position: fixed;
-    right: 50px;
-    top: 50px;
-    // cursor: pointer;
+    right: 30px;
+    top: 30px;
 
     height: 26px;
     width: 26px;
+    padding: 20px;
+    cursor: pointer;
 
     .outer-circle {
         height: 100%;
         width: 100%;
-        // height: 26px;
-        // width: 26px;
         border-radius: 50%;
         background-color: var(--color-rpsg);
-        // cursor: pointer;
-
         transition: transform 0.4s $authenticMotion;
     }
 
@@ -38,21 +31,17 @@ export default {}
         position: absolute;
         top: 50%;
         left: 50%;
-        z-index: 20000;
         transform: translate(-50%, -50%);
 
         height: 20px;
         width: 20px;
         border-radius: 50%;
-        cursor: pointer;
-
         transition: height 0.4s $authenticMotion, width 0.4s $authenticMotion;
     }
 
     // Opened state
     .open & .outer-circle {
         transform: scale(200);
-        // cursor: auto;
     }
     .open & .inner-circle {
         height: 15px;
@@ -67,13 +56,11 @@ export default {}
             width: 15px;
             background-color: var(--color-black);
         }
-        .open & .inner-circle:hover {
-            height: 17px;
-            width: 17px;
-        }
     }
     // Breakpoints
-    // @media #{$lt-phone} {
-    // }
+    @media #{$lt-phone} {
+        right: 0;
+        top: 0;
+    }
 }
 </style>

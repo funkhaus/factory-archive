@@ -1,7 +1,7 @@
 <template>
-    <div :class="{ open: menuOpen }" class="panel-menu" @click="toggleMenu">
+    <div :class="{ open: menuOpen }" class="panel-menu">
         <!-- Site Hamburger -->
-        <site-hamburger />
+        <site-hamburger @click.native="toggleMenu" />
 
         <!-- Main Menu -->
         <wp-menu :items="mainMenu" class="menu main-menu" />
@@ -40,20 +40,20 @@ export default {
 <style lang="scss">
 .panel-menu {
     .menu {
-        position: relative;
-        z-index: 20;
-
         display: inline-block;
-        list-style: none;
         margin: 0;
-        padding: 0;
-
+        padding: 10px 0 0 50px;
+        list-style: none;
         transform: translateY(-100%);
         transition: transform 0.4s $authenticMotion;
     }
     .mock-nuxt-link {
+        position: relative;
+        z-index: 20;
+
         font-family: var(--font-secondary);
-        font-size: 100px;
+        font-size: 125px;
+        font-weight: 700;
         color: var(--color-black);
         text-transform: uppercase;
     }
@@ -71,7 +71,23 @@ export default {
         }
     }
     // Breakpoints
-    // @media #{$lt-phone} {
-    // }
+    @media #{$gt-wide} {
+        .mock-nuxt-link {
+            font-size: 180px;
+        }
+    }
+    @media #{$lt-desktop} {
+        .mock-nuxt-link {
+            font-size: 84px;
+        }
+    }
+    @media #{$lt-sm-tablet} {
+        .menu {
+            padding: 10px 0 0 20px;
+        }
+        .mock-nuxt-link {
+            font-size: 34px;
+        }
+    }
 }
 </style>
