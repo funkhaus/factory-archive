@@ -1,8 +1,5 @@
 <template>
-    <div :class="{ open: menuOpen }" class="panel-menu">
-        <!-- Site Hamburger -->
-        <site-hamburger @click.native="toggleMenu" />
-
+    <div class="panel-menu open">
         <!-- Main Menu -->
         <wp-menu :items="mainMenu" class="menu main-menu" />
     </div>
@@ -10,12 +7,10 @@
 
 <script>
 // Components
-import SiteHamburger from "@/components/SiteHamburger/SiteHamburger"
 import WpMenu from "@/components/global/WpMenu"
 
 export default {
     components: {
-        SiteHamburger,
         WpMenu
     },
     props: {
@@ -23,43 +18,41 @@ export default {
             type: Array,
             default: () => []
         }
-    },
-    data() {
-        return {
-            menuOpen: false
-        }
-    },
-    methods: {
-        toggleMenu() {
-            this.menuOpen = !this.menuOpen
-        }
     }
 }
 </script>
 
 <style lang="scss">
+:root {
+    --color-rpsg: #fdc760;
+}
 .panel-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform: translateY(-100%);
+    transition: transform 0.4s $authenticMotion;
+    // TODO remove, temporary style for visibility
+    background-color: var(--color-rpsg);
+
     .menu {
         display: inline-block;
         margin: 0;
         padding: 10px 0 0 50px;
         list-style: none;
-        transform: translateY(-100%);
-        transition: transform 0.4s $authenticMotion;
     }
     .mock-nuxt-link {
-        position: relative;
-        z-index: 20;
-
         font-family: var(--font-secondary);
-        font-size: 125px;
+        font-size: 7.7vw;
         font-weight: 700;
         color: var(--color-black);
         text-transform: uppercase;
     }
 
     // Opened state
-    &.open .menu {
+    &.open {
         transform: none;
     }
 
@@ -76,17 +69,9 @@ export default {
             font-size: 180px;
         }
     }
-    @media #{$lt-desktop} {
-        .mock-nuxt-link {
-            font-size: 84px;
-        }
-    }
-    @media #{$lt-sm-tablet} {
+    @media #{$lt-phone} {
         .menu {
             padding: 10px 0 0 20px;
-        }
-        .mock-nuxt-link {
-            font-size: 34px;
         }
     }
 }
