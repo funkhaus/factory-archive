@@ -32,6 +32,7 @@ export default {
     left: 0;
     height: 100%;
     width: 100%;
+    overflow-y: auto;
     transform: translateY(-100%);
     transition: transform 0.4s $authenticMotion;
     // TODO remove, temporary style for visibility
@@ -39,8 +40,8 @@ export default {
 
     .menu {
         display: inline-block;
-        margin: 0;
-        padding: 10px 0 0 50px;
+        margin: 30px 0 50px;
+        padding: 0 0 0 50px;
         list-style: none;
     }
     .mock-nuxt-link {
