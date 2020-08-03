@@ -9,14 +9,15 @@ export const FeaturedBlockLogos = () => ({
     components: { BlockFeatured },
     data() {
         return {
-            api: API
+            api: API,
+            logoNames: ["a52-color", "jax", "indestrucible"]
         }
     },
     template: `<block-featured
                 :to="api.page.uri"
                 :title="api.page.title"
                 :image="api.page.featuredImage"
-                :logos="api.logos.slice(2, 5)"
+                :logo-names="logoNames"
                 />`
 })
 
@@ -25,8 +26,8 @@ export const FeaturedBlockCredits = () => ({
     data() {
         return {
             api: API,
-            credits: `Artists – Angus Wall & Hazel Baird
-            Editor – Jamie Foord
+            creditsPrimary: `Artists – Angus Wall & Hazel Baird`,
+            creditsSecondary: `Editor – Jamie Foord
             Production Co. – Placeholder
             Agency – Placeholder`
         }
@@ -36,7 +37,8 @@ export const FeaturedBlockCredits = () => ({
                 :to="api.page.uri"
                 :title="api.page.title"
                 :image="api.page.featuredImage"
-                :credits="credits"
+                :creditsPrimary="creditsPrimary"
+                :creditsSecondary="creditsSecondary"
                 />`
 })
 

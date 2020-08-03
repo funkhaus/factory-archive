@@ -26,3 +26,11 @@ a {
     color: inherit;
     transition: color 0.4s ease-in-out;
 }
+
+// SVG styles
+.svg {
+    path,
+    circle {
+        fill: var(--color-black);
+    }
+}

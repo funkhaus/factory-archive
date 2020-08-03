@@ -1,79 +1,87 @@
 <template>
-    <nuxt-link :class="classes" :to="to">
+    <smart-link
+        :class="classes"
+        :to="to"
+        @mouseover.native="startHover"
+        @mouseleave.native="resetHover"
+    >
         <!-- Image -->
         <wp-image
-            v-if="image"
+            v-if="image && !isNews"
             class="block-image"
+            :style="imageStyle"
             :image="image"
             mode="fullbleed"
-        >
-        </wp-image>
+        />
+
         <!-- Text -->
         <div class="block-text">
-            <h3 class="title" v-html="title" />
-            <!-- Logos -->
-            <div v-if="logos.length" class="logos">
-                <div v-for="i in logos" :key="i.id" class="logo-container">
-                    <div class="sizer">
-                        <img class="logo" :src="i.sourceUrl" />
-                    </div>
+            <!-- Meta -->
+            <div ref="meta" :style="metaStyle" class="meta">
+                <!-- Play SVG -->
+                <svg-button-play v-if="hasHover" class="svg play" />
+                <!-- Title -->
+                <h3 v-if="title" class="title" v-html="title" />
+                <!-- Logos -->
+                <div v-if="logoNames.length" class="logos">
+                    <component
+                        :is="`svg-logo-${name}`"
+                        v-for="(name, i) in logoNames"
+                        :key="name"
+                        :class="`logo logo-${name}`"
+                    />
+                </div>
+                <!-- Primary Credits -->
+                <p
+                    v-for="credit in formattedCreditsPrimary"
+                    v-if="creditsPrimary"
+                    :key="credit"
+                    class="primary-credit credit"
+                    v-html="credit"
+                />
+                <!-- Secondary Credits -->
+                <div ref="secondary" class="additional-credits">
+                    <p
+                        v-for="credit in formattedCreditsSecondary"
+                        v-if="creditsSecondary"
+                        :key="credit"
+                        class="credit"
+                        v-html="credit"
+                    />
                 </div>
             </div>
-            <!-- Credits -->
-            <p
-                v-if="credits"
-                class="first-credit"
-                v-html="formattedCredits[0]"
-            />
-            <div class="additional-credits spacer">
-                <p
-                    v-for="credit in formattedCredits.slice(1)"
-                    v-if="credits"
-                    :key="credit"
-                    class="credit"
-                    v-html="credit"
-                />
-            </div>
             <!-- Date -->
-            <time v-if="date" class="date" v-html="formattedDate" />
+            <time v-if="isNews" class="date" v-html="formattedDate" />
         </div>
-        <!-- Background Credits hover state -->
-        <div class="credits-play">
-            <svg-button-play class="svg" />
-            <h3 class="title spacer" v-html="title" />
-            <p
-                v-if="credits"
-                class="first-credit spacer"
-                v-html="formattedCredits[0]"
-            />
-            <div class="additional-credits">
-                <p
-                    v-for="credit in formattedCredits.slice(1)"
-                    v-if="credits"
-                    :key="credit"
-                    class="credit"
-                    v-html="credit"
-                />
-            </div>
-        </div>
-    </nuxt-link>
+    </smart-link>
 </template>
 
 <script>
 // Helpers
 import { formatDate } from "@/utils/tools"
-import { nl2br } from "@/utils/tools"
 // Components
-import NuxtLink from "@/components/global/NuxtLink"
 import WpImage from "@/components/global/WpImage"
+import SmartLink from "@/components/global/SmartLink"
 // Assets
 import SvgButtonPlay from "@/assets/svgs/button-play.svg"
+import SvgLogoA52Color from "@/assets/svgs/company-logos/logo-a52-color.svg"
+import SvgLogoA52 from "@/assets/svgs/company-logos/logo-a52.svg"
+import SvgLogoElastic from "@/assets/svgs/company-logos/logo-elastic.svg"
+import SvgLogoIndestrucible from "@/assets/svgs/company-logos/logo-indestrucible.svg"
+import SvgLogoJax from "@/assets/svgs/company-logos/logo-jax.svg"
+import SvgLogoRpsg from "@/assets/svgs/company-logos/logo-rpsg.svg"
 
 export default {
     components: {
-        NuxtLink,
         WpImage,
-        SvgButtonPlay
+        SmartLink,
+        SvgButtonPlay,
+        SvgLogoA52Color,
+        SvgLogoA52,
+        SvgLogoElastic,
+        SvgLogoIndestrucible,
+        SvgLogoJax,
+        SvgLogoRpsg
     },
     props: {
         isNews: {
@@ -96,17 +104,29 @@ export default {
             type: String,
             default: ""
         },
-        credits: {
+        creditsPrimary: {
             type: String,
             default: ""
         },
-        logos: {
+        creditsSecondary: {
+            type: String,
+            default: ""
+        },
+        logoNames: {
             type: Array,
             default: () => []
         },
         date: {
             type: String,
             default: ""
+        }
+    },
+    data() {
+        return {
+            imageTranslateValue: "",
+            secondaryCreditsHeight: "",
+            currentMetaPosition: "",
+            currentImagePosition: "0"
         }
     },
     computed: {
@@ -117,35 +137,81 @@ export default {
                 { "has-hover": this.hasHover }
             ]
         },
+        metaStyle() {
+            if (this.hasHover) {
+                return {
+                    top: this.currentMetaPosition
+                }
+            }
+        },
+        imageStyle() {
+            if (this.hasHover) {
+                return {
+                    transform: `translateY(-${this.currentImagePosition})`
+                }
+            }
+        },
         formattedDate() {
             return formatDate(this.date)
         },
-        formattedCredits() {
-            return nl2br(this.credits).split("<br>")
+        formattedCreditsPrimary() {
+            return this.creditsPrimary.split(/(?:\r\n|\r|\n)/g)
+        },
+        formattedCreditsSecondary() {
+            return this.creditsSecondary.split(/(?:\r\n|\r|\n)/g)
+        }
+    },
+    mounted() {
+        if (this.hasHover) {
+            // Get height of block-text + padding to find how much to translate image on hover
+            this.imageTranslateValue =
+                this.$refs.meta.clientHeight + 100 + "px"
+            // Get height of additional-credits, set to negative to use with margin-bottom
+            this.secondaryCreditsHeight =
+                this.$refs.secondary.clientHeight + "px"
+            // Move meta down equivalent of additional-credits height, so that
+            // primary credits sit in the correct place before hover
+            this.currentMetaPosition = this.secondaryCreditsHeight
+        }
+    },
+    methods: {
+        startHover() {
+            if (this.hasHover) {
+                // Move image up the height of meta
+                this.currentImagePosition = this.imageTranslateValue
+                // Move meta to its natural position
+                this.currentMetaPosition = "0"
+            }
+        },
+        resetHover() {
+            if (this.hasHover) {
+                // Return image to initial position
+                this.currentImagePosition = "0"
+                // Return meta to initial, lowered position
+                this.currentMetaPosition = this.secondaryCreditsHeight
+            }
         }
     }
 }
 </script>
 
 <style lang="scss">
+:root {
+    --unit-spacer: 17px;
+}
 .block-featured {
     display: block;
     position: relative;
     height: 720px;
     background-color: var(--color-company);
+    overflow: hidden;
 
-    .block-image {
-        .media {
-            transition: top 0.5s $authenticMotion;
-        }
-    }
     .block-text {
         position: absolute;
         top: 0;
         left: 0;
         height: 100%;
         width: 100%;
-        z-index: 10;
 
         padding: 50px;
         box-sizing: border-box;
@@ -159,82 +225,107 @@ export default {
         position: relative;
         z-index: 30;
 
-        margin: 0 0 10px;
+        margin: 0 0 0 -3px;
         font-size: 50px;
         font-weight: 300;
         color: var(--color-company);
 
-        transition: color 0.5s $authenticMotion;
+        transition: color 0.4s $authenticMotion;
     }
-    // Play Button
-    .svg {
-        margin-bottom: 10px;
-        pointer-events: none;
-        transition: opacity 0.5s $authenticMotion;
-    }
+
     // Logos
     .logos {
+        position: relative;
+        z-index: 30;
+
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
     }
-    .logo-container {
-        width: 50px;
-        margin-right: 15px;
+    .logo {
+        height: 17px;
+        width: auto;
+        padding: var(--unit-spacer) var(--unit-spacer) 0 0;
 
-        .sizer {
-            padding-bottom: 100%;
-            position: relative;
-        }
-        .logo {
-            position: absolute;
-            top: 25%;
-            transform: translateY(-50%);
-            object-fit: contain;
-            height: 100%;
-            width: 100%;
+        path,
+        circle {
+            fill: var(--color-company);
+            opacity: 1;
         }
     }
+    .logo-a52 {
+        height: 15px;
+    }
+    .logo-elastic {
+        height: 12px;
+    }
+    .logo-indestrucible {
+        height: 10px;
+    }
+
     // Credits
-    .first-credit {
-        margin: 3px 0;
-        color: var(--color-company);
-        transition: color 0.5s $authenticMotion;
-    }
-    .additional-credits {
-        max-height: 0;
-        transition: max-height 0.5s $authenticMotion,
-            opacity 0.5s $authenticMotion;
-    }
     .credit {
         font-weight: 300;
         margin: 3px 0;
     }
-    .spacer {
+    .primary-credit {
+        font-weight: 400;
+        color: var(--color-company);
+        transition: color 0.4s $authenticMotion;
+
+        &:first-of-type {
+            padding-top: var(--unit-spacer);
+        }
+    }
+    .additional-credits {
         opacity: 0;
+        transition: opacity 0.4s $authenticMotion;
+    }
+    // Play Button
+    .play {
+        margin-bottom: 10px;
         pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.4s $authenticMotion;
     }
-    .credits-play {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        z-index: 5;
 
-        padding: 50px;
-        box-sizing: border-box;
-        overflow: hidden;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
+    // Hover state required styles
+    &.has-hover {
+        .play,
+        .title,
+        .primary-credit,
+        .additional-credits,
+        .block-image {
+            position: relative;
+        }
+        .title,
+        .primary-credit {
+            z-index: 30;
+        }
+        .play,
+        .additional-credits {
+            z-index: 10;
+        }
+        .block-image {
+            z-index: 20;
+            height: 100%;
+            transition: transform 0.4s $authenticMotion;
+        }
+        .meta {
+            position: relative;
+            transition: top 0.4s $authenticMotion;
+        }
     }
+
     // News styles
     &.is-news {
         background-color: var(--color-black);
 
         .block-text {
             justify-content: space-between;
+        }
+        .title {
+            font-size: 70px;
         }
         .svg {
             display: none;
@@ -247,15 +338,13 @@ export default {
     // Hovers
     @media #{$has-hover} {
         &.has-hover:hover {
-            .media {
-                top: -50%;
-            }
             .title,
-            .first-credit {
+            .primary-credit {
                 color: var(--color-black);
             }
+            .play,
             .additional-credits {
-                max-height: 200px;
+                opacity: 1;
             }
         }
     }
