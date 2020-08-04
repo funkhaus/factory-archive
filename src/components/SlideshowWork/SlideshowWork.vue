@@ -3,7 +3,7 @@
         ref="slideshow"
         class="slideshow-work"
         :slides="images"
-        next-transition-name="fade"
+        :swipe-events="true"
         @update:activeIndex="updateIndex"
     >
         <wp-image
@@ -12,6 +12,7 @@
             slot-scope="{ slide }"
             class="slide-image"
             :image="slide"
+            mode="fullbleed"
         />
 
         <icon-arrow slot="nav-next" />
@@ -62,8 +63,6 @@ export default {
 .slideshow-work {
     min-height: 300px;
     height: var(--unit-100vh);
-    padding: 50px;
-    box-sizing: border-box;
 
     /deep/ .nav {
         position: absolute;
@@ -77,35 +76,42 @@ export default {
         }
 
         &.prev {
-            left: 40px;
+            left: 30px;
         }
         &.next {
-            right: 40px;
+            right: 30px;
             svg {
                 transform: rotate(180deg);
             }
         }
 
-        svg path {
-            fill: var(--color-grey);
-            transition: fill 0.4s ease-in-out;
+        svg {
+            width: 30px;
+            height: auto;
+            path {
+                fill: var(--color-grey);
+                transition: fill 0.4s ease-in-out;
+            }
         }
     }
 
-    /deep/ .slide .slide-image {
-        top: 50%;
-        left: 50%;
-        padding: 100px;
-        box-sizing: border-box;
-        transform: translate(-50%, -50%);
+    /deep/ .slide {
+        width: unset;
+        height: unset;
+        top: 100px;
+        left: 100px;
+        right: 100px;
+        bottom: 100px;
     }
 
     .dots {
         position: absolute;
-        bottom: 90px;
+        bottom: 70px;
         left: 50%;
         z-index: 100;
         transform: translateX(-50%);
+        width: 100%;
+        text-align: center;
 
         .dot {
             display: inline-block;
@@ -130,7 +136,17 @@ export default {
             fill: var(--color-orange);
         }
         .dot:hover {
-            background-color: var(--color-orange);
+            opacity: 1;
+        }
+    }
+    // Breakpoints
+    @media #{$lt-phone} {
+        /deep/ .slide {
+            left: 20px;
+            right: 20px;
+        }
+        /deep/ .nav {
+            display: none;
         }
     }
 }
