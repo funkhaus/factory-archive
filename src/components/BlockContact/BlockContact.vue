@@ -1,18 +1,11 @@
 <template lang="html">
-    <div class="block-contact">
+    <a class="block-contact" :href="`mailto:${email}`" target="_blank">
         <component :is="svgName" :class="`svg ${svgName}`" />
         <div class="panel">
-            <split-text
-                element="a"
-                :href="`mailto:${email}`"
-                class="name"
-                target="_blank"
-                :text="name"
-                separator=" "
-            />
+            <split-text class="name" :text="name" separator=" " />
             <p class="title" v-html="title" />
         </div>
-    </div>
+    </a>
 </template>
 
 <script>
@@ -64,6 +57,7 @@ export default {
 
     .name {
         font-family: var(--font-secondary);
+        color: var(--color-red);
         font-size: 30px;
         font-weight: 500;
         margin: 10px 0;
@@ -74,11 +68,6 @@ export default {
         flex-direction: column;
         flex-wrap: nowrap;
         align-items: flex-start;
-
-        /deep/ .line {
-            -webkit-text-stroke: 1.5px var(--color-red);
-            transition: all 0.4s ease-in-out;
-        }
     }
 
     .svg {
@@ -93,10 +82,8 @@ export default {
     @media #{$has-hover} {
         &:hover {
             color: var(--color-pink);
-
-            .name /deep/ .line {
+            .name {
                 color: var(--color-pink);
-                -webkit-text-stroke: 1.5px var(--color-pink);
             }
 
             .svg {
@@ -105,9 +92,6 @@ export default {
                     fill: var(--color-pink);
                 }
             }
-        }
-        .name:hover /deep/ .line {
-            color: var(--color-black);
         }
     }
 
