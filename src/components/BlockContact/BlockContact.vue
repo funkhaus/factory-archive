@@ -39,7 +39,7 @@ export default {
         }
     },
     computed: {
-        // Start count when component hasIntersected
+        // Starts count when component hasIntersected
         svgName() {
             return `svg-animal-${_kebabCase(this.name)}`
         }
