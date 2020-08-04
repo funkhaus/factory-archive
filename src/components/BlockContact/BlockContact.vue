@@ -3,7 +3,7 @@
         <component :is="svgName" :class="`svg ${svgName}`" />
         <div class="panel">
             <split-text class="name" :text="name" separator=" " />
-            <p class="title" v-html="title" />
+            <h3 class="title" v-html="title" />
         </div>
     </a>
 </template>
@@ -70,6 +70,12 @@ export default {
         align-items: flex-start;
     }
 
+    .title {
+        font-weight: 400;
+        font-size: 20px;
+        margin: 0;
+    }
+
     .svg {
         transform-origin: 80% 80%;
         transition: all 0.2s ease-in-out;
@@ -85,7 +91,7 @@ export default {
             .name {
                 color: var(--color-pink);
             }
-
+            // NOTE: Each unique svg hover should be set in parent
             .svg {
                 transform: rotateZ(8deg);
                 path:nth-child(1) {
