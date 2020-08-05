@@ -9,7 +9,7 @@
     --font-secondary: "Druk Wide", sans-serif;
 
     --color-black: #000000;
-    --color-white: #000000;
+    --color-white: #ffffff;
     --color-orange: #ffb762;
     --color-pink: #f7aea8;
     --color-red: #f96447;
@@ -18,10 +18,15 @@
     --unit-100vh: 100vh;
     --unit-gutter: 50px;
     --unit-max-width: 1800px;
+
+    @media #{$lt-phone} {
+        --unit-gutter: 20px;
+    }
 }
 
 // Base styles
 body {
+    margin: 0;
     font-family: var(--font-primary);
     color: var(--color-orange);
     background-color: var(--color-black);
@@ -31,6 +36,7 @@ a {
     color: inherit;
     transition: color 0.4s $authenticMotion;
 }
+// TODO probably shouldn't have this in the boiler plate as it affects NuxtLink, etc
 a:hover {
     color: var(--color-white);
 }
