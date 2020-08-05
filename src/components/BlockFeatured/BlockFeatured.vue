@@ -136,7 +136,7 @@ export default {
         }
     }
     @media #{$lt-phone} {
-        margin: 50px auto 150px;
+        margin: 50px auto 300px;
 
         .line-1 {
             font-size: 25px;
@@ -147,6 +147,9 @@ export default {
         .credit {
             font-size: 12px;
         }
+    }
+    @media only screen and (max-width: 500px) {
+        margin: 50px auto 200px;
     }
 }
 </style>
