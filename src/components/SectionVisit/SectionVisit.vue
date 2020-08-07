@@ -3,35 +3,42 @@
         <h2>Visit Us</h2>
 
         <div class="section-map">
-            <contact-map class="svg map" />
             <contact-city class="svg city" />
 
-            <div class="breadlam location">
-                <icon-breadlam class="svg icon-breadlam" />
-                <icon-breadlam-hover class="svg icon-breadlam hover" />
-            </div>
-            <div class="doomsday location">
-                <icon-doomsday class="svg icon-doomsday" />
-                <icon-doomsday-hover class="svg icon-doomsday hover" />
-            </div>
-            <div class="hauser-wirth location">
-                <icon-hauser-wirth class="svg icon-hauser-wirth" />
-                <icon-hauser-wirth-hover class="svg icon-hauser-wirth hover" />
-            </div>
-            <div class="little-tokyo location">
-                <icon-little-tokyo class="svg icon-little-tokyo" />
-                <icon-little-tokyo-hover class="svg icon-little-tokyo hover" />
-            </div>
-            <div class="piehole location">
-                <icon-piehole class="svg icon-piehole" />
-                <icon-piehole-hover class="svg icon-piehole hover" />
-            </div>
-            <div class="werstkuche location">
-                <icon-werstkuche class="svg icon-werstkuche" />
-                <icon-werstkuche-hover class="svg icon-werstkuche hover" />
-            </div>
+            <div class="map-city">
+                <contact-map class="svg map" />
 
-            <wp-content class="address" :html="address" />
+                <div class="location breadlam">
+                    <icon-breadlam class="svg icon-breadlam" />
+                    <icon-breadlam-hover class="svg icon-breadlam hover" />
+                </div>
+                <div class="location doomsday">
+                    <icon-doomsday class="svg icon-doomsday" />
+                    <icon-doomsday-hover class="svg icon-doomsday hover" />
+                </div>
+                <div class="location hauser-wirth">
+                    <icon-hauser-wirth class="svg icon-hauser-wirth" />
+                    <icon-hauser-wirth-hover
+                        class="svg icon-hauser-wirth hover"
+                    />
+                </div>
+                <div class="location little-tokyo">
+                    <icon-little-tokyo class="svg icon-little-tokyo" />
+                    <icon-little-tokyo-hover
+                        class="svg icon-little-tokyo hover"
+                    />
+                </div>
+                <div class="location piehole">
+                    <icon-piehole class="svg icon-piehole" />
+                    <icon-piehole-hover class="svg icon-piehole hover" />
+                </div>
+                <div class="location werstkuche">
+                    <icon-werstkuche class="svg icon-werstkuche" />
+                    <icon-werstkuche-hover class="svg icon-werstkuche hover" />
+                </div>
+
+                <wp-content class="address" :html="address" />
+            </div>
         </div>
     </section>
 </template>
@@ -97,6 +104,7 @@ export default {
     color: var(--color-red);
     padding: 100px;
     box-sizing: border-box;
+    overflow: hidden;
 
     h2 {
         font-family: var(--font-secondary);
@@ -119,84 +127,93 @@ export default {
         max-width: 1080px;
         margin: 0 auto;
 
+        display: flex;
+        // flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-end;
         .city {
             position: absolute;
             top: 0%;
             left: 0;
             z-index: 10;
         }
-        .map {
-            position: absolute;
-            bottom: 0%;
-            left: 0;
+
+        .map-city {
+            // position: absolute;
+            // bottom: 0%;
+            // left: 0;
+            position: relative;
             max-width: 800px;
             height: auto;
             z-index: 20;
-            background-color: var(--color-black);
-        }
-        .address {
-            position: absolute;
-            top: 54%;
-            left: 65%;
-            z-index: 30;
-            padding: var(--unit-gutter);
-            border: 1px solid var(--color-red);
-            background-color: var(--color-black);
-            white-space: nowrap;
-            /deep/ h4 {
-                font-weight: 900;
-                font-size: 30px;
-                font-family: var(--font-secondary);
-                margin: 0 0 10px 0;
-            }
-            /deep/ p {
-                font-family: var(--font-primary);
-                font-size: 24px;
-                font-weight: 400;
-                margin: 0;
+            circle {
+                fill: var(--color-black);
             }
         }
+    }
 
-        .location {
+    .address {
+        position: absolute;
+        top: 38%;
+        left: 88%;
+        z-index: 30;
+        padding: var(--unit-gutter);
+        border: 1px solid var(--color-red);
+        background-color: var(--color-black);
+        white-space: nowrap;
+        /deep/ h4 {
+            font-weight: 900;
+            font-size: 30px;
+            font-family: var(--font-secondary);
+            margin: 0 0 10px 0;
+        }
+        /deep/ p {
+            font-family: var(--font-primary);
+            font-size: 24px;
+            font-weight: 400;
+            margin: 0;
+        }
+    }
+
+    .location {
+        position: absolute;
+        .svg {
+            transition: opacity 0.1s ease-in-out;
             position: absolute;
-            .svg {
-                transition: opacity 0.1s ease-in-out;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                opacity: 1;
-                z-index: 20;
-                &.hover {
-                    opacity: 0;
-                    z-index: 30;
-                }
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 1;
+            z-index: 20;
+            &.hover {
+                opacity: 0;
+                z-index: 30;
             }
         }
-        .breadlam {
-            top: 66%;
-            left: 48%;
-        }
-        .doomsday {
-            top: 74%;
-            left: 44%;
-        }
-        .hauser-wirth {
-            top: 56%;
-            left: 50%;
-        }
-        .little-tokyo {
-            top: 67%;
-            left: 12%;
-        }
-        .piehole {
-            top: 72%;
-            left: 33%;
-        }
-        .werstkuche {
-            top: 62%;
-            left: 38%;
-        }
+    }
+    .breadlam {
+        top: 53%;
+        left: 65%;
+    }
+    .doomsday {
+        top: 64%;
+        left: 59%;
+    }
+    .hauser-wirth {
+        top: 41%;
+        left: 68%;
+    }
+    .little-tokyo {
+        top: 55%;
+        left: 17%;
+    }
+    .piehole {
+        top: 62%;
+        left: 45%;
+    }
+    .werstkuche {
+        top: 53%;
+        left: 50%;
     }
 
     // Hovers
