@@ -52,7 +52,6 @@ export default {
     position: relative;
     display: block;
     width: 100%;
-    margin: -50px auto;
     padding-left: 50px;
     box-sizing: border-box;
 
@@ -83,7 +82,7 @@ export default {
     }
     // Image
     .block-image {
-        width: 31%;
+        width: 34%;
         transform-origin: left;
 
         transition: transform 0.4s $authenticMotion;
@@ -104,15 +103,11 @@ export default {
     }
     // Breakpoints
     @media #{$lt-tablet} {
-        margin: 100px auto;
-
         .block-image {
-            width: 44%;
+            width: 50%;
         }
     }
     @media #{$lt-phone} {
-        // margin: 100px auto;
-
         .line-1 {
             font-size: 25px;
         }

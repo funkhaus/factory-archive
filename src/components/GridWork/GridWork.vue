@@ -37,6 +37,9 @@ export default {
     box-sizing: border-box;
 
     .block-work {
+        margin: -50px auto;
+
+        // Reverse every other block-work
         &:nth-child(2n + 2) {
             padding-left: 0;
             padding-right: 50px;
@@ -51,14 +54,16 @@ export default {
                 transform-origin: right;
             }
         }
+        // Set size of every 2nd out of 3 pattern
         &:nth-child(3n + 2) {
             .block-image {
-                width: 35%;
+                width: 38%;
             }
         }
+        // Set size of every 3rd out of 3 pattern
         &:nth-child(3n + 3) {
             .block-image {
-                width: 43%;
+                width: 47%;
             }
         }
     }
@@ -73,7 +78,7 @@ export default {
             }
             &:nth-child(3n + 2):hover {
                 .block-image {
-                    transform: scale(1.3);
+                    transform: scale(1.4);
                 }
             }
             &:nth-child(3n + 3):hover {
@@ -86,19 +91,23 @@ export default {
     // Breakpoints
     @media #{$lt-tablet} {
         .block-work {
+            margin: 50px auto;
+
             &:nth-child(3n + 2) {
                 .block-image {
-                    width: 50%;
+                    width: 56%;
                 }
             }
             &:nth-child(3n + 3) {
                 .block-image {
-                    width: 61%;
+                    width: 69%;
                 }
             }
         }
     }
     @media #{$lt-phone} {
+        margin: 50px auto;
+
         .block-work {
             &:nth-child(3n + 2) {
                 .block-image {
