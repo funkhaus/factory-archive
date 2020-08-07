@@ -36,9 +36,9 @@
                     <icon-werstkuche class="svg icon-werstkuche" />
                     <icon-werstkuche-hover class="svg icon-werstkuche hover" />
                 </div>
-
-                <wp-content class="address" :html="address" />
             </div>
+
+            <wp-content class="address" :html="address" />
         </div>
     </section>
 </template>
@@ -104,8 +104,9 @@ export default {
     color: var(--color-red);
     padding: 100px;
     box-sizing: border-box;
-    overflow: hidden;
-
+    position: relative;
+    min-height: 525px;
+    overflow-x: hidden;
     h2 {
         font-family: var(--font-secondary);
         color: var(--color-red);
@@ -114,6 +115,8 @@ export default {
         font-weight: 500;
         text-transform: uppercase;
         margin: 0;
+        position: relative;
+        z-index: 50;
     }
 
     .svg {
@@ -123,25 +126,20 @@ export default {
     .section-map {
         position: relative;
         display: block;
-        height: 1080px;
-        max-width: 1080px;
         margin: 0 auto;
+        max-width: 1080px;
+        height: 1080px;
 
         display: flex;
-        // flex-direction: row;
         justify-content: flex-start;
         align-items: flex-end;
         .city {
             position: absolute;
             top: 0%;
-            left: 0;
+            left: -40px;
             z-index: 10;
         }
-
         .map-city {
-            // position: absolute;
-            // bottom: 0%;
-            // left: 0;
             position: relative;
             max-width: 800px;
             height: auto;
@@ -154,8 +152,8 @@ export default {
 
     .address {
         position: absolute;
-        top: 38%;
-        left: 88%;
+        top: 53%;
+        right: 0%;
         z-index: 30;
         padding: var(--unit-gutter);
         border: 1px solid var(--color-red);
@@ -212,8 +210,8 @@ export default {
         left: 45%;
     }
     .werstkuche {
-        top: 53%;
-        left: 50%;
+        top: 49%;
+        left: 52%;
     }
 
     // Hovers
@@ -228,54 +226,72 @@ export default {
             }
         }
     }
+
     // Breakpoints
+    @media only screen and (max-width: 1200px) {
+        .address {
+            padding: 20px;
+            top: 57%;
+            right: -10%;
+            /deep/ h4 {
+                font-size: 21px;
+            }
+            /deep/ p {
+                font-size: 18px;
+            }
+        }
+    }
     @media #{$lt-tablet} {
         padding: 50px;
 
         .section-map {
             height: 700px;
             max-width: 800px;
-
-            .city,
+            .city {
+                max-width: 800px;
+                height: auto;
+            }
             .map {
                 max-width: 600px;
                 height: auto;
             }
+            .location {
+                transform: scale(0.75);
+            }
             .address {
-                padding: 20px;
-                white-space: break-spaces;
-                /deep/ h4 {
-                    font-size: 21px;
-                }
-                /deep/ p {
-                    font-size: 18px;
-                }
+                right: 0;
             }
         }
     }
     @media #{$lt-phone} {
         padding: 20px;
+        h2 {
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
         .section-map {
             height: 335px;
             max-width: 100%;
+            justify-content: center;
             .city {
                 max-height: 335px;
                 width: auto;
+                top: -17%;
+                left: -35px;
             }
             .map {
                 max-width: 335px;
                 height: auto;
             }
-
-            .map {
-                left: 50%;
-                transform: translateX(-50%);
+            .location {
+                transform: scale(0.4);
             }
             .address {
                 top: unset;
-                bottom: 0%;
-                left: 50%;
-                transform: translateX(-50%);
+                bottom: -15%;
+                right: 50%;
+                transform: translateX(50%);
+
                 /deep/ h4 {
                     font-size: 18px;
                 }
