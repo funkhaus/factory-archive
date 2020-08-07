@@ -128,14 +128,14 @@ export default {
         display: block;
         margin: 0 auto;
         max-width: 1080px;
-        height: 1080px;
+        height: 975px;
 
         display: flex;
         justify-content: flex-start;
         align-items: flex-end;
         .city {
             position: absolute;
-            top: 0%;
+            top: -40px;
             left: -40px;
             z-index: 10;
         }
